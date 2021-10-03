@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import Wrapper from './styled';
+import s from './container.module.css';
 
-const Container = ({ children }) => <Wrapper>{children}</Wrapper>;
+const Container = ({ children }) => (
+  <div className={s.adaptiveContainer}>{children}</div>
+);
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
