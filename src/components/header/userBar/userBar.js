@@ -1,18 +1,15 @@
 import { useWindowWidth } from '@react-hook/window-size';
 
 import { ReactComponent as LogOutBtn } from './logout.svg';
-import styles from './userBar.module.css';
-
+import { UserBarContainer } from './userBarStyles';
 function UserBar() {
   const width = useWindowWidth();
   return (
-    <div className={styles.userBar}>
+    <UserBarContainer>
       <p>UserName</p>
-      {width > 320 ? <div className={styles.vector} /> : ''}
-      <button type="button" className={styles.logOutBtn}>
-        {width > 320 ? 'Выйти' : <LogOutBtn />}
-      </button>
-    </div>
+      {width > 767 ? <div /> : ''}
+      <button type="button">{width > 767 ? 'Выйти' : <LogOutBtn />}</button>
+    </UserBarContainer>
   );
 }
 

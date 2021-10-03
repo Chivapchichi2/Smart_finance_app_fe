@@ -1,13 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
-
-import styles from './logo.module.css';
+import { ReactComponent as LogoImg } from './logo.svg';
+import IconWrapper from './logoStyles';
 
 function Logo() {
   return (
-    <div>
-      <img className={styles.logo} src={logo} alt="Kapusta" />
-    </div>
+    <IconWrapper>
+      <LogoImg />
+    </IconWrapper>
   );
 }
 
