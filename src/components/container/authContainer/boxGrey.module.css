@@ -5,7 +5,7 @@
   border-bottom-left-radius: 125px;
   background-color: #f5f6fb;
 
-  background-image: url('../../svg/cabbage1.svg');
+  background-image: url('../../../svg/cabbage1.svg');
   background-repeat: no-repeat;
   background-position: 270px 104px;
 }
@@ -14,7 +14,7 @@
   .boxContainer {
     height: 526px;
     padding: 90px 240px 50px 121px;
-    background-image: url('../../svg/cabbage_group.svg');
+    background-image: url('../../../svg/cabbage_group.svg');
 
     background-position: center 28px;
   }
@@ -22,6 +22,6 @@
 @media screen and (min-width: 1280px) {
   .boxContainer {
     padding: 308px 673px 79px 230px;
-    background-image: url('../../svg/cabbage_desktop_group.svg');
+    background-image: url('../../../svg/cabbage_desktop_group.svg');
   }
 }

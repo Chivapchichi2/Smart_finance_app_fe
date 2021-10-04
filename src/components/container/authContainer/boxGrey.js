@@ -1,4 +1,4 @@
-import AuthTilte from '../auth/authTitle';
+import AuthTilte from '../../auth/authTitle';
 import s from './boxGrey.module.css';
 
 const BoxGrey = () => (
