@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/header';
-import Container from './components/container/container';
+import { Container } from './components';
 import AuthView from './views/authView/authView';
 import HomeView from './views/homeView/homeView';
 
@@ -12,8 +12,8 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path={routes.authPage} component={AuthView} />
-
         <Route path={routes.homePage} component={HomeView} />
+        {/* <Route path={routes.reportPage} component={ReportView} /> */}
       </Switch>
     </Container>
   );

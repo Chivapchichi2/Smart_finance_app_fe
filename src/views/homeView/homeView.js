@@ -1,10 +1,12 @@
-import MainHome from '../../components/container/homeContainer/mainHome';
-import BoxHome from '../../components/container/homeContainer/boxHome';
+// import { Route, Switch, Redirect } from 'react-router-dom';
+
+import { MainHome, BoxHome } from '../../components';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
+// import routes from '../../routes/routes';
 
 // import HomeNav from '../../components/container/homeContainer/homeNav';
 
-// import Notification from '../../components/notification';
+import Notification from '../../components/notification';
 
 const HomeView = () => (
   <MainHome>
@@ -14,6 +16,11 @@ const HomeView = () => (
 
     {/* Окошко нотификации  */}
     {/* <Notification /> */}
+    {/* <Switch>
+      <Route path={routes.homeExpenses} component={ExpensesView} />
+      <Route path={routes.homeIncomes} component={IncomesView} />
+      <Redirect to={routes.homeExpenses} />
+    </Switch> */}
   </MainHome>
 );
 
