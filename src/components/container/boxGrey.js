@@ -1,5 +1,5 @@
 import AuthTilte from '../auth/authTitle';
-import s from './box.module.css';
+import s from './boxGrey.module.css';
 
 const BoxGrey = () => (
   <div className={s.boxContainer}>
