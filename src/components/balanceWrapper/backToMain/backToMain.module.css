@@ -1,0 +1,35 @@
+.btnBack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  background-image: url('../../../svg/BackToMain.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btnText {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .btnBack {
+    width: 174px;
+    background-position: left;
+  }
+
+  .btnText {
+    display: block;
+    margin: 0;
+    margin-left: 39px;
+    font-size: 12px;
+    line-height: 1.16;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    color: rgba(82, 85, 95, 0.7);
+  }
+}
