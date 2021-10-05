@@ -23,11 +23,11 @@ const HomeView = () => (
       <BackToMain />
       <Balance />
       <CurrentPeriod />
-    {/* <Switch>
-      <Route path={routes.homeExpenses} component={ExpensesView} />
-      <Route path={routes.homeIncomes} component={IncomesView} />
-      <Redirect to={routes.homeExpenses} />
-    </Switch> */}
+      {/* <Switch>
+        <Route path={routes.homeExpenses} component={ExpensesView} />
+        <Route path={routes.homeIncomes} component={IncomesView} />
+        <Redirect to={routes.homeExpenses} />
+      </Switch> */}
     </BalanceWrapper>
   </MainHome>
 );
