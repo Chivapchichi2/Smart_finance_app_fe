@@ -1,0 +1,22 @@
+.mainContainer {
+  position: relative;
+  height: 800px;
+  background-image: url('../../../svg/cabbage2.svg');
+  background-repeat: no-repeat;
+  background-position: bottom 0 left 35px;
+}
+
+@media screen and (min-width: 768px) {
+  .mainContainer {
+    height: 968px;
+    background-image: url('../../../svg/cabbage_couple.svg');
+    background-position: bottom 56px left 103px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainContainer {
+    height: 794px;
+    background-position: bottom 50px left 230px;
+  }
+}

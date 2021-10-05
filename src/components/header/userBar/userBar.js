@@ -1,6 +1,6 @@
 import { useWindowWidth } from '@react-hook/window-size';
-
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
+
 import styles from './userBar.module.css';
 
 function UserBar() {
