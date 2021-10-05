@@ -8,14 +8,14 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 
 // import Notification from '../../components/notification';
 
-import ReportsSlider from '../../components/reportsSlider';
+// import ReportsSlider from '../../components/reportsSlider';
 
 const HomeView = () => (
   <MainHome>
     <BoxHome />
     {/* <BalanceWrapper /> */}
     {/* <HomeNav /> */}
-    <ReportsSlider />
+    {/* <ReportsSlider /> */}
     {/* Окошко нотификации  */}
     {/* <Notification /> */}
     {/* <Switch>
