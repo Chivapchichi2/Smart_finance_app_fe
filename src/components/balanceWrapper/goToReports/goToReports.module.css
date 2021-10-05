@@ -1,0 +1,22 @@
+.btnReports {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px 5px 5px 0;
+  width: 154px;
+  height: 24px;
+  background: transparent;
+  background-image: url('../../../svg/iconReports.svg');
+  background-repeat: no-repeat;
+  background-position: top 1px right 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnText {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+}
