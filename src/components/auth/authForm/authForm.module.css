@@ -65,6 +65,9 @@
   height: 52px;
   margin-top: 12px;
   padding: 17px 20px;
+  font-size: 14px;
+
+  outline: none;
 
   border: none;
   border-radius: 30px;
@@ -74,6 +77,11 @@
 .input::placeholder {
   font-size: 14px;
   color: #a6abb9;
+}
+
+input[type='password'] {
+  font-family: Verdana;
+  letter-spacing: 0.125em;
 }
 
 .button {

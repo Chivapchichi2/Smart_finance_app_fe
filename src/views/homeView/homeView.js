@@ -8,7 +8,8 @@ import Balance from '../../components/balanceWrapper/balance';
 import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
 // import routes from '../../routes/routes';
 // import HomeNav from '../../components/container/homeContainer/homeNav';
-import Notification from '../../components/notification';
+// import Notification from '../../components/notification';
+// import ReportsSlider from '../../components/reportsSlider';
 
 const HomeView = () => (
   <MainHome>
@@ -17,11 +18,12 @@ const HomeView = () => (
       {/* <HomeNav /> */}
       {/* Окошко нотификации  */}
       {/* <Notification /> */}
+      {/* <ReportsSlider /> */}
       <GoToReports />
       <BackToMain />
       <Balance />
       <CurrentPeriod />
-         {/* <Switch>
+    {/* <Switch>
       <Route path={routes.homeExpenses} component={ExpensesView} />
       <Route path={routes.homeIncomes} component={IncomesView} />
       <Redirect to={routes.homeExpenses} />
