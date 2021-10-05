@@ -70,6 +70,51 @@ const reportsSlider = () => (
         </div>
         <h3 className={s.text}>все для дома</h3>
       </li>
+      <li className={s.item}>
+        <p className={s.value}>960.00</p>
+        <div className={s.svgBox}>
+          <svg width="58" height="58">
+            <use xlinkHref={`${sprite}#icon-couch`} />
+          </svg>
+        </div>
+        <h3 className={s.text}>все для дома</h3>
+      </li>
+      <li className={s.item}>
+        <p className={s.value}>960.00</p>
+        <div className={s.svgBox}>
+          <svg width="58" height="58">
+            <use xlinkHref={`${sprite}#icon-couch`} />
+          </svg>
+        </div>
+        <h3 className={s.text}>все для дома</h3>
+      </li>
+      <li className={s.item}>
+        <p className={s.value}>960.00</p>
+        <div className={s.svgBox}>
+          <svg width="58" height="58">
+            <use xlinkHref={`${sprite}#icon-couch`} />
+          </svg>
+        </div>
+        <h3 className={s.text}>все для дома</h3>
+      </li>
+      <li className={s.item}>
+        <p className={s.value}>960.00</p>
+        <div className={s.svgBox}>
+          <svg width="58" height="58">
+            <use xlinkHref={`${sprite}#icon-couch`} />
+          </svg>
+        </div>
+        <h3 className={s.text}>все для дома</h3>
+      </li>
+      <li className={s.item}>
+        <p className={s.value}>960.00</p>
+        <div className={s.svgBox}>
+          <svg width="58" height="58">
+            <use xlinkHref={`${sprite}#icon-couch`} />
+          </svg>
+        </div>
+        <h3 className={s.text}>все для дома</h3>
+      </li>
     </ul>
     <div />
   </div>
