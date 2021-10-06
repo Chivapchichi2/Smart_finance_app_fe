@@ -12,6 +12,8 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 import ReportsSlider from '../../components/reportsSlider';
 import ReportByMonth from '../../components/reportByMonth';
 
+import TabForm from '../../components/tabs/tabsForm/tabForm';
+
 const HomeView = () => (
   <MainHome>
     <BoxHome />
@@ -31,8 +33,9 @@ const HomeView = () => (
       <Redirect to={routes.homeExpenses} />
     </Switch> */}
 
-    <ReportByMonth />
-    <ReportsSlider />
+    {/* <ReportByMonth />
+    <ReportsSlider /> */}
+    {/* <TabForm /> */}
   </MainHome>
 );
 
