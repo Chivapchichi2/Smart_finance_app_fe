@@ -1,6 +1,7 @@
 import MainHome from '../../components/container/homeContainer/mainHome';
 import BoxHome from '../../components/container/homeContainer/boxHome';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
+import TabsSummary from '../../components/tabs/tabsSummary';
 
 // import HomeNav from '../../components/container/homeContainer/homeNav';
 
@@ -11,7 +12,7 @@ const HomeView = () => (
     <BoxHome />
     <BalanceWrapper />
     {/* <HomeNav /> */}
-
+    {/* <TabsSummary data={data}/> */}
     {/* Окошко нотификации  */}
     {/* <Notification /> */}
   </MainHome>
