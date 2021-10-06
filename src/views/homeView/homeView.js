@@ -1,3 +1,4 @@
+import TabsSummary from '../../components/tabs/tabsSummary';
 // import { Route, Switch, Redirect } from 'react-router-dom';
 import React, { useState } from 'react';
 import { MainHome, BoxHome } from '../../components';
@@ -25,6 +26,7 @@ const HomeView = () => {
         {/* <Notification /> */}
         {/* <ReportsSlider /> */}
         {/* <GoToReports />
+          {/* <TabsSummary data={data}/> */}
       <BackToMain />
       <Balance />
       <CurrentPeriod /> */}
