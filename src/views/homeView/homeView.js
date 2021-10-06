@@ -1,5 +1,5 @@
+import TabsSummary from '../../components/tabs/tabsSummary';
 // import { Route, Switch, Redirect } from 'react-router-dom';
-
 import { MainHome, BoxHome } from '../../components';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 import GoToReports from '../../components/balanceWrapper/goToReports';
@@ -19,6 +19,7 @@ const HomeView = () => (
       {/* Окошко нотификации  */}
       {/* <Notification /> */}
       {/* <ReportsSlider /> */}
+      {/* <TabsSummary data={data}/> */}
       <GoToReports />
       <BackToMain />
       <Balance />
