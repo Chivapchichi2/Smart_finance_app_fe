@@ -1,5 +1,5 @@
 // import { Route, Switch, Redirect } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import { MainHome, BoxHome } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
@@ -12,26 +12,30 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 // import Notification from '../../components/notification';
 // import ReportsSlider from '../../components/reportsSlider';
 
-const HomeView = () => (
-  <MainHome>
-    <BoxHome />
-    <Modal text="Вы действительно хотите выйти?" />
-    <BalanceWrapper>
-      {/* <HomeNav /> */}
-      {/* Окошко нотификации  */}
-      {/* <Notification /> */}
-      {/* <ReportsSlider /> */}
-      {/* <GoToReports />
+const HomeView = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <MainHome>
+      <BoxHome />
+      {showModal && <Modal text="Вы действительно хотите выйти?" />}
+      <BalanceWrapper>
+        {/* <HomeNav /> */}
+        {/* Окошко нотификации  */}
+        {/* <Notification /> */}
+        {/* <ReportsSlider /> */}
+        {/* <GoToReports />
       <BackToMain />
       <Balance />
       <CurrentPeriod /> */}
-      {/* <Switch>
+        {/* <Switch>
       <Route path={routes.homeExpenses} component={ExpensesView} />
       <Route path={routes.homeIncomes} component={IncomesView} />
       <Redirect to={routes.homeExpenses} />
     </Switch> */}
-    </BalanceWrapper>
-  </MainHome>
-);
+      </BalanceWrapper>
+    </MainHome>
+  );
+};
 
 export default HomeView;
