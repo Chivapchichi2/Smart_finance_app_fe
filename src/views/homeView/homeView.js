@@ -1,6 +1,8 @@
+import TabsSummary from '../../components/tabs/tabsSummary';
 // import { Route, Switch, Redirect } from 'react-router-dom';
-
+import React, { useState } from 'react';
 import { MainHome, BoxHome } from '../../components';
+import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 // import GoToReports from '../../components/balanceWrapper/goToReports';
 // import BackToMain from '../../components/balanceWrapper/backToMain';
@@ -14,29 +16,34 @@ import ReportByMonth from '../../components/reportByMonth';
 
 import TabForm from '../../components/tabs/tabsForm/tabForm';
 
-const HomeView = () => (
-  <MainHome>
-    <BoxHome />
-    {/* <BalanceWrapper> */}
-    {/* <HomeNav /> */}
-    {/* Окошко нотификации  */}
-    {/* <Notification /> */}
+const HomeView = () => {
+  const [showModal, setShowModal] = useState(false);
 
-    {/* <GoToReports />
+  return (
+    <MainHome>
+      <BoxHome />
+      {showModal && <Modal text="Вы действительно хотите выйти?" />}
+      <BalanceWrapper>
+        {/* <HomeNav /> */}
+        {/* Окошко нотификации  */}
+        {/* <Notification /> */}
+        {/* <GoToReports />
+          {/* <TabsSummary data={data}/> */}
       <BackToMain />
       <Balance />
       <CurrentPeriod /> */}
-
-    {/* <Switch>
+        {/* <Switch>
       <Route path={routes.homeExpenses} component={ExpensesView} />
       <Route path={routes.homeIncomes} component={IncomesView} />
       <Redirect to={routes.homeExpenses} />
     </Switch> */}
-
     {/* <ReportByMonth />
     <ReportsSlider /> */}
     {/* <TabForm /> */}
-  </MainHome>
-);
+      </BalanceWrapper>
+    </MainHome>
+  );
+};
+
 
 export default HomeView;

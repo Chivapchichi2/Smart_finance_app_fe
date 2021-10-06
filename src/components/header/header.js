@@ -3,11 +3,13 @@ import UserBar from './userBar/userBar';
 
 import styles from './header.module.css';
 
+const testUser = { name: 'Bob' };
+
 function Header() {
   return (
     <header className={styles.header}>
       <Logo />
-      <UserBar />
+      <UserBar user={testUser} />
     </header>
   );
 }
