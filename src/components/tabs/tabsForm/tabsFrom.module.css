@@ -1,0 +1,18 @@
+.tabForm {
+  width: 282px;
+  height: 161px;
+  margin: 0 auto;
+
+  /* outline: 1px solid rgb(214, 86, 1); */
+}
+
+.formWrapper {
+  width: 282px;
+  height: 88px;
+
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  background-color: #f5f6fb;
+  /* outline: 1px solid rgb(236, 6, 179); */
+}

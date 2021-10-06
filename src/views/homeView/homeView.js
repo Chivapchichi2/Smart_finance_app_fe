@@ -11,7 +11,10 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 // import routes from '../../routes/routes';
 // import HomeNav from '../../components/container/homeContainer/homeNav';
 // import Notification from '../../components/notification';
-// import ReportsSlider from '../../components/reportsSlider';
+import ReportsSlider from '../../components/reportsSlider';
+import ReportByMonth from '../../components/reportByMonth';
+
+import TabForm from '../../components/tabs/tabsForm/tabForm';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +27,6 @@ const HomeView = () => {
         {/* <HomeNav /> */}
         {/* Окошко нотификации  */}
         {/* <Notification /> */}
-        {/* <ReportsSlider /> */}
         {/* <GoToReports />
           {/* <TabsSummary data={data}/> */}
       <BackToMain />
@@ -35,9 +37,13 @@ const HomeView = () => {
       <Route path={routes.homeIncomes} component={IncomesView} />
       <Redirect to={routes.homeExpenses} />
     </Switch> */}
+    {/* <ReportByMonth />
+    <ReportsSlider /> */}
+    {/* <TabForm /> */}
       </BalanceWrapper>
     </MainHome>
   );
 };
+
 
 export default HomeView;
