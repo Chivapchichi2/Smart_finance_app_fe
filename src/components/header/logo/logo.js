@@ -1,11 +1,12 @@
 import { ReactComponent as LogoImg } from './logo.svg';
-import IconWrapper from './logoStyles';
+
+import styles from './logo.module.css';
 
 function Logo() {
   return (
-    <IconWrapper>
+    <div className={styles.container}>
       <LogoImg />
-    </IconWrapper>
+    </div>
   );
 }
 

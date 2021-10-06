@@ -1,0 +1,113 @@
+.container {
+  position: absolute;
+  top: 100px;
+  left: 500px;
+  width: 320px;
+  height: auto;
+  margin: 0 auto;
+  outline: 1px solid red;
+  background-color: #fff;
+}
+
+.button {
+  display: flex;
+  margin: 0 auto;
+}
+
+.list {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  padding: 19px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 84px;
+  height: 106px;
+
+  padding: 0 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.item:nth-child(1) {
+  background-image: url('../../svg/expensesSlider/food.svg');
+}
+
+.item:nth-child(2) {
+  background-image: url('../../svg/expensesSlider/cocktail.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(3) {
+  background-image: url('../../svg/expensesSlider/kite.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(4) {
+  background-image: url('../../svg/expensesSlider/health.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(5) {
+  background-image: url('../../svg/expensesSlider/car.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(6) {
+  background-image: url('../../svg/expensesSlider/couch.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(7) {
+  background-image: url('../../svg/expensesSlider/tools.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(8) {
+  background-image: url('../../svg/expensesSlider/invoice.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(9) {
+  background-image: url('../../svg/expensesSlider/clay.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(10) {
+  background-image: url('../../svg/expensesSlider/book.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.item:nth-child(11) {
+  background-image: url('../../svg/expensesSlider/ufo.svg'),
+    url('../../svg/expensesSlider/Rectangle.svg');
+}
+
+.value {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+
+.text {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #52555f;
+  text-align: center;
+}
+
+.divider {
+  height: 1px;
+  border: 1px solid #e0e5eb;
+}
