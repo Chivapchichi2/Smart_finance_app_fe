@@ -62,7 +62,40 @@
 
   border-radius: 0 22px 22px 0;
 
+  background-color: #f5f6fb;
   background-image: url('../../../../../svg/calculator.svg');
   background-repeat: no-repeat;
   background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+  .inputWrapper {
+    position: relative;
+    margin: 0;
+    width: 125px;
+
+    border: 2px solid #f6f7fc;
+    border-radius: 0 16px 16px 0;
+    background-color: #fff;
+  }
+
+  .input {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 40px;
+    background-color: transparent;
+  }
+
+  .span {
+    display: none;
+  }
+
+  .calculator {
+    position: absolute;
+    top: 0;
+    right: -5px;
+    background-color: transparent;
+
+    background-image: url('../../../../../svg/calculator2.svg');
+  }
 }

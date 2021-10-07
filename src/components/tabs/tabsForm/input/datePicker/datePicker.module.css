@@ -1,4 +1,4 @@
-input {
+.wrap input {
   border: 0;
   width: 74px;
   height: 40px;
@@ -14,12 +14,18 @@ input {
   color: #52555f;
   cursor: pointer;
   caret-color: transparent;
+  background-color: transparent;
 }
-input:focus,
-input:active {
+
+.wrap input:focus,
+.wrap input:active {
   outline: none;
 }
+
 .wrap {
+  position: absolute;
+  top: -50px;
+  right: 5px;
   display: flex;
   width: 104px;
   height: 40px;
@@ -29,16 +35,17 @@ input:active {
   justify-content: center;
   /* margin-top: 40px; */
 }
+
 @media screen and (min-width: 768px) {
   .wrap {
-    margin-left: 31px;
+    position: static;
+    margin: 0;
     margin-right: 33px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .wrap {
-    margin-left: 20px;
     margin-right: 23px;
   }
 }
