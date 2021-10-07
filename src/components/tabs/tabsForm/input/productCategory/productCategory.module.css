@@ -12,6 +12,7 @@
 
   border: 2px solid #ffffff;
   border-top: none;
+  border-bottom-right-radius: 16px;
   background-color: transparent;
 
   color: #c7ccdc;
@@ -53,5 +54,31 @@
 }
 
 .black {
+  font-weight: 700;
   color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    width: 171px;
+
+    border: 2px solid #f5f6fb;
+    border-bottom-right-radius: 0;
+    border-left: none;
+  }
+
+  .menu {
+    width: 171px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .button {
+    width: 184px;
+    border-right: none;
+  }
+
+  .menu {
+    width: 184px;
+  }
 }
