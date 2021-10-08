@@ -1,18 +1,27 @@
 import { useWindowWidth } from '@react-hook/window-size';
+import { useSelector } from 'react-redux';
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
 import { ReactComponent as UserIcon } from './users.svg';
+import authSelector from '../../../redux/auth/auth-selectors';
 
 import styles from './userBar.module.css';
 
 function UserBar({ user }) {
   const width = useWindowWidth();
+
+  const userEmail = useSelector(authSelector.getUserEmail);
+
+  // ---- userName - переменная в которой хранится часть имейла до @ и используется как имя пользователя ---- //
+
+  const userName = userEmail.split('@');
+
   return (
     <div className={styles.container}>
       {user.avatar ? user.avatar : <UserIcon className={styles.avatar} />}
 
       {width > 767 ? (
         <>
-          <p>{user.name}</p> <div className={styles.vector} />
+          <p>{userName[0]}</p> <div className={styles.vector} />
         </>
       ) : (
         ''
