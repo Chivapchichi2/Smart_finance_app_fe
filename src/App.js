@@ -1,4 +1,5 @@
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+
 import Header from './components/header';
 import { Container } from './components';
 import AuthView from './views/authView/authView';
@@ -13,10 +14,15 @@ export default function App() {
     <Container>
       <Header />
       <Switch>
-        <PublicRoute exact path={routes.authPage}>
+        <PublicRoute
+          exact
+          path={routes.authPage}
+          restricted
+          redirectTo={routes.homePage}
+        >
           <AuthView />
         </PublicRoute>
-        <PrivateRoute path="/home" redirectTo={routes.authPage}>
+        <PrivateRoute path={routes.homePage} redirectTo={routes.authPage}>
           <HomeView />
         </PrivateRoute>
         {/* <Route exact path={routes.authPage} component={AuthView} /> */}
