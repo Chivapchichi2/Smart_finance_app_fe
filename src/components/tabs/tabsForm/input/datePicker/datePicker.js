@@ -7,6 +7,8 @@ import s from './datePicker.module.css';
 function DatePicker() {
   const [startDate, setStartDate] = useState(new Date());
 
+  console.dir(startDate.getDate());
+
   return (
     <div className={s.wrap}>
       <div className={s.icon}>

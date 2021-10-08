@@ -6,13 +6,13 @@ import authActions from './auth-actions';
 const initialUserState = { email: null };
 
 const user = createReducer(initialUserState, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.newUser,
+  [authActions.registerSuccess]: (_, { payload }) => payload.user,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
 });
 
 const token = createReducer(null, {
-  [authActions.registerSuccess]: (_, { payload }) => payload.token,
-  [authActions.loginSuccess]: (_, { payload }) => payload.token,
+  [authActions.registerSuccess]: (_, { payload }) => payload.user.token,
+  [authActions.loginSuccess]: (_, { payload }) => payload.user.token,
 });
 
 const isAuthenticated = createReducer(false, {

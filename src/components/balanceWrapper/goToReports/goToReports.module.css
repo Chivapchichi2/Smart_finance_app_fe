@@ -21,3 +21,18 @@
   letter-spacing: 0.04em;
   color: rgba(82, 85, 95, 0.7);
 }
+
+@media screen and (min-width: 768px) {
+  .btnReports {
+    position: absolute;
+    top: 10px;
+    right: -255px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .btnReports {
+    right: -390px;
+  }
+}

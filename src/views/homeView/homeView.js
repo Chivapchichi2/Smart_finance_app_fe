@@ -15,7 +15,7 @@ import HomeNav from '../../components/container/homeContainer/homeNav';
 
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
-// import TabForm from '../../components/tabs/tabsForm/tabForm';
+import TabForm from '../../components/tabs/tabsForm/tabForm';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
