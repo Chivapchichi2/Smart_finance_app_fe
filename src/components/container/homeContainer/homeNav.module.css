@@ -22,3 +22,9 @@
 .buttonNav:first-child {
   margin-right: 2px;
 }
+
+.buttonNav:hover,
+.buttonnav:focus {
+  background: #ff751d;
+  color: #fff;
+}

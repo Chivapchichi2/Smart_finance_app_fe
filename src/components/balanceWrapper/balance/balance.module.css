@@ -37,6 +37,7 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: right;
+  outline: none;
 }
 .inputBalance:hover,
 .inputBalance:active {
@@ -79,6 +80,7 @@
 .btnConfirm:focus {
   background: #ff751d;
   border-color: #ff751d;
+  color: #ffffff;
 }
 
 .span {

@@ -10,7 +10,7 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 // import BackToMain from '../../components/balanceWrapper/backToMain';
 // import Balance from '../../components/balanceWrapper/balance';
 // import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
-// import HomeNav from '../../components/container/homeContainer/homeNav';
+import HomeNav from '../../components/container/homeContainer/homeNav';
 // import Notification from '../../components/notification';
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
@@ -23,8 +23,8 @@ const HomeView = () => {
     <MainHome>
       <BoxHome />
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
-      {/* <BalanceWrapper /> */}
-      {/* <HomeNav /> */}
+      <BalanceWrapper />
+      <HomeNav />
       {/* Окошко нотификации  */}
       {/* <Notification /> */}
       {/* <GoToReports />
@@ -40,7 +40,7 @@ const HomeView = () => {
       {/* <ReportByMonth />
     <ReportsSlider /> */}
 
-      <TabForm />
+      {/* <TabForm /> */}
     </MainHome>
   );
 };
