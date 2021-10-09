@@ -61,6 +61,7 @@ const AuthForm = () => {
           name="email"
           value={email}
           placeholder="your@email.com"
+          autoComplete="on"
           required
           onChange={handleChange}
         />
@@ -74,6 +75,7 @@ const AuthForm = () => {
           name="password"
           value={password}
           placeholder="Пароль"
+          autoComplete="on"
           required
           onChange={handleChange}
         />

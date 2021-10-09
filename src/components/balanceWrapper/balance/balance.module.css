@@ -98,6 +98,7 @@
     flex-wrap: nowrap;
     align-items: center;
   }
+
   .labelBalance {
     margin: 0;
     margin-right: 21px;
@@ -106,13 +107,17 @@
   .inputBalance {
     border-radius: 16px;
   }
+
   .inputBalance:first-child {
     margin-right: 15px;
   }
+
   .btnConfirm {
     border-radius: 16px;
   }
+
   .span {
     right: 30px;
+    top: 36%;
   }
 }
