@@ -67,4 +67,15 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export default { register, login, logOut, getCurrentUser };
+const getCurrentBalance = balanceValue => async dispatch => {
+  dispatch(authActions.getCurrentBalanceRequest());
+
+  try {
+    const response = await axios.patch('/api/users/balance', balanceValue);
+    dispatch(authActions.getCurrentBalanceSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentBalanceError(error.message));
+  }
+};
+
+export default { register, login, logOut, getCurrentUser, getCurrentBalance };
