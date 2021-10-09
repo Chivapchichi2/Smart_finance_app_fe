@@ -1,0 +1,51 @@
+.tabForm {
+  position: relative;
+  /* position: absolute;
+  top: 50px;
+  left: 500px; */
+
+  width: 282px;
+  height: auto;
+  margin: 0 auto;
+
+  /* outline: 1px solid rgb(214, 86, 1); */
+}
+
+.formWrapper {
+  width: 282px;
+  height: 88px;
+
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  background-color: #f5f6fb;
+  /* outline: 1px solid rgb(236, 6, 179); */
+}
+
+@media screen and (min-width: 768px) {
+  .tabForm {
+    display: flex;
+    width: 604px;
+  }
+
+  .formWrapper {
+    display: flex;
+    width: 361px;
+    height: 44px;
+    border-radius: 16px 0 0 16px;
+    background-color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tabForm {
+    display: flex;
+    width: 1020px;
+    align-items: center;
+  }
+
+  .formWrapper {
+    width: 473px;
+  }
+}

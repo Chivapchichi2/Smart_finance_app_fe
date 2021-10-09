@@ -31,6 +31,7 @@ body {
   line-height: 1.172;
   letter-spacing: 0.04em;
   color: #52555f;
+  letter-spacing: 0.02em;
   background-color: #fff;
 }
 
@@ -45,6 +46,10 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 

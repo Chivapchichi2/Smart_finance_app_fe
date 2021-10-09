@@ -1,0 +1,101 @@
+.inputWrapper {
+  position: relative;
+  display: flex;
+  width: 183px;
+  height: 44px;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  border: 2px solid #ffffff;
+  border-radius: 22px;
+}
+
+.input {
+  width: 125px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 43px;
+
+  text-align: right;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  color: #000000;
+  background-color: #f5f6fb;
+
+  border: none;
+  outline: none;
+  border-right: 2px solid #ffffff;
+  border-radius: 22px 0px 0px 22px;
+}
+
+.input::placeholder {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.span {
+  position: absolute;
+  top: 34%;
+  right: 70px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  color: #000000;
+}
+
+.calculator {
+  width: 60px;
+  height: 40px;
+
+  border-radius: 0 22px 22px 0;
+
+  background-color: #f5f6fb;
+  background-image: url('../../../../../svg/calculator.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+  .inputWrapper {
+    position: relative;
+    margin: 0;
+    width: 125px;
+
+    border: 2px solid #f6f7fc;
+    border-radius: 0 16px 16px 0;
+    background-color: #fff;
+  }
+
+  .input {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 40px;
+    background-color: transparent;
+  }
+
+  .span {
+    display: none;
+  }
+
+  .calculator {
+    position: absolute;
+    top: 0;
+    right: -5px;
+    background-color: transparent;
+
+    background-image: url('../../../../../svg/calculator2.svg');
+  }
+}
