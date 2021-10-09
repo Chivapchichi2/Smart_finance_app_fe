@@ -18,6 +18,7 @@ const register = credentials => async dispatch => {
 
   try {
     const response = await axios.post('/api/users/signup', credentials);
+    token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
@@ -29,10 +30,41 @@ const login = credentials => async dispatch => {
   try {
     const response = await axios.post('/api/users/signin', credentials);
     token.set(response.data.token);
+
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
 };
 
-export default { register, login };
+const logOut = () => async dispatch => {
+  dispatch(authActions.logoutRequest());
+  try {
+    await axios.get('/api/users/logout');
+    token.unset();
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    dispatch(authActions.logoutError(error.message));
+  }
+};
+
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const response = await axios.get('/api/users/current');
+    dispatch(authActions.getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error.message));
+  }
+};
+
+export default { register, login, logOut, getCurrentUser };

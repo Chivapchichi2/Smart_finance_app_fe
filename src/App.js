@@ -1,4 +1,7 @@
+import React, { useEffect } from 'react';
 import { Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from './redux/auth/auth-operations';
 
 import Header from './components/header';
 import { Container } from './components';
@@ -10,6 +13,12 @@ import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
     <Container>
       <Header />
@@ -25,8 +34,7 @@ export default function App() {
         <PrivateRoute path={routes.homePage} redirectTo={routes.authPage}>
           <HomeView />
         </PrivateRoute>
-        {/* <Route exact path={routes.authPage} component={AuthView} /> */}
-        {/* <Route path={routes.homePage} component={HomeView} /> */}
+
         {/* <Route path={routes.reportPage} component={ReportView} /> */}
       </Switch>
     </Container>
