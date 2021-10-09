@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createRef } from 'react';
 import { Grid } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import { makeStyles } from '@material-ui/core/styles';
+import iconDelete from './delete.svg';
 
 import styles from './styles';
 
 const AccountTable = props => {
-  const { account, eager, getHeaders, getRows } = props;
+  const { eager } = props;
+
+  const tableRef = createRef();
 
   const classes = makeStyles(theme => styles(theme))();
 
@@ -18,7 +21,8 @@ const AccountTable = props => {
   const tableOptions = {
     search: false,
     toolbar: false,
-    pageSize: 10,
+    actionsColumnIndex: -1,
+    pageSize: 5,
     pageSizeOptions: [10, 20, 100],
   };
 
@@ -36,17 +40,52 @@ const AccountTable = props => {
         { title: 'Описание', field: 'description' },
         { title: 'Категория', field: 'category' },
         { title: 'Сумма', field: 'sum' },
-        { title: '', field: 'action' },
+        // { title: '', field: 'action' },
       ],
     }));
 
     if (eager) {
-      getRows()
-        .then(res => res.data)
-        .then(res => {
-          setState(prev => ({ ...prev, rows: res.data || res }));
-        })
-        .catch(err => console.log(err));
+      setState(prev => ({
+        ...prev,
+        rows: [
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '300',
+          },
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '200',
+          },
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '100',
+          },
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '350',
+          },
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '100',
+          },
+          {
+            date: '09.10.2021',
+            description: 'yummy',
+            category: 'food',
+            sum: '350',
+          },
+        ],
+      }));
     }
   }, []);
 
@@ -76,26 +115,29 @@ const AccountTable = props => {
       <Grid container>
         <Grid item xs={12}>
           <MaterialTable
+            tableRef={tableRef}
             columns={headers}
             localization={localization}
+            icons
             title=""
             data={
               eager ? rows : ''
               // /*: getPaginatedData()*/
             }
             options={tableOptions}
-            actions={[
-              {
-                icon: 'save',
-                tooltip: 'Save User',
-                onClick: (event, rowData) => alert('You saved '),
-              },
-              {
-                icon: 'delete',
-                tooltip: 'Delete User',
-                onClick: (event, rowData) => alert('You want to delete '),
-              },
-            ]}
+            editable={{
+              onRowDelete: oldData =>
+                new Promise((resolve, reject) => {
+                  resolve();
+                }),
+            }}
+            // actions={[
+            //   {
+            //     icon: iconDelete,
+            //     tooltip: 'Delete User',
+            //     onClick: (event, rowData) => alert('You want to delete '),
+            //   },
+            // ]}
           />
         </Grid>
       </Grid>
