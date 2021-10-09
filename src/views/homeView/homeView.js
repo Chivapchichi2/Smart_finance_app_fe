@@ -6,6 +6,7 @@ import GoToReports from '../../components/balanceWrapper/goToReports';
 import BackToMain from '../../components/balanceWrapper/backToMain';
 import Balance from '../../components/balanceWrapper/balance';
 import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
+import CustomTabs from '../../components/tabs/tabs';
 // import routes from '../../routes/routes';
 // import HomeNav from '../../components/container/homeContainer/homeNav';
 // import Notification from '../../components/notification';
@@ -29,6 +30,7 @@ const HomeView = () => (
         <Redirect to={routes.homeExpenses} />
       </Switch> */}
     </BalanceWrapper>
+    <CustomTabs />
   </MainHome>
 );
 
