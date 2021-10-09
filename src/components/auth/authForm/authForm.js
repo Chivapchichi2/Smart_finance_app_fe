@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+
+import GoogleLogin from 'react-google-login';
+
 import authOperations from '../../../redux/auth/auth-operations';
 
 import s from './authForm.module.css';
@@ -41,14 +45,24 @@ const AuthForm = () => {
     [dispatch, email, password],
   );
 
+  const responseGoogle = response => {
+    console.log(response);
+  };
+
   return (
     <form className={s.form} onSubmit={handleLogIn}>
       <p className={s.textGoogle}>
         Вы можете авторизоваться с помощью <br /> Google Account:
       </p>
-      <button className={s.buttonGoogle} type="button">
+      {/* <button className={s.buttonGoogle} type="button">
         Google
-      </button>
+      </button> */}
+      <GoogleLogin
+        clientId="823857589070-tvc629amkhmmf85pvu56v7plahr2a9m0.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+      />
       <p className={s.textEmail}>
         Или зайти с помощью e-mail и пароля, <br />
         предварительно зарегистрировавшись:
@@ -66,7 +80,6 @@ const AuthForm = () => {
           onChange={handleChange}
         />
       </label>
-
       <label className={s.label}>
         Пароль:
         <input
@@ -80,7 +93,6 @@ const AuthForm = () => {
           onChange={handleChange}
         />
       </label>
-
       <div>
         <button className={`${s.button} ${s.orange}`} type="submit">
           Войти
