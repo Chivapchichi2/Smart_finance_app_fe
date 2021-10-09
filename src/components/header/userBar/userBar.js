@@ -1,8 +1,10 @@
+import React, { useCallback } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
 import { ReactComponent as UserIcon } from './users.svg';
 import authSelector from '../../../redux/auth/auth-selectors';
+import authOperations from '../../../redux/auth/auth-operations';
 
 import styles from './userBar.module.css';
 
@@ -34,6 +36,13 @@ function UserBar() {
 
   const buttonCondition = width > 767 ? 'Выйти' : <LogOutBtnImg />;
 
+  const dispatch = useDispatch();
+
+  const onLogout = useCallback(
+    () => dispatch(authOperations.logOut()),
+    [dispatch],
+  );
+
   return (
     <div className={styles.container}>
       {userAvatar ? (
@@ -43,7 +52,7 @@ function UserBar() {
       )}
 
       {nameCondition}
-      <button type="button" className={classCondition}>
+      <button type="button" className={classCondition} onClick={onLogout}>
         {buttonCondition}
       </button>
     </div>
