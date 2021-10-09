@@ -12,7 +12,6 @@ export const styles = {
       height: 40,
       padding: '0px 20px',
       background: '#FAFBFD',
-      border: '1px solid black',
       borderRadius: '20px 20px 0px 0px',
 
       '& .MuiTab-wrapper': {
@@ -40,6 +39,8 @@ export const styles = {
 
     '& .MuiTabPanel-root': {
       padding: '33px 20px 50px',
+      backgroundColor: '#fff',
+      borderRadius: '0px 30px 30px 30px',
     },
   },
 };

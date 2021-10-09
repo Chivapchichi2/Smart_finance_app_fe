@@ -32,7 +32,9 @@ const CustomTabs = props => {
           <TabPanel value="1">
             <AccountTable eager />
           </TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
+          <TabPanel value="2">
+            <AccountTable eager />
+          </TabPanel>
         </TabContext>
       </Box>
     </div>

@@ -22,8 +22,9 @@ const AccountTable = props => {
     search: false,
     toolbar: false,
     actionsColumnIndex: -1,
+    actionsColumn: '',
     pageSize: 5,
-    pageSizeOptions: [10, 20, 100],
+    pageSizeOptions: [5, 10, 20],
   };
 
   const localization = {
@@ -52,7 +53,7 @@ const AccountTable = props => {
             date: '09.10.2021',
             description: 'yummy',
             category: 'food',
-            sum: '300',
+            sum: '-300',
           },
           {
             date: '09.10.2021',
@@ -64,7 +65,7 @@ const AccountTable = props => {
             date: '09.10.2021',
             description: 'yummy',
             category: 'food',
-            sum: '100',
+            sum: '-100',
           },
           {
             date: '09.10.2021',
@@ -89,26 +90,17 @@ const AccountTable = props => {
     }
   }, []);
 
-  // const getPaginatedData = query => {
-  //   const { rows } = state;
-  //   new Promise((resolve, reject) => {
-  //     const params = {
-  //       page: query?.page + 1,
-  //       perPage: query?.pageSize,
-  //       orderBy: query?.orderBy ? query.orderBy.field : '',
-  //       orderType: query?.orderDirection || '',
-  //       filters: query?.filters,
-  //     };
-
-  //     resolve({
-  //       data: rows.data,
-  //       page: rows.current_page - 1,
-  //       totalCount: rows.total,
-  //     });
-  //   });
-  // };
-
   const { headers, rows } = state;
+
+  const result = rows.map(item => ({
+    ...item,
+    sum:
+      item.sum > 0 ? (
+        <span className="high">{item.sum}</span>
+      ) : (
+        <span className="low">{item.sum}</span>
+      ),
+  }));
 
   return (
     <div className={classes.root}>
@@ -118,10 +110,9 @@ const AccountTable = props => {
             tableRef={tableRef}
             columns={headers}
             localization={localization}
-            icons
             title=""
             data={
-              eager ? rows : ''
+              eager ? result : ''
               // /*: getPaginatedData()*/
             }
             options={tableOptions}
@@ -131,13 +122,6 @@ const AccountTable = props => {
                   resolve();
                 }),
             }}
-            // actions={[
-            //   {
-            //     icon: iconDelete,
-            //     tooltip: 'Delete User',
-            //     onClick: (event, rowData) => alert('You want to delete '),
-            //   },
-            // ]}
           />
         </Grid>
       </Grid>
