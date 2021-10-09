@@ -25,6 +25,7 @@ function UserBar() {
     width > 767 ? (
       <>
         <p className={styles.userName}>{userName[0]}</p>
+
         <div className={styles.vector} />
       </>
     ) : (
