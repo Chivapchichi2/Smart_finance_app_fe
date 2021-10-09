@@ -2,16 +2,14 @@
   position: relative;
   width: 100%;
 
-  height: 511px;
+  height: 567px;
 
   background-repeat: no-repeat;
-
-  outline: 1px solid green;
 }
 
 @media screen and (min-width: 768px) {
   .mainContainer {
-    height: 1183px;
+    height: 1239px;
 
     background-image: url('../../../svg/cabbage_couple.svg');
     background-position: bottom 64px right 88px;
@@ -20,7 +18,7 @@
 
 @media screen and (min-width: 1280px) {
   .mainContainer {
-    height: 794px;
+    height: 850px;
     background-image: url('../../../svg/kapusta_home_group.svg');
 
     background-position: bottom right;

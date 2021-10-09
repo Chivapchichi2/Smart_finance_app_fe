@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useWindowWidth } from '@react-hook/window-size';
 // import { Route, Switch, Redirect } from 'react-router-dom';
 // import routes from '../../routes/routes';
 
@@ -10,23 +11,23 @@ import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 // import BackToMain from '../../components/balanceWrapper/backToMain';
 // import Balance from '../../components/balanceWrapper/balance';
 // import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
-// import HomeNav from '../../components/container/homeContainer/homeNav';
-// import Notification from '../../components/notification';
+import HomeNav from '../../components/container/homeContainer/homeNav';
+
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
 import TabForm from '../../components/tabs/tabsForm/tabForm';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
+  const width = useWindowWidth();
 
   return (
     <MainHome>
       <BoxHome />
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
-      {/* <BalanceWrapper /> */}
-      {/* <HomeNav /> */}
-      {/* Окошко нотификации  */}
-      {/* <Notification /> */}
+      <BalanceWrapper />
+      {width <= 767 && <HomeNav />}
+
       {/* <GoToReports />
           {/* <TabsSummary data={data}/> */}
       {/* <BackToMain />
@@ -40,7 +41,7 @@ const HomeView = () => {
       {/* <ReportByMonth />
     <ReportsSlider /> */}
 
-      <TabForm />
+      {/* <TabForm /> */}
     </MainHome>
   );
 };
