@@ -50,24 +50,24 @@ const AccountTable = props => {
     }
   }, []);
 
-  const getPaginatedData = query => {
-    const { rows } = state;
-    new Promise((resolve, reject) => {
-      const params = {
-        page: query?.page + 1,
-        perPage: query?.pageSize,
-        orderBy: query?.orderBy ? query.orderBy.field : '',
-        orderType: query?.orderDirection || '',
-        filters: query?.filters,
-      };
+  // const getPaginatedData = query => {
+  //   const { rows } = state;
+  //   new Promise((resolve, reject) => {
+  //     const params = {
+  //       page: query?.page + 1,
+  //       perPage: query?.pageSize,
+  //       orderBy: query?.orderBy ? query.orderBy.field : '',
+  //       orderType: query?.orderDirection || '',
+  //       filters: query?.filters,
+  //     };
 
-      resolve({
-        data: rows.data,
-        page: rows.current_page - 1,
-        totalCount: rows.total,
-      });
-    });
-  };
+  //     resolve({
+  //       data: rows.data,
+  //       page: rows.current_page - 1,
+  //       totalCount: rows.total,
+  //     });
+  //   });
+  // };
 
   const { headers, rows } = state;
 
@@ -79,7 +79,10 @@ const AccountTable = props => {
             columns={headers}
             localization={localization}
             title=""
-            data={eager ? rows : getPaginatedData()}
+            data={
+              eager ? rows : ''
+              // /*: getPaginatedData()*/
+            }
             options={tableOptions}
             actions={[
               {
