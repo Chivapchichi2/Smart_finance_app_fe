@@ -3,6 +3,12 @@
   align-items: center;
 }
 
+.userName {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .vector {
   width: 1px;
   height: 36px;
@@ -11,21 +17,64 @@
 }
 
 .logOutBtnSvg {
-  padding: 0;
-  border: none;
-  background-color: inherit;
-
-  @media screen and (min-width: 768px) {
-    border-bottom: 1px solid black;
-  }
-}
-
-.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 32px;
   height: 32px;
-  margin-right: 15px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: inherit;
+  color: #cbccd0;
 
-  @media screen and (min-width: 768px) {
-    margin-right: 10px;
-  }
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.logOut {
+  display: block;
+  padding: 5px;
+
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: underline;
+  letter-spacing: 0.04em;
+
+  border: none;
+
+  background-color: inherit;
+  color: #52555f;
+
+  cursor: pointer;
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.logOut:hover,
+.logOut:focus {
+  color: #ff751d;
+  text-decoration: none;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.defaultAvatar {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  border-radius: 50%;
+
+  background-color: #f5f6fa;
+}
+
+.logOutBtnSvg:hover,
+.logOutBtnSvg:focus {
+  background-color: #ff751d;
+  color: #fff;
 }

@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+
+import GoogleLogin from 'react-google-login';
+
 import authOperations from '../../../redux/auth/auth-operations';
 
 import s from './authForm.module.css';
@@ -41,14 +45,35 @@ const AuthForm = () => {
     [dispatch, email, password],
   );
 
+  const responseGoogle = response => {
+    console.log(response);
+  };
+
   return (
     <form className={s.form} onSubmit={handleLogIn}>
       <p className={s.textGoogle}>
         Вы можете авторизоваться с помощью <br /> Google Account:
       </p>
-      <button className={s.buttonGoogle} type="button">
+      {/* <button className={s.buttonGoogle} type="button">
         Google
-      </button>
+      </button> */}
+      <GoogleLogin
+        // className={s.buttonGoogle}
+        clientId="823857589070-tvc629amkhmmf85pvu56v7plahr2a9m0.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        render={renderProps => (
+          <button
+            className={s.buttonGoogle}
+            onClick={renderProps.onClick}
+            // disabled={renderProps.disabled}
+            type="submit"
+          >
+            Google
+          </button>
+        )}
+      />
       <p className={s.textEmail}>
         Или зайти с помощью e-mail и пароля, <br />
         предварительно зарегистрировавшись:
@@ -61,11 +86,11 @@ const AuthForm = () => {
           name="email"
           value={email}
           placeholder="your@email.com"
+          autoComplete="on"
           required
           onChange={handleChange}
         />
       </label>
-
       <label className={s.label}>
         Пароль:
         <input
@@ -74,11 +99,11 @@ const AuthForm = () => {
           name="password"
           value={password}
           placeholder="Пароль"
+          autoComplete="on"
           required
           onChange={handleChange}
         />
       </label>
-
       <div>
         <button className={`${s.button} ${s.orange}`} type="submit">
           Войти

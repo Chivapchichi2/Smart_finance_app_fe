@@ -1,6 +1,6 @@
-import s from './notification.module.css';
+import s from './balanceNotification.module.css';
 
-const componentName = () => (
+const BalanceNotification = () => (
   <div className={s.container}>
     <div className={s.square} />
     <div className={s.notification}>
@@ -14,4 +14,4 @@ const componentName = () => (
   </div>
 );
 
-export default componentName;
+export default BalanceNotification;

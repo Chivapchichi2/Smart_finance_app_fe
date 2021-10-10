@@ -37,6 +37,7 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: right;
+  outline: none;
 }
 .inputBalance:hover,
 .inputBalance:active {
@@ -79,11 +80,12 @@
 .btnConfirm:focus {
   background: #ff751d;
   border-color: #ff751d;
+  color: #ffffff;
 }
 
 .span {
   position: absolute;
-  top: 36%;
+  top: 35%;
   right: 15px;
   font-size: 12px;
   font-weight: 700;
@@ -96,6 +98,7 @@
     flex-wrap: nowrap;
     align-items: center;
   }
+
   .labelBalance {
     margin: 0;
     margin-right: 21px;
@@ -104,13 +107,17 @@
   .inputBalance {
     border-radius: 16px;
   }
+
   .inputBalance:first-child {
     margin-right: 15px;
   }
+
   .btnConfirm {
     border-radius: 16px;
   }
+
   .span {
     right: 30px;
+    top: 36%;
   }
 }
