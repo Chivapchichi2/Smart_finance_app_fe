@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
-import { ReactComponent as UserIcon } from './users.svg';
 import authSelector from '../../../redux/auth/auth-selectors';
 import authOperations from '../../../redux/auth/auth-operations';
 
@@ -13,7 +12,8 @@ function UserBar() {
 
   const userEmail = useSelector(authSelector.getUserEmail);
 
-  const userAvatar = useSelector(authSelector.getUserAvatar);
+  // const userAvatar = useSelector(authSelector.getUserAvatar);
+  const userAvatar = null;
 
   // ---- userName - переменная в которой хранится часть имейла до @ и используется как имя пользователя ---- //
 
@@ -49,7 +49,9 @@ function UserBar() {
       {userAvatar ? (
         <img className={styles.userAvatar} src={userAvatar} alt="user avatar" />
       ) : (
-        <UserIcon className={styles.defaultAvatar} />
+        <div className={styles.defaultAvatar}>
+          <span>{userName[0][0].toUpperCase()}</span>
+        </div>
       )}
 
       {nameCondition}
