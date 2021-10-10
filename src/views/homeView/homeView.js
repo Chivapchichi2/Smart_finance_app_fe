@@ -49,7 +49,6 @@ const HomeView = () => {
       <ReportsSlider /> */}
       <TabForm />
       <CustomTabs />
-
     </MainHome>
   );
 };
