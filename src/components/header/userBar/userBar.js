@@ -13,13 +13,10 @@ function UserBar() {
   const userEmail = useSelector(authSelector.getUserEmail);
 
   const userAvatar = useSelector(authSelector.getUserAvatar);
-  // const userAvatar = null;
-
-  // ---- userName - переменная в которой хранится часть имейла до @ и используется как имя пользователя ---- //
 
   const userName = userEmail.split('@');
 
-  // Переменные в которые записываем условия рендера //
+  console.log(userAvatar);
 
   const nameCondition =
     width > 767 ? (
@@ -47,7 +44,7 @@ function UserBar() {
   return (
     <div className={styles.container}>
       {userAvatar ? (
-        <img className={styles.userAvatar} src={userAvatar} alt="user avatar" />
+        <img className={styles.userAvatar} src={userAvatar} alt="avatar" />
       ) : (
         <div className={styles.defaultAvatar}>
           <span>{userName[0][0].toUpperCase()}</span>
