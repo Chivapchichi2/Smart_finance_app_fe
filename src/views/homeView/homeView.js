@@ -35,7 +35,7 @@ const HomeView = () => {
         <Route exact path={routes.reportPage} component={ReportView} />
         {/* <Redirect to={routes.homePage} /> */}
       </Switch>
-       {width > 767 ? <CustomTabs /> : <MobileTable /> }
+      {width > 767 ? <CustomTabs /> : <MobileTable />}
     </MainHome>
   );
 };
