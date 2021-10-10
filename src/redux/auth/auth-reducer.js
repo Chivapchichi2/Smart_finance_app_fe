@@ -3,17 +3,17 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import authActions from './auth-actions';
 
-const initialUserState = { email: null, balance: 0 };
+const initialUserState = { email: null };
 
 const user = createReducer(initialUserState, {
   [authActions.registerSuccess]: (_, { payload }) => payload.user,
   [authActions.loginSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => null,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.user,
-  [authActions.getCurrentBalanceSuccess]: (state, { payload }) => [
+  [authActions.getCurrentBalanceSuccess]: (state, { payload }) => ({
     ...state,
-    payload,
-  ],
+    ...payload,
+  }),
 });
 
 const token = createReducer(null, {
