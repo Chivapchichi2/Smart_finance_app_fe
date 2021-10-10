@@ -12,8 +12,8 @@ function UserBar() {
 
   const userEmail = useSelector(authSelector.getUserEmail);
 
-  // const userAvatar = useSelector(authSelector.getUserAvatar);
-  const userAvatar = null;
+  const userAvatar = useSelector(authSelector.getUserAvatar);
+  // const userAvatar = null;
 
   // ---- userName - переменная в которой хранится часть имейла до @ и используется как имя пользователя ---- //
 
