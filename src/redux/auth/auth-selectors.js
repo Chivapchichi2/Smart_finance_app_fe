@@ -1,4 +1,13 @@
 const getIsAuthenticated = state => state.auth.isAuthenticated;
-// const getUsername = state => state.auth.user.name;
+const getUserEmail = state => state.auth.user.email;
 
-export default { getIsAuthenticated };
+const getUserAvatar = state => state.auth.user.avatarURL;
+
+const getUserBalance = state => state.auth.user.balance;
+
+export default {
+  getIsAuthenticated,
+  getUserEmail,
+  getUserAvatar,
+  getUserBalance,
+};
