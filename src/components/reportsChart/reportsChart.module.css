@@ -1,0 +1,11 @@
+.mob_wrapper {
+  width: 320px;
+  min-height: 400px;
+}
+
+@media (min-width: 768px) {
+  .tabl_wrapper {
+    border-radius: 30px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
+}
