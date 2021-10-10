@@ -1,13 +1,20 @@
 .header {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 0 19px;
-  padding: 12px 0;
+
+  padding: 12px 19px;
 }
 
 @media screen and (min-width: 768px) {
   .header {
-    margin: 0 26px;
+    padding: 12px 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding: 12px 60px;
   }
 }
