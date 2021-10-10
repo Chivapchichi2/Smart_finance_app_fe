@@ -58,10 +58,21 @@ const AuthForm = () => {
         Google
       </button> */}
       <GoogleLogin
+        // className={s.buttonGoogle}
         clientId="823857589070-tvc629amkhmmf85pvu56v7plahr2a9m0.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
+        render={renderProps => (
+          <button
+            className={s.buttonGoogle}
+            onClick={renderProps.onClick}
+            // disabled={renderProps.disabled}
+            type="submit"
+          >
+            Google
+          </button>
+        )}
       />
       <p className={s.textEmail}>
         Или зайти с помощью e-mail и пароля, <br />
