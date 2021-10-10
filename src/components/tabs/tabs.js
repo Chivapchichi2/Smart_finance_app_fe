@@ -5,6 +5,8 @@ import TabList from '@material-ui/lab/TabList';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from '@material-ui/lab/TabPanel';
 import withStyles from '@material-ui/core/styles/withStyles';
+import TabForm from './tabsForm/tabForm';
+import TabSummary from './tabsSummary';
 
 import AccountTable from './tabsTable/tabTable';
 
@@ -30,10 +32,14 @@ const CustomTabs = props => {
             </TabList>
           </Box>
           <TabPanel value="1">
+            <TabForm />
             <AccountTable eager />
+            <TabSummary />
           </TabPanel>
           <TabPanel value="2">
+            <TabForm />
             <AccountTable eager />
+            <TabSummary />
           </TabPanel>
         </TabContext>
       </Box>

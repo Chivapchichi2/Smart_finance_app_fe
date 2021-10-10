@@ -65,8 +65,12 @@
 }
 
 .defaultAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 32px;
   height: 32px;
+  font-weight: 900;
   margin-right: 5px;
   border-radius: 50%;
 

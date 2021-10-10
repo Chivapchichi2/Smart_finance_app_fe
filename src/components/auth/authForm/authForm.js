@@ -48,6 +48,9 @@ const AuthForm = () => {
   const responseGoogle = response => {
     console.log(response);
   };
+  const handleGoogle = response => {
+    dispatch(authOperations.google(response));
+  };
 
   return (
     <form className={s.form} onSubmit={handleLogIn}>
@@ -61,7 +64,7 @@ const AuthForm = () => {
         // className={s.buttonGoogle}
         clientId="823857589070-tvc629amkhmmf85pvu56v7plahr2a9m0.apps.googleusercontent.com"
         buttonText="Login"
-        onSuccess={responseGoogle}
+        onSuccess={handleGoogle}
         onFailure={responseGoogle}
         render={renderProps => (
           <button

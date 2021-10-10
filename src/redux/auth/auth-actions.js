@@ -8,6 +8,10 @@ const loginRequest = createAction('auth/loginRequest');
 const loginSuccess = createAction('auth/loginSuccess');
 const loginError = createAction('auth/loginError');
 
+const googleRequest = createAction('auth/googleRequest');
+const googleSuccess = createAction('auth/googleSuccess');
+const googleError = createAction('auth/googleError');
+
 const logoutRequest = createAction('auth/logoutRequest');
 const logoutSuccess = createAction('auth/logoutSuccess');
 const logoutError = createAction('auth/logoutError');
@@ -36,4 +40,7 @@ export default {
   getCurrentBalanceRequest,
   getCurrentBalanceSuccess,
   getCurrentBalanceError,
+  googleRequest,
+  googleSuccess,
+  googleError,
 };

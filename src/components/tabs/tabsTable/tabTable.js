@@ -25,8 +25,8 @@ const AccountTable = props => {
     actionsColumnIndex: -1,
     actionsColumn: '',
     emptyRowsWhenPaging: false,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20],
+    pageSize: 7,
+    pageSizeOptions: [7, 14, 21],
   };
 
   const localization = {

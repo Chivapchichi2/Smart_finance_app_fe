@@ -85,6 +85,9 @@
 
 @media screen and (min-width: 1280px) {
   .container {
+    position: absolute;
+    top: 115px;
+    left: 110px;
     width: 1060px;
   }
 }
