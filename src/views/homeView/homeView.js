@@ -6,12 +6,10 @@ import { useWindowWidth } from '@react-hook/window-size';
 import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
-
 import HomeNav from '../../components/container/homeContainer/homeNav';
 
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
-import TabForm from '../../components/tabs/tabsForm/tabForm';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -38,8 +36,11 @@ const HomeView = () => {
       {/* <ReportByMonth />
 
       <ReportsSlider /> */}
-      <TabForm />
-      <CustomTabs />
+
+
+      {width > 767 && <CustomTabs />}
+
+
     </MainHome>
   );
 };

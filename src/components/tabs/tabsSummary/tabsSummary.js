@@ -1,6 +1,15 @@
 import styles from './tabsSummary.module.css';
 
-function TabsSummary({ data }) {
+const data = [
+  { month: 'november', summary: '1000' },
+  { month: 'november', summary: '1000' },
+  { month: 'november', summary: '1000' },
+  { month: 'november', summary: '1000' },
+  { month: 'november', summary: '1000' },
+  { month: 'november', summary: '1000' },
+];
+
+function TabsSummary() {
   return (
     <table className={styles.table}>
       <th className={styles.title}>Сводка</th>

@@ -16,6 +16,7 @@ const styles = theme => ({
     },
 
     '& .MuiTable-root': {
+      height: '0',
       borderRadius: '20px 20px 0px 0px',
 
       '& .delButton': {
@@ -34,7 +35,7 @@ const styles = theme => ({
       },
 
       '& .MuiTableHead-root': {
-        height: 60,
+        height: 0,
         backgroundColor: '#F5F6FB',
         borderRadius: '20px 20px 0px 0px !important',
 
@@ -43,8 +44,11 @@ const styles = theme => ({
 
           '& .MuiTableCell-head': {
             backgroundColor: '#F5F6FB',
-            padding: 13,
+            padding: 9.5,
             maxHeight: 40,
+            '&.MTableHeader-header-17': {
+              zIndex: 0,
+            },
             '&.MTableHeader-header-17:first-child': {
               borderRadius: '20px 0px 0px 0px',
             },
@@ -73,6 +77,7 @@ const styles = theme => ({
     },
 
     '& .MuiTableCell-root': {
+      padding: '0px 16px',
       borderBottom: '2px solid #F5F6FB',
     },
 
