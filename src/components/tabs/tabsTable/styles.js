@@ -1,7 +1,12 @@
 const styles = theme => ({
   root: {
     '&>.MuiGrid-root.MuiGrid-container': {
-      maxWidth: 760,
+      '@media screen and (min-width: 768px)': {
+        width: 605,
+      },
+      '@media screen and (min-width: 1280px)': {
+        width: 760,
+      },
     },
 
     '& .MuiPaper-elevation2': {
@@ -13,6 +18,21 @@ const styles = theme => ({
     '& .MuiTable-root': {
       borderRadius: '20px 20px 0px 0px',
 
+      '& .delButton': {
+        width: 32,
+        height: 32,
+        border: 'none',
+        borderRadius: '50%',
+        backgroundColor: '#F5F6FB',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        cursor: 'pointer',
+        '&:hover': {
+          backgroundColor: 'rgba(255, 117, 29, 0.2)',
+          transform: 'scale(1.1)',
+        },
+      },
+
       '& .MuiTableHead-root': {
         height: 60,
         backgroundColor: '#F5F6FB',
@@ -23,10 +43,12 @@ const styles = theme => ({
 
           '& .MuiTableCell-head': {
             backgroundColor: '#F5F6FB',
+            padding: 13,
+            maxHeight: 40,
             '&.MTableHeader-header-17:first-child': {
               borderRadius: '20px 0px 0px 0px',
             },
-            '&.MTableHeader-header-17.MuiTableCell-paddingCheckbox': {
+            '&.MTableHeader-header-17:last-child': {
               borderRadius: '0px 20px 0px 0px !important',
             },
           },
@@ -36,8 +58,12 @@ const styles = theme => ({
           fontFamily: 'Roboto',
           fontStyle: 'normal',
           fontWeight: '600',
-          fontSize: 16,
+          fontSize: 12,
           lineHeight: 1.5,
+          display: 'flex',
+          alignItems: 'center',
+          letterSpacing: '0.02em',
+          textTransform: 'uppercase',
           color: '#000',
           '&.MuiTableRow-head': {
             backgroundColor: '#F5F6FB',

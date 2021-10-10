@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState, createRef } from 'react';
 import { Grid } from '@material-ui/core';
 import MaterialTable from 'material-table';
@@ -41,7 +42,7 @@ const AccountTable = props => {
         { title: 'Описание', field: 'description' },
         { title: 'Категория', field: 'category' },
         { title: 'Сумма', field: 'sum' },
-        // { title: '', field: 'action' },
+        { title: '', field: 'action' },
       ],
     }));
 
@@ -90,7 +91,18 @@ const AccountTable = props => {
     }
   }, []);
 
+  const onDeleteHandler = () => {};
+
   const { headers, rows } = state;
+
+  const getAction = id => (
+    // eslint-disable-next-line react/button-has-type
+    <button
+      className="delButton"
+      style={{ backgroundImage: `url(${iconDelete})` }}
+      onClick={() => onDeleteHandler(id)}
+    />
+  );
 
   const result = rows.map(item => ({
     ...item,
@@ -100,6 +112,7 @@ const AccountTable = props => {
       ) : (
         <span className="low">{item.sum}</span>
       ),
+    action: getAction(),
   }));
 
   return (
@@ -116,12 +129,12 @@ const AccountTable = props => {
               // /*: getPaginatedData()*/
             }
             options={tableOptions}
-            editable={{
-              onRowDelete: oldData =>
-                new Promise((resolve, reject) => {
-                  resolve();
-                }),
-            }}
+            // editable={{
+            //   onRowDelete: oldData =>
+            //     new Promise((resolve, reject) => {
+            //       resolve();
+            //     }),
+            // }}
           />
         </Grid>
       </Grid>

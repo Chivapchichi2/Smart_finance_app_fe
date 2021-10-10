@@ -1,7 +1,14 @@
 export const styles = {
   root: {
-    width: 1060,
+    display: 'none',
     border: '1px solid red',
+    '@media screen and (min-width: 768px)': {
+      display: 'block',
+      width: 665,
+    },
+    '@media screen and (min-width: 1280px)': {
+      width: 1060,
+    },
 
     '& .PrivateTabIndicator-colorSecondary-8': {
       display: 'none',
@@ -10,10 +17,9 @@ export const styles = {
     '& .MuiButtonBase-root.MuiTab-root': {
       width: 138,
       height: 40,
-      padding: '0px 20px',
       background: '#FAFBFD',
+      padding: '0px 20px',
       borderRadius: '20px 20px 0px 0px',
-
       '& .MuiTab-wrapper': {
         fontStyle: 'normal',
         fontWeight: 'bold',
@@ -41,6 +47,12 @@ export const styles = {
       padding: '33px 20px 50px',
       backgroundColor: '#fff',
       borderRadius: '0px 30px 30px 30px',
+      '@media screen and (min-width: 768px)': {
+        padding: '28px 30px 50px',
+      },
+      '@media screen and (min-width: 1280px)': {
+        padding: '33px 20px 50px',
+      },
     },
   },
 };
