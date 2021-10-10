@@ -7,6 +7,7 @@ import { useWindowWidth } from '@react-hook/window-size';
 import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
+import MobileReports from '../../components/tabs/mobileReports';
 // import GoToReports from '../../components/balanceWrapper/goToReports';
 // import BackToMain from '../../components/balanceWrapper/backToMain';
 // import Balance from '../../components/balanceWrapper/balance';
@@ -28,6 +29,7 @@ const HomeView = () => {
   return (
     <MainHome>
       <BoxHome />
+      {/* <MobileReports reports={data} /> */}
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
       <BalanceWrapper />
 
@@ -48,7 +50,6 @@ const HomeView = () => {
       <ReportsSlider /> */}
 
       {width > 767 && <CustomTabs />}
-
     </MainHome>
   );
 };
