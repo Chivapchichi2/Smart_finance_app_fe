@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { useWindowWidth } from '@react-hook/window-size';
+
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
 import authSelectors from '../../../redux/auth/auth-selectors';
@@ -9,21 +11,30 @@ const Balance = () => {
   const dispatch = useDispatch();
 
   const balance = useSelector(authSelectors.getUserBalance);
-
+  // console.log(balance);
   const [value, setValue] = useState(balance.toFixed(2));
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = e => setValue(Number(e.target.value));
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    setValue(Number(value).toFixed(2));
-    dispatch(authOperations.getCurrentBalance(value));
-  };
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault();
+      setIsLoading(true);
+      setValue(Number(value).toFixed(2));
+      dispatch(authOperations.getCurrentBalance(value));
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    },
+    [dispatch, value],
+  );
 
   useEffect(() => {
     setValue(() => balance.toFixed(2));
   }, [balance]);
+
+  const delay = useWindowWidth() < 1280 ? 0 : 250;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -36,10 +47,10 @@ const Balance = () => {
             autoComplete="off"
             className={styles.inputBalance}
             type="number"
-            value={value}
+            value={isLoading ? null : value}
             onChange={handleChange}
             onFocus={() => setValue('')}
-            // onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), 500)}
+            onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), delay)}
             id="balance"
             required
           />
@@ -51,7 +62,7 @@ const Balance = () => {
         </button>
       </div>
 
-      {value === 0 && <BalanceNotify />}
+      {value === '0.00' && <BalanceNotify />}
     </form>
   );
 };

@@ -94,8 +94,11 @@
 
 @media screen and (min-width: 1280px) {
   .container {
+    position: absolute;
     width: 1060px;
     height: auto;
+    top: 196px;
+    left: 110px;
   }
 
   .list {

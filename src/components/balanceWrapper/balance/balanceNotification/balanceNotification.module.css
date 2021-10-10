@@ -2,7 +2,7 @@
   position: absolute;
   top: 150px;
   left: -15px;
-  z-index: 0;
+  z-index: 10;
 }
 
 .notification {
@@ -45,4 +45,11 @@
   height: 30px;
 
   background-color: #142a58;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    top: 69px;
+    left: 62px;
+  }
 }
