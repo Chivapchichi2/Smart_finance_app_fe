@@ -21,6 +21,7 @@ import HomeNav from '../../components/container/homeContainer/homeNav';
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
 import TabForm from '../../components/tabs/tabsForm/tabForm';
+import MobileTable from '../../components/tabs/mobileTable/mobileTable';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -49,7 +50,7 @@ const HomeView = () => {
       <ReportsSlider /> */}
       <TabForm />
       <CustomTabs />
-
+      <MobileTable />
     </MainHome>
   );
 };
