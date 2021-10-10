@@ -7,7 +7,8 @@ import s from './balanceWrapper.module.css';
 
 const balanceWrapper = () => (
   <div className={s.container}>
-    {routes.reportPage === '/home/report' ? <CurrentPeriod /> : <GoToReports />}
+    {/* {routes.reportPage === '/home/report' ? <CurrentPeriod /> : <GoToReports />} */}
+    <GoToReports />
     <Balance />
   </div>
 );

@@ -7,7 +7,7 @@ import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 
-import MobileReports from '../../components/tabs/mobileReports';
+// import MobileReports from '../../components/tabs/mobileReports';
 
 import HomeNav from '../../components/container/homeContainer/homeNav';
 import ReportView from '../reportView';
@@ -28,16 +28,12 @@ const HomeView = () => {
 
       {width <= 767 && <HomeNav />}
 
-
-
-
       <Switch>
         <Route exact path={routes.homePage} component={CustomTabs} />
         <Route exact path={routes.reportPage} component={ReportView} />
         {/* <Redirect to={routes.homePage} /> */}
       </Switch>
       {/* {width > 767 && <CustomTabs />} */}
-
     </MainHome>
   );
 };
