@@ -14,17 +14,16 @@ const Balance = () => {
 
   const handleChange = e => setValue(Number(e.target.value));
 
-  useEffect(() => {
-    setValue(balance.toFixed(2));
-  }, [balance]);
-
   const handleSubmit = e => {
     e.preventDefault();
 
     setValue(Number(value).toFixed(2));
-
     dispatch(authOperations.getCurrentBalance(value));
   };
+
+  useEffect(() => {
+    setValue(() => balance.toFixed(2));
+  }, [balance]);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -40,7 +39,7 @@ const Balance = () => {
             value={value}
             onChange={handleChange}
             onFocus={() => setValue('')}
-            onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), 500)}
+            // onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), 500)}
             id="balance"
             required
           />
