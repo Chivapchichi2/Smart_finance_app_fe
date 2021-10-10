@@ -22,7 +22,7 @@ const HomeView = () => {
   return (
     <MainHome>
       <BoxHome />
-      {/* <MobileReports reports={data} /> */}
+
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
       <BalanceWrapper />
 

@@ -32,3 +32,11 @@
   text-transform: uppercase;
   color: #000000;
 }
+
+@media screen and (min-width: 1280px) {
+  .wrapCurrentPeriod {
+    position: absolute;
+    top: 2px;
+    right: -345px;
+  }
+}
