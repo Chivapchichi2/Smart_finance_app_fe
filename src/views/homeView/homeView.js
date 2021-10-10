@@ -4,9 +4,14 @@ import { useWindowWidth } from '@react-hook/window-size';
 // import routes from '../../routes/routes';
 
 // import TabsSummary from '../../components/tabs/tabsSummary';
-import { MainHome, BoxHome } from '../../components';
+import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
+import GoToReports from '../../components/balanceWrapper/goToReports';
+import BackToMain from '../../components/balanceWrapper/backToMain';
+import Balance from '../../components/balanceWrapper/balance';
+import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
+// import routes from '../../routes/routes';
 // import GoToReports from '../../components/balanceWrapper/goToReports';
 // import BackToMain from '../../components/balanceWrapper/backToMain';
 // import Balance from '../../components/balanceWrapper/balance';
@@ -26,6 +31,7 @@ const HomeView = () => {
       <BoxHome />
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
       <BalanceWrapper />
+
       {width <= 767 && <HomeNav />}
 
       {/* <GoToReports />
@@ -37,11 +43,13 @@ const HomeView = () => {
       <Route path={routes.homeExpenses} component={ExpensesView} />
       <Route path={routes.homeIncomes} component={IncomesView} />
       <Redirect to={routes.homeExpenses} />
-    </Switch> */}
+      </Switch> */}
       {/* <ReportByMonth />
-    <ReportsSlider /> */}
 
-      {/* <TabForm /> */}
+      <ReportsSlider /> */}
+      <TabForm />
+      <CustomTabs />
+
     </MainHome>
   );
 };
