@@ -37,6 +37,18 @@ const login = credentials => async dispatch => {
   }
 };
 
+const google = credentials => async dispatch => {
+  dispatch(authActions.googleRequest());
+  try {
+    const response = await axios.post('/api/users/google', credentials);
+    token.set(response.data.token);
+
+    dispatch(authActions.googleSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.googleError(error.message));
+  }
+};
+
 const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
@@ -81,4 +93,11 @@ const getCurrentBalance = balanceValue => async dispatch => {
   }
 };
 
-export default { register, login, logOut, getCurrentUser, getCurrentBalance };
+export default {
+  register,
+  login,
+  logOut,
+  getCurrentUser,
+  getCurrentBalance,
+  google,
+};
