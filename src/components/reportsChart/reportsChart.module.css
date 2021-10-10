@@ -6,7 +6,7 @@
 @media (min-width: 768px) {
   .tabl_wrapper {
     width: 1060px;
-    margin: 0 auto;
+    margin: 41px auto;
     outline: 1px solid red;
     padding: 20px 0;
     background-color: #fff;
