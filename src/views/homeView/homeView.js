@@ -46,7 +46,9 @@ const HomeView = () => {
       {/* <ReportByMonth />
 
       <ReportsSlider /> */}
+
       {width > 767 && <CustomTabs />}
+
     </MainHome>
   );
 };
