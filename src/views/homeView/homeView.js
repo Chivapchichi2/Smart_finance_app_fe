@@ -3,19 +3,9 @@ import { useWindowWidth } from '@react-hook/window-size';
 // import { Route, Switch, Redirect } from 'react-router-dom';
 // import routes from '../../routes/routes';
 
-// import TabsSummary from '../../components/tabs/tabsSummary';
 import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
-// import GoToReports from '../../components/balanceWrapper/goToReports';
-// import BackToMain from '../../components/balanceWrapper/backToMain';
-// import Balance from '../../components/balanceWrapper/balance';
-// import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
-// import routes from '../../routes/routes';
-// import GoToReports from '../../components/balanceWrapper/goToReports';
-// import BackToMain from '../../components/balanceWrapper/backToMain';
-// import Balance from '../../components/balanceWrapper/balance';
-// import CurrentPeriod from '../../components/balanceWrapper/currentPeriod';
 import HomeNav from '../../components/container/homeContainer/homeNav';
 
 // import ReportsSlider from '../../components/reportsSlider';
@@ -47,7 +37,9 @@ const HomeView = () => {
 
       <ReportsSlider /> */}
 
+
       {width > 767 && <CustomTabs />}
+
 
     </MainHome>
   );
