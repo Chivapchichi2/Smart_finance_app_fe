@@ -1,8 +1,18 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState, createRef } from 'react';
-import { Grid } from '@material-ui/core';
-import MaterialTable from 'material-table';
+
+// import MaterialTable from 'material-table';
 import { makeStyles } from '@material-ui/core/styles';
+import {
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@material-ui/core';
+
 import iconDelete from './delete.svg';
 
 import styles from './styles';
@@ -25,8 +35,8 @@ const AccountTable = props => {
     actionsColumnIndex: -1,
     actionsColumn: '',
     emptyRowsWhenPaging: false,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20],
+    pageSize: 7,
+    pageSizeOptions: [7, 14, 21],
   };
 
   const localization = {
@@ -53,11 +63,7 @@ const AccountTable = props => {
         rows: [
           {
             date: '09.10.2021',
-            description: ` <Switch>
-      <Route path={routes.homeExpenses} component={ExpensesView} />
-      <Route path={routes.homeIncomes} component={IncomesView} />
-      <Redirect to={routes.homeExpenses} />
-      </Switch> }`,
+            description: 'tttttt',
             category: 'food',
             sum: '-300',
           },
@@ -106,7 +112,9 @@ const AccountTable = props => {
       className="delButton"
       style={{ backgroundImage: `url(${iconDelete})` }}
       onClick={() => onDeleteHandler(id)}
-    />
+    >
+      {' '}
+    </button>
   );
 
   const result = rows.map(item => ({
@@ -122,18 +130,45 @@ const AccountTable = props => {
 
   return (
     <div className={classes.root}>
-      <Grid container>
+      {/* <Grid container>
         <Grid item xs={12}>
-          {/* <MaterialTable
+          <MaterialTable
             tableRef={tableRef}
             columns={headers}
             localization={localization}
             title=""
             data={eager ? result : ''}
             options={tableOptions}
-          /> */}
+          />
         </Grid>
-      </Grid>
+      </Grid> */}
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table size="small" aria-label="table">
+          <TableHead className={classes.tableHead}>
+            <TableRow>
+              {headers?.map(item => (
+                <TableCell key={item.title}>{item.title}</TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody className={classes.tableBody}>
+            {result?.map((item, key) => {
+              const { date, description, category, sum, action } = item;
+              return (
+                <TableRow key={description}>
+                  <TableCell component="th" scope="row">
+                    {date}
+                  </TableCell>
+                  <TableCell align="left">{description}</TableCell>
+                  <TableCell align="left">{category}</TableCell>
+                  <TableCell align="left">{sum}</TableCell>
+                  <TableCell align="left">{action}</TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
