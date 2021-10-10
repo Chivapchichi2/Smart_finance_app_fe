@@ -14,6 +14,8 @@ import ReportView from '../reportView';
 
 // import ReportsSlider from '../../components/reportsSlider';
 // import ReportByMonth from '../../components/reportByMonth';
+import TabForm from '../../components/tabs/tabsForm/tabForm';
+import MobileTable from '../../components/tabs/mobileTable/mobileTable';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -33,7 +35,7 @@ const HomeView = () => {
         <Route exact path={routes.reportPage} component={ReportView} />
         {/* <Redirect to={routes.homePage} /> */}
       </Switch>
-      {/* {width > 767 && <CustomTabs />} */}
+       {width > 767 ? <CustomTabs /> : <MobileTable /> }
     </MainHome>
   );
 };
