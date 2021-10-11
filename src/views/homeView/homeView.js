@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
+import { useState, Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
+import Preloader from '../../components/loader';
 
 import routes from '../../routes/routes';
 
-import ReportView from '../reportView';
-import MobileExpensesView from './expensesView';
-import MobileIncomesView from './incomesView';
-
-import { MainHome, BoxHome, CustomTabs } from '../../components';
+import { MainHome, BoxHome } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 import HomeNav from '../../components/container/homeContainer/homeNav';
 import DatePicker from '../../components/tabs/tabsForm/input/datePicker';
 import MobileTable from '../../components/tabs/mobileTable';
+
+const CustomTabs = lazy(() =>
+  import(
+    '../../components/tabs/tabs' /* webpackChunkName: "reportView-page" */
+  ),
+);
+
+const ReportView = lazy(() =>
+  import('../reportView/reportView' /* webpackChunkName: "reportView-page" */),
+);
+
+const MobileExpensesView = lazy(() =>
+  import(
+    './expensesView/expensesView' /* webpackChunkName: "ExpensesView-page" */
+  ),
+);
+
+const MobileIncomesView = lazy(() =>
+  import(
+    './incomesView/incomesView' /* webpackChunkName: "ExpensesView-page" */
+  ),
+);
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +47,6 @@ const HomeView = () => {
       location.pathname === routes.reportExpenses ? null : (
         <BalanceWrapper />
       )}
-      {/* <BalanceWrapper /> */}
 
       {location.pathname === routes.homePage && width <= 767 ? (
         <>
@@ -38,19 +56,20 @@ const HomeView = () => {
         </>
       ) : null}
 
-      <Switch>
-        <Route
-          exact
-          path={routes.homePage}
-          component={width > 767 && CustomTabs}
-        />
-        <Route path={routes.reportPage} component={ReportView} />
-        <Route path={routes.reportExpenses} component={MobileExpensesView} />
-        <Route path={routes.reportIncomes} component={MobileIncomesView} />
+      <Suspense fallback={Preloader}>
+        <Switch>
+          <Route
+            exact
+            path={routes.homePage}
+            component={width > 767 && CustomTabs}
+          />
+          <Route path={routes.reportPage} component={ReportView} />
+          <Route path={routes.reportExpenses} component={MobileExpensesView} />
+          <Route path={routes.reportIncomes} component={MobileIncomesView} />
 
-        <Redirect to={routes.homePage} />
-      </Switch>
-
+          <Redirect to={routes.homePage} />
+        </Switch>
+      </Suspense>
       {showModal && <Modal text="Вы действительно хотите выйти?" />}
     </MainHome>
   );
