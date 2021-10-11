@@ -5,21 +5,28 @@
   width: 24px;
   height: 24px;
   padding: 0;
+
   background: transparent;
   background-image: url('../../../svg/BackToMain.svg');
   background-repeat: no-repeat;
   background-position: center;
   border: none;
   cursor: pointer;
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
 .btnText {
   display: none;
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
 .btnBack:hover,
-.btnBack:focus {
+.btnBack:focus,
+.btnBack:hover .btnText,
+.btnBack:focus .btnText {
   text-decoration: underline;
+  color: #ff751d;
 }
 
 @media screen and (min-width: 768px) {

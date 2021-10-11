@@ -31,11 +31,15 @@ const HomeView = () => {
       {width <= 767 && <HomeNav />}
 
       <Switch>
-        <Route exact path={routes.homePage} component={CustomTabs} />
+        <Route
+          exact
+          path={routes.homePage}
+          component={width > 767 ? CustomTabs : MobileTable}
+        />
         <Route exact path={routes.reportPage} component={ReportView} />
-        {/* <Redirect to={routes.homePage} /> */}
+        <Redirect to={routes.homePage} />
       </Switch>
-      {width > 767 ? <CustomTabs /> : <MobileTable />}
+      {/* {} */}
     </MainHome>
   );
 };
