@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState, useCallback } from 'react';
+import { useWindowWidth } from '@react-hook/window-size';
 
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
@@ -33,6 +34,8 @@ const Balance = () => {
     setValue(() => balance.toFixed(2));
   }, [balance]);
 
+  const delay = useWindowWidth() < 1280 ? 0 : 250;
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.labelBalance} htmlFor="balance">
@@ -47,7 +50,7 @@ const Balance = () => {
             value={isLoading ? null : value}
             onChange={handleChange}
             onFocus={() => setValue('')}
-            onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), 250)}
+            onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), delay)}
             id="balance"
             required
           />

@@ -24,6 +24,7 @@ const AccountTable = props => {
     toolbar: false,
     actionsColumnIndex: -1,
     actionsColumn: '',
+    emptyRowsWhenPaging: false,
     pageSize: 7,
     pageSizeOptions: [7, 14, 21],
   };
@@ -52,7 +53,11 @@ const AccountTable = props => {
         rows: [
           {
             date: '09.10.2021',
-            description: 'yummy',
+            description: ` <Switch>
+      <Route path={routes.homeExpenses} component={ExpensesView} />
+      <Route path={routes.homeIncomes} component={IncomesView} />
+      <Redirect to={routes.homeExpenses} />
+      </Switch> }`,
             category: 'food',
             sum: '-300',
           },
@@ -119,23 +124,14 @@ const AccountTable = props => {
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12}>
-          <MaterialTable
+          {/* <MaterialTable
             tableRef={tableRef}
             columns={headers}
             localization={localization}
             title=""
-            data={
-              eager ? result : ''
-              // /*: getPaginatedData()*/
-            }
+            data={eager ? result : ''}
             options={tableOptions}
-            // editable={{
-            //   onRowDelete: oldData =>
-            //     new Promise((resolve, reject) => {
-            //       resolve();
-            //     }),
-            // }}
-          />
+          /> */}
         </Grid>
       </Grid>
     </div>
