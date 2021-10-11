@@ -1,4 +1,7 @@
 .btnBack {
+  position: absolute;
+  top: -21px;
+  left: -17px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +34,6 @@
 
 @media screen and (min-width: 768px) {
   .btnBack {
-    position: absolute;
     top: 10px;
     left: -70px;
     width: 174px;
