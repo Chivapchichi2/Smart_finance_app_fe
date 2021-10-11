@@ -19,7 +19,16 @@
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.04em;
+  text-decoration: none;
   color: rgba(82, 85, 95, 0.7);
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.btnText:hover,
+.btnText:focus {
+  color: #ff751d;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {

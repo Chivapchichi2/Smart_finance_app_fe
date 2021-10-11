@@ -4,17 +4,15 @@ export const styles = {
     // border: '1px solid red',
 
     '@media screen and (min-width: 768px)': {
-      position: 'absolute',
-      top: '142px',
-      left: '50px',
+      position: 'relative',
+      margin: '0 auto',
+      marginTop: '58px',
       display: 'block',
       width: 665,
       minHeight: 626,
     },
     '@media screen and (min-width: 1280px)': {
-      position: 'absolute',
-      top: '92px',
-      left: '110px',
+      marginTop: '8px',
       width: 1060,
       minHeight: 579,
     },
