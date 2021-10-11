@@ -9,12 +9,14 @@ export const styles = {
       left: '50px',
       display: 'block',
       width: 665,
+      minHeight: 626,
     },
     '@media screen and (min-width: 1280px)': {
       position: 'absolute',
       top: '92px',
       left: '110px',
       width: 1060,
+      minHeight: 579,
     },
 
     '& .PrivateTabIndicator-colorSecondary-8': {
@@ -57,9 +59,11 @@ export const styles = {
       boxShadow: '0px 10px 60px rgba(170, 178, 197, 0.2)',
       '@media screen and (min-width: 768px)': {
         padding: '28px 30px 50px',
+        minHeight: 626,
       },
       '@media screen and (min-width: 1280px)': {
         padding: '33px 20px 50px',
+        minHeight: 579,
       },
     },
   },

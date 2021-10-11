@@ -1,15 +1,15 @@
 const styles = theme => ({
   root: {
-    '&>.MuiGrid-root.MuiGrid-container': {
-      '@media screen and (min-width: 768px)': {
-        width: 605,
-      },
-      '@media screen and (min-width: 1280px)': {
-        width: 760,
-      },
+    // '&>.MuiGrid-root.MuiGrid-container': {
+    '@media screen and (min-width: 768px)': {
+      width: 605,
     },
+    '@media screen and (min-width: 1280px)': {
+      width: 760,
+    },
+    // },
 
-    '& .MuiPaper-elevation2': {
+    '& .MuiPaper-elevation1': {
       boxShadow: 'none',
       borderRadius: '20px 20px 0px 0px',
       outline: '2px solid #F5F6FB',
@@ -44,17 +44,17 @@ const styles = theme => ({
 
           '& .MuiTableCell-head': {
             backgroundColor: '#F5F6FB',
-            padding: 9.5,
+            padding: '7px 20px',
             maxHeight: 40,
             '&.MTableHeader-header-17': {
               zIndex: 0,
             },
-            '&.MTableHeader-header-17:first-child': {
-              borderRadius: '20px 0px 0px 0px',
-            },
-            '&.MTableHeader-header-17:last-child': {
-              borderRadius: '0px 20px 0px 0px !important',
-            },
+            // '&.MTableHeader-header-17:first-child': {
+            //   borderRadius: '20px 0px 0px 0px',
+            // },
+            // '&.MTableHeader-header-17:last-child': {
+            //   borderRadius: '0px 20px 0px 0px !important',
+            // },
           },
         },
 
@@ -77,24 +77,26 @@ const styles = theme => ({
     },
 
     '& .MuiTableCell-root': {
-      padding: '0px 16px',
+      padding: '0px 20px',
       borderBottom: '2px solid #F5F6FB',
     },
 
     '& .MuiTableRow-root': {
-      fontFamily: 'Roboto',
-      fontStyle: 'normal',
-      fontWeight: 'bold',
-      fontSize: 12,
-      lineHeight: 1.67,
-      color: '#52555F',
+      '& .MuiTableCell-root': {
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 12,
+        lineHeight: 1.67,
+        color: '#52555F',
 
-      '& .high': {
-        color: '#407946',
-      },
+        '& .high': {
+          color: '#407946',
+        },
 
-      '& .low': {
-        color: '#E7192E',
+        '& .low': {
+          color: '#E7192E',
+        },
       },
     },
 

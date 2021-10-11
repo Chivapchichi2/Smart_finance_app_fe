@@ -14,13 +14,13 @@ const MobileTable = props => {
   const data = [
     {
       date: '09.10.2021',
-      description: 'yummyyyyyyyyyyy',
+      description: 'burger',
       category: 'food',
       sum: '-300',
     },
     {
       date: '09.10.2021',
-      description: 'yummy',
+      description: 'potato',
       category: 'food',
       sum: '200',
     },
@@ -32,19 +32,19 @@ const MobileTable = props => {
     },
     {
       date: '09.10.2021',
-      description: 'yummy',
+      description: 'yummyy',
       category: 'food',
       sum: '350',
     },
     {
       date: '09.10.2021',
-      description: 'yummy',
+      description: 'yummyyy',
       category: 'food',
       sum: '100',
     },
     {
       date: '09.10.2021',
-      description: 'yummy',
+      description: 'yyummyy',
       category: 'food',
       sum: '350',
     },
