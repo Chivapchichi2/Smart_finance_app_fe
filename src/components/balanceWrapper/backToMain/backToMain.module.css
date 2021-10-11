@@ -31,6 +31,9 @@
 
 @media screen and (min-width: 768px) {
   .btnBack {
+    position: absolute;
+    top: 10px;
+    left: -70px;
     width: 174px;
     background-position: left;
   }
@@ -49,7 +52,6 @@
 
 @media screen and (min-width: 1280px) {
   .btnBack {
-    position: absolute;
     top: 10px;
     left: -350px;
   }

@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState, useCallback } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
+import { useLocation } from 'react-router-dom';
+import routes from '../../../routes/routes';
 
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
@@ -9,6 +11,8 @@ import authOperations from '../../../redux/auth/auth-operations';
 
 const Balance = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const width = useWindowWidth();
 
   const balance = useSelector(authSelectors.getUserBalance);
   // console.log(balance);
@@ -36,8 +40,13 @@ const Balance = () => {
 
   const delay = useWindowWidth() < 1280 ? 0 : 250;
 
+  const marginLeft =
+    location.pathname === routes.reportPage && width > 767 && width < 1280
+      ? `${styles.form} ${styles.marginLeft}`
+      : `${styles.form}`;
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={marginLeft} onSubmit={handleSubmit}>
       <label className={styles.labelBalance} htmlFor="balance">
         Баланс:
       </label>
@@ -57,9 +66,13 @@ const Balance = () => {
 
           <span className={styles.span}>UAH</span>
         </div>
-        <button className={styles.btnConfirm} type="submit">
-          Подтвердить
-        </button>
+        {location.pathname === routes.reportPage &&
+        width > 767 &&
+        width < 1280 ? null : (
+          <button className={styles.btnConfirm} type="submit">
+            Подтвердить
+          </button>
+        )}
       </div>
 
       {value === '0.00' && <BalanceNotify />}
