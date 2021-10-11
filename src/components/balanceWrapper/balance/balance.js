@@ -6,6 +6,7 @@ import routes from '../../../routes/routes';
 
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
+import BalanceMobile from './balanceMobile';
 import authSelectors from '../../../redux/auth/auth-selectors';
 import authOperations from '../../../redux/auth/auth-operations';
 
@@ -47,33 +48,44 @@ const Balance = () => {
 
   return (
     <form className={marginLeft} onSubmit={handleSubmit}>
-      <label className={styles.labelBalance} htmlFor="balance">
-        Баланс:
-      </label>
-      <div className={styles.wrapperBalance}>
-        <div className={styles.container}>
-          <input
-            autoComplete="off"
-            className={styles.inputBalance}
-            type="number"
-            value={isLoading ? null : value}
-            onChange={handleChange}
-            onFocus={() => setValue('')}
-            onBlur={() => setTimeout(() => setValue(balance.toFixed(2)), delay)}
-            id="balance"
-            required
-          />
+      {location.pathname === routes.reportPage &&
+      width > 319 &&
+      width < 1280 ? (
+        <BalanceMobile balance={balance} />
+      ) : (
+        <>
+          <label className={styles.labelBalance} htmlFor="balance">
+            Баланс:
+          </label>
 
-          <span className={styles.span}>UAH</span>
-        </div>
-        {location.pathname === routes.reportPage &&
-        width > 767 &&
-        width < 1280 ? null : (
-          <button className={styles.btnConfirm} type="submit">
-            Подтвердить
-          </button>
-        )}
-      </div>
+          <div className={styles.wrapperBalance}>
+            <div className={styles.container}>
+              <input
+                autoComplete="off"
+                className={styles.inputBalance}
+                type="number"
+                value={isLoading ? null : value}
+                onChange={handleChange}
+                onFocus={() => setValue('')}
+                onBlur={() =>
+                  setTimeout(() => setValue(balance.toFixed(2)), delay)
+                }
+                id="balance"
+                required
+              />
+
+              <span className={styles.span}>UAH</span>
+            </div>
+            {location.pathname === routes.reportPage &&
+            width > 319 &&
+            width < 1280 ? null : (
+              <button className={styles.btnConfirm} type="submit">
+                Подтвердить
+              </button>
+            )}
+          </div>
+        </>
+      )}
 
       {value === '0.00' && <BalanceNotify />}
     </form>
