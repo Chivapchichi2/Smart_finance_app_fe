@@ -12,7 +12,7 @@ const balanceWrapper = () => {
   const location = useLocation();
   const width = useWindowWidth();
 
-  console.log(location);
+  // console.log(location);
   return (
     <div className={s.container}>
       {location.pathname === routes.reportPage ? (

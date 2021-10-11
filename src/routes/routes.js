@@ -2,6 +2,6 @@ export default {
   authPage: '/',
   homePage: '/home',
   reportPage: '/home/report',
-  // reportIncomes: '/report/incomes',
-  // reportExpenses: '/report/expenses',
+  reportIncomes: '/home/incomes',
+  reportExpenses: '/home/expenses',
 };

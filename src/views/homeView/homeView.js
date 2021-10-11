@@ -4,11 +4,16 @@ import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
 
 import routes from '../../routes/routes';
 
+import ReportView from '../reportView';
+import MobileExpensesView from './expensesView';
+import MobileIncomesView from './incomesView';
+
 import { MainHome, BoxHome, CustomTabs } from '../../components';
 import Modal from '../../components/modal';
 import BalanceWrapper from '../../components/balanceWrapper/balanceWrapper';
 import HomeNav from '../../components/container/homeContainer/homeNav';
-import ReportView from '../reportView';
+import DatePicker from '../../components/tabs/tabsForm/input/datePicker';
+import MobileTable from '../../components/tabs/mobileTable';
 
 const HomeView = () => {
   const [showModal, setShowModal] = useState(false);
@@ -19,14 +24,19 @@ const HomeView = () => {
     <MainHome>
       <BoxHome />
 
-      {showModal && <Modal text="Вы действительно хотите выйти?" />}
-      <BalanceWrapper />
+      {location.pathname === routes.reportIncomes ||
+      location.pathname === routes.reportExpenses ? null : (
+        <BalanceWrapper />
+      )}
+      {/* <BalanceWrapper /> */}
 
       {location.pathname === routes.homePage && width <= 767 ? (
-        <HomeNav />
+        <>
+          <DatePicker />
+          <MobileTable />
+          <HomeNav />
+        </>
       ) : null}
-
-      {/* {width <= 767 && <HomeNav />} */}
 
       <Switch>
         <Route
@@ -34,10 +44,14 @@ const HomeView = () => {
           path={routes.homePage}
           component={width > 767 && CustomTabs}
         />
-        <Route exact path={routes.reportPage} component={ReportView} />
+        <Route path={routes.reportPage} component={ReportView} />
+        <Route path={routes.reportExpenses} component={MobileExpensesView} />
+        <Route path={routes.reportIncomes} component={MobileIncomesView} />
+
         <Redirect to={routes.homePage} />
       </Switch>
-      {/* {} */}
+
+      {showModal && <Modal text="Вы действительно хотите выйти?" />}
     </MainHome>
   );
 };
