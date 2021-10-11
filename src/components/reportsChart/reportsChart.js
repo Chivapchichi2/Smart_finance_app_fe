@@ -117,8 +117,6 @@ export default function charts() {
       <ResponsiveContainer width="100%" aspect={1.8}>
         <BarChart
           layout="horizontal"
-          width={500}
-          height={400}
           data={data}
           margin={{
             top: 5,
@@ -133,8 +131,8 @@ export default function charts() {
             type="category"
             axisLine={false}
             tickLine={false}
-            tickCount={10}
           />
+          <YAxis height={500} type="number" tickCount={25} hide />
 
           <Bar
             dataKey="price"
