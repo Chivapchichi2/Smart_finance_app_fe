@@ -13,4 +13,14 @@ const addUserIncome = transaction => async dispatch => {
   }
 };
 
-export default { addUserIncome };
+const addUserExpense = transaction => async dispatch => {
+  dispatch(ledgerActions.addUserExpenseRequest);
+  try {
+    const response = await axios.post('/api/ledgers/expense', transaction);
+    dispatch(ledgerActions.addUserExpenseSuccess(response.data));
+  } catch (error) {
+    dispatch(ledgerActions.addUserExpenseError(error.message));
+  }
+};
+
+export default { addUserIncome, addUserExpense };

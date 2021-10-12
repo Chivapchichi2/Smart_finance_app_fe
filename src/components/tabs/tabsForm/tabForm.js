@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ProductDescription from './input/productDescription';
@@ -8,11 +9,11 @@ import DatePicker from './input/datePicker';
 
 import routes from '../../../routes/routes';
 
-import ledgerOperations from '../../../redux/ledger/ledger-operations';
+// import ledgerOperations from '../../../redux/ledger/ledger-operations';
 
 import s from './tabsFrom.module.css';
 
-const TabForm = () => {
+const TabForm = ({ endpoint }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const handlerSubmit = e => {
@@ -24,10 +25,14 @@ const TabForm = () => {
       value: e.target[3].valueAsNumber,
     };
 
-    dispatch(ledgerOperations.addUserIncome(transaction));
+    axios.post(
+      `https://smart-finance-app-be.herokuapp.com/${endpoint}`,
+      transaction,
+    );
+
+    // dispatch(ledgerOperations.addUserIncome(transaction));
 
     e.target[1].value = '';
-    console.dir(e.target[2]);
   };
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>

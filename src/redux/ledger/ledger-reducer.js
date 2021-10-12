@@ -10,6 +10,10 @@ const transaction = createReducer(initialUserState, {
     ...state,
     ...payload,
   }),
+  [ledgerActions.addUserExpenseSuccess]: (state, { payload }) => ({
+    ...state,
+    ...payload,
+  }),
 });
 
 export default combineReducers({ transaction });
