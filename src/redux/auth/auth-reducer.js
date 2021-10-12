@@ -11,10 +11,6 @@ const user = createReducer(initialUserState, {
   [authActions.googleSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => null,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.user,
-  [authActions.getCurrentBalanceSuccess]: (state, { payload }) => ({
-    ...state,
-    ...payload,
-  }),
 });
 
 const token = createReducer(null, {

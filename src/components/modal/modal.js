@@ -14,10 +14,7 @@ const Modal = ({ text }) => {
 
   const closeModal = () => dispatch(authActions.isModalShow());
 
-  const onLogout = useCallback(
-    () => dispatch(authOperations.logOut()),
-    [dispatch],
-  );
+  const onLogout = () => dispatch(authOperations.logOut());
 
   const handleKeydown = e => {
     console.log('KEY', e.code);

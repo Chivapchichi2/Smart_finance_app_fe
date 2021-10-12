@@ -17,8 +17,6 @@ function UserBar() {
 
   const userName = userEmail.split('@');
 
-  console.log(userAvatar);
-
   const nameCondition =
     width > 767 ? (
       <>

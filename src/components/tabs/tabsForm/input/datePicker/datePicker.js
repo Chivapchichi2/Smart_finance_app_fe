@@ -11,7 +11,6 @@ function DatePicker() {
   const [startDate, setStartDate] = useState(new Date());
   const location = useLocation();
   const width = useWindowWidth();
-  console.dir(startDate.toLocaleDateString());
 
   const homeDatePicker =
     location.pathname === routes.homePage && width <= 320

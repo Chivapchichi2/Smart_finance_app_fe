@@ -7,7 +7,7 @@ import routes from '../../../routes/routes';
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
 import BalanceMobile from './balanceMobile';
-import authSelectors from '../../../redux/auth/auth-selectors';
+import { userSelectors } from '../../../redux/user';
 import authOperations from '../../../redux/auth/auth-operations';
 
 const Balance = () => {
@@ -15,7 +15,9 @@ const Balance = () => {
   const location = useLocation();
   const width = useWindowWidth();
 
-  const balance = useSelector(authSelectors.getUserBalance);
+  const balance = useSelector(userSelectors.getUserBalance);
+
+  console.log(balance);
 
   const [value, setValue] = useState(balance.toFixed(2));
   const [isLoading, setIsLoading] = useState(false);

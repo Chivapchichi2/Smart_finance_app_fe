@@ -1,26 +1,17 @@
 import axios from 'axios';
-import ledgerActions from './ledger-actions';
+import { userActions } from '../user';
 
 axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com';
 
-const addUserIncome = (endpoint, transaction) => async dispatch => {
-  dispatch(ledgerActions.addUserIncomeRequest());
+const addUserBank = (endpoint, transaction) => async dispatch => {
+  dispatch(userActions.getCurrentBalanceRequest());
   try {
-    const response = await axios.post('/api/ledgers/income', transaction);
-    dispatch(ledgerActions.addUserIncomeSuccess(response.data));
+    const response = await axios.post(endpoint, transaction);
+
+    dispatch(userActions.getCurrentBalanceSuccess(response.data));
   } catch (error) {
-    dispatch(ledgerActions.addUserIncomeError(error.message));
+    dispatch(userActions.getCurrentBalanceError(error.message));
   }
 };
 
-const addUserExpense = transaction => async dispatch => {
-  dispatch(ledgerActions.addUserExpenseRequest);
-  try {
-    const response = await axios.post('/api/ledgers/expense', transaction);
-    dispatch(ledgerActions.addUserExpenseSuccess(response.data));
-  } catch (error) {
-    dispatch(ledgerActions.addUserExpenseError(error.message));
-  }
-};
-
-export default { addUserIncome, addUserExpense };
+export default { addUserBank };
