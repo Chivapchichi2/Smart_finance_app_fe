@@ -11,6 +11,7 @@ function DatePicker() {
   const [startDate, setStartDate] = useState(new Date());
   const location = useLocation();
   const width = useWindowWidth();
+  console.dir(startDate.toLocaleDateString());
 
   const homeDatePicker =
     location.pathname === routes.homePage && width <= 320
@@ -23,6 +24,7 @@ function DatePicker() {
         <CalendarIcon />
       </div>
       <ReactDatePicker
+        name="dataPicker"
         selected={startDate}
         onChange={date => setStartDate(date)}
         dateFormat="dd.MM.yyyy"
