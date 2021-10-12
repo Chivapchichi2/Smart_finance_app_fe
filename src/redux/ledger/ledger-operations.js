@@ -3,7 +3,7 @@ import ledgerActions from './ledger-actions';
 
 axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com';
 
-const addUserIncome = transaction => async dispatch => {
+const addUserIncome = (endpoint, transaction) => async dispatch => {
   dispatch(ledgerActions.addUserIncomeRequest());
   try {
     const response = await axios.post('/api/ledgers/income', transaction);
