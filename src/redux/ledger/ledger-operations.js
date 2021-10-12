@@ -8,7 +8,7 @@ const addUserBank = (endpoint, transaction) => async dispatch => {
   try {
     const response = await axios.post(endpoint, transaction);
 
-    dispatch(userActions.getCurrentBalanceSuccess(response.data));
+    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(userActions.getCurrentBalanceError(error.message));
   }
