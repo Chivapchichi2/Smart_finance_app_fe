@@ -20,7 +20,7 @@ const register = credentials => async dispatch => {
   try {
     const response = await axios.post('/api/users/signup', credentials);
     token.set(response.data.token);
-    dispatch(authActions.registerSuccess(response.data.user));
+    dispatch(authActions.registerSuccess(response.data));
     dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
@@ -34,7 +34,7 @@ const login = credentials => async dispatch => {
     const response = await axios.post('/api/users/signin', credentials);
     token.set(response.data.token);
 
-    dispatch(authActions.loginSuccess(response.data.user));
+    dispatch(authActions.loginSuccess(response.data));
     dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
@@ -77,10 +77,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
   token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
+  dispatch(userActions.getCurrentBalanceRequest());
 
   try {
     const response = await axios.get('/api/users/current');
     dispatch(authActions.getCurrentUserSuccess(response.data));
+    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
   }

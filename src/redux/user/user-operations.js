@@ -10,23 +10,12 @@ const getCurrentBalance = balanceValue => async dispatch => {
     const response = await axios.patch('/api/users/balance', {
       value: balanceValue,
     });
-
-    dispatch(userActions.getCurrentBalanceSuccess(response.data));
+    console.log(response.data);
+    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(userActions.getCurrentBalanceError(error.message));
   }
 };
-
-// const addUserBank = (endpoint, transaction) => async dispatch => {
-//   dispatch(userActions.getCurrentBalanceRequest());
-//   try {
-//     const response = await axios.post(endpoint, transaction);
-
-//     dispatch(userActions.getCurrentBalanceSuccess(response.data));
-//   } catch (error) {
-//     dispatch(userActions.getCurrentBalanceError(error.message));
-//   }
-// };
 
 export default {
   getCurrentBalance,

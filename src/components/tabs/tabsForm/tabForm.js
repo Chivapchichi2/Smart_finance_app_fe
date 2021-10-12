@@ -11,13 +11,13 @@ import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
 
 import routes from '../../../routes/routes';
-import authOperations from '../../../redux/auth/auth-operations';
+import { ledgerOperations } from '../../../redux/ledger';
 import s from './tabsFrom.module.css';
 
 const TabForm = ({ endpoint }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  const [trans, setTrans] = useState({});
+  const [trans, setTrans] = useState([]);
 
   const handlerSubmit = e => {
     e.preventDefault();
@@ -28,9 +28,9 @@ const TabForm = ({ endpoint }) => {
       value: e.target[3].valueAsNumber,
     };
 
-    setTrans(transaction);
+    setTrans([...trans, transaction]);
 
-    dispatch(authOperations.addUserBank(endpoint, transaction));
+    dispatch(ledgerOperations.addUserBank(endpoint, transaction));
   };
 
   console.log(trans);

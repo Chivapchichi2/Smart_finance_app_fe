@@ -7,8 +7,7 @@ import routes from '../../../routes/routes';
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
 import BalanceMobile from './balanceMobile';
-import { userSelectors } from '../../../redux/user';
-import authOperations from '../../../redux/auth/auth-operations';
+import { userSelectors, userOperations } from '../../../redux/user';
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ const Balance = () => {
       e.preventDefault();
       setIsLoading(true);
       setValue(Number(value).toFixed(2));
-      dispatch(authOperations.getCurrentBalance(value));
+      dispatch(userOperations.getCurrentBalance(value));
       setTimeout(() => {
         setIsLoading(false);
       }, 500);
