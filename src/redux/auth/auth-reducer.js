@@ -36,8 +36,13 @@ const isAuthenticated = createReducer(false, {
   [authActions.getCurrentUserError]: () => false,
 });
 
+const isShowModal = createReducer(false, {
+  [authActions.isModalShow]: state => !state,
+});
+
 export default combineReducers({
   user,
   token,
   isAuthenticated,
+  isShowModal,
 });

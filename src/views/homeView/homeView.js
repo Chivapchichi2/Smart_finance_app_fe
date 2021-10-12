@@ -1,7 +1,10 @@
 import { useState, Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Preloader from '../../components/loader';
+
+import authSelectors from '../../redux/auth/auth-selectors';
 
 import routes from '../../routes/routes';
 
@@ -35,7 +38,10 @@ const MobileIncomesView = lazy(() =>
 );
 
 const HomeView = () => {
-  const [showModal, setShowModal] = useState(false);
+  const isAuth = useSelector(authSelectors.getModal);
+
+  console.log('isAuth', isAuth);
+
   const width = useWindowWidth();
   const location = useLocation();
 
@@ -70,7 +76,7 @@ const HomeView = () => {
           <Redirect to={routes.homePage} />
         </Switch>
       </Suspense>
-      {showModal && <Modal text="Вы действительно хотите выйти?" />}
+      {isAuth && <Modal text="Вы действительно хотите выйти?" />}
     </MainHome>
   );
 };

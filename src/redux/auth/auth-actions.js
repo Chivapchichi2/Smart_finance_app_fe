@@ -24,6 +24,8 @@ const getCurrentBalanceRequest = createAction('auth/getCurrentBalanceRequest');
 const getCurrentBalanceSuccess = createAction('auth/getCurrentBalanceSuccess');
 const getCurrentBalanceError = createAction('auth/getCurrentBalanceError');
 
+const isModalShow = createAction('auth/isModalShow');
+
 export default {
   registerRequest,
   registerSuccess,
@@ -43,4 +45,5 @@ export default {
   googleRequest,
   googleSuccess,
   googleError,
+  isModalShow,
 };
