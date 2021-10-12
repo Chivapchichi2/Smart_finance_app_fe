@@ -6,6 +6,7 @@ import authSelector from '../../../redux/auth/auth-selectors';
 import authOperations from '../../../redux/auth/auth-operations';
 
 import styles from './userBar.module.css';
+import authActions from '../../../redux/auth/auth-actions';
 
 function UserBar() {
   const width = useWindowWidth();
@@ -36,8 +37,13 @@ function UserBar() {
 
   const dispatch = useDispatch();
 
+  // const onLogout = useCallback(
+  //   () => dispatch(authOperations.logOut()),
+  //   [dispatch],
+  // );
+
   const onLogout = useCallback(
-    () => dispatch(authOperations.logOut()),
+    () => dispatch(authActions.isModalShow()),
     [dispatch],
   );
 
