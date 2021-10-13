@@ -1,7 +1,6 @@
 import axios from 'axios';
 import authActions from './auth-actions';
-
-axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com';
+import api from '../../service/api';
 
 const token = {
   // eslint-disable-next-line no-shadow
@@ -17,7 +16,7 @@ const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
-    const response = await axios.post('/api/users/signup', credentials);
+    const response = await api.registration(credentials);
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
@@ -28,7 +27,7 @@ const register = credentials => async dispatch => {
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
   try {
-    const response = await axios.post('/api/users/signin', credentials);
+    const response = await api.login(credentials);
     token.set(response.data.token);
 
     dispatch(authActions.loginSuccess(response.data));
@@ -40,7 +39,7 @@ const login = credentials => async dispatch => {
 const google = credentials => async dispatch => {
   dispatch(authActions.googleRequest());
   try {
-    const response = await axios.post('/api/users/google', credentials);
+    const response = await api.google(credentials);
     token.set(response.data.token);
 
     dispatch(authActions.googleSuccess(response.data));
@@ -52,7 +51,7 @@ const google = credentials => async dispatch => {
 const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
-    await axios.get('/api/users/logout');
+    await api.logout();
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
@@ -72,7 +71,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(authActions.getCurrentUserRequest());
 
   try {
-    const response = await axios.get('/api/users/current');
+    const response = await api.getCurrentUser();
     dispatch(authActions.getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
@@ -83,7 +82,7 @@ const getCurrentBalance = balanceValue => async dispatch => {
   dispatch(authActions.getCurrentBalanceRequest());
 
   try {
-    const response = await axios.patch('/api/users/balance', {
+    const response = await api.refreshUserBalance({
       value: balanceValue,
     });
 

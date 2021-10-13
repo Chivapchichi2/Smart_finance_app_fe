@@ -3,10 +3,24 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com/';
 
 const serviceApi = {
-  refreshUserBalan(balance) {
+  registration(data) {
+    return axios.post(`api/users/signup`, data);
+  },
+  login(data) {
+    return axios.post(`api/users/signin`, data);
+  },
+  logout() {
+    return axios.get(`api/users/logout`);
+  },
+  getCurrentUser() {
+    return axios.get(`api/users/current`);
+  },
+  refreshUserBalance(balance) {
     return axios.patch(`api/users/balance`, balance);
   },
-
+  google(data) {
+    return axios.post(`api/users/google`, data);
+  },
   addUserIncome(transaction) {
     return axios.post(`api/ledgers/income`, transaction);
   },
