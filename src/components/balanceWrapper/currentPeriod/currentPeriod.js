@@ -1,10 +1,27 @@
-import ButtonArrow from '../../buttonArrow';
+import { useState } from 'react';
 import { ReactComponent as IconArrowLeft } from '../../../svg/arrowLeft.svg';
 import { ReactComponent as IconArrowRight } from '../../../svg/arrowRight.svg';
 import styles from './currentPeriod.module.css';
 
 const CurrentPeriod = () => {
-  const date = new Date();
+  const [date, setDate] = useState(new Date());
+
+  const changeMonth = action => {
+    const value = action === 'prev' ? -1 : 1;
+    setDate(prevDate => {
+      const newDate = new Date(prevDate);
+      const month = newDate.getMonth();
+      newDate.setMonth(month + value);
+      if (newDate > new Date()) {
+        return prevDate;
+      }
+      return newDate;
+    });
+  };
+
+  const getMonthAndYear = date.toLocaleDateString();
+  console.log(getMonthAndYear);
+
   const year = date.getFullYear();
   const month = date.toLocaleDateString('ru', { month: 'long' });
 
@@ -12,23 +29,23 @@ const CurrentPeriod = () => {
     <div className={styles.wrapCurrentPeriod}>
       <p className={styles.textCurrentPeriod}>Текущий период:</p>
       <div className={styles.btnWrapperArrow}>
-        <ButtonArrow
-          onClick={() => {
-            console.log('click');
-          }}
+        <button
+          className={styles.btn}
+          type="button"
+          onClick={() => changeMonth('prev')}
         >
           <IconArrowLeft />
-        </ButtonArrow>
+        </button>
         <p className={styles.text}>
           {month} {year}
         </p>
-        <ButtonArrow
-          onClick={() => {
-            console.log('click');
-          }}
+        <button
+          className={styles.btn}
+          type="button"
+          onClick={() => changeMonth('next')}
         >
           <IconArrowRight />
-        </ButtonArrow>
+        </button>
       </div>
     </div>
   );
