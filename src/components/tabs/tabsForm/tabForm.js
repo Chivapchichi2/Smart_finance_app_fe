@@ -32,8 +32,6 @@ const TabForm = ({ endpoint }) => {
     dispatch(ledgerOperations.addUserBank(endpoint, transaction));
   };
 
-  console.log(trans);
-
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>
       {location.pathname === routes.reportExpenses ||
