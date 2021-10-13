@@ -3,13 +3,18 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import ledgerActions from './ledger-actions';
 
-const initialUserState = { transaction: null, balance: 0 };
-
-const transaction = createReducer(initialUserState, {
-  [ledgerActions.addUserIncomeSuccess]: (state, { payload }) => ({
+const expenses = createReducer([], {
+  [ledgerActions.addUserExpenseSuccess]: (state, { payload }) => [
     ...state,
-    ...payload,
-  }),
+    payload,
+  ],
+});
+
+const incomes = createReducer([], {
+  [ledgerActions.addUserIncomeSuccess]: (state, { payload }) => [
+    ...state,
+    payload,
+  ],
 });
 
 const incomeByMonth = createReducer([], {
@@ -25,4 +30,6 @@ const expenseByMonth = createReducer([], {
   ],
 });
 
-export default combineReducers({ transaction, incomeByMonth, expenseByMonth });
+export default combineReducers({ expenses, incomes, incomeByMonth, expenseByMonth });
+
+

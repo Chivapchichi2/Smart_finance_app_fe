@@ -10,6 +10,12 @@ const addUserBank = (endpoint, transaction) => async dispatch => {
     const response = await axios.post(endpoint, transaction);
 
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+
+    if (endpoint === 'api/ledgers/income') {
+      dispatch(ledgerActions.addUserIncomeSuccess(response.data.transaction));
+    } else {
+      dispatch(ledgerActions.addUserExpenseSuccess(response.data.transaction));
+    }
   } catch (error) {
     dispatch(userActions.setCurrentBalanceError(error.message));
   }

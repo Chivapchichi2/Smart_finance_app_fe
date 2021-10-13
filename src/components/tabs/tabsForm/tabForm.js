@@ -13,7 +13,7 @@ import routes from '../../../routes/routes';
 import { ledgerOperations } from '../../../redux/ledger';
 import s from './tabsFrom.module.css';
 
-const TabForm = ({ endpoint }) => {
+const TabForm = ({ endpoint, data, catName }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
@@ -41,7 +41,7 @@ const TabForm = ({ endpoint }) => {
 
       <div className={s.formWrapper}>
         <ProductDescription />
-        <ProductCategory />
+        <ProductCategory category={data} categoryType={catName} />
       </div>
       <ProductValue />
       <ProductButtons />

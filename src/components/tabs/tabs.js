@@ -21,10 +21,31 @@ const CustomTabs = props => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const endpoints = {
     income: 'api/ledgers/income',
     expense: 'api/ledgers/expense',
   };
+
+  const expensesCategory = [
+    'Транспорт',
+    'Продукты',
+    'Здоровье',
+    'Алкоголь',
+    'Развлечения',
+    'Всё для дома',
+    'Техника',
+    'Коммуналка, связь',
+    'Спорт, хобби',
+    'Образование',
+    'Прочее',
+  ];
+
+  const incomesCategory = ['ЗП', 'Дополнительные доходы'];
+
+  const catIncomes = 'Категория дохода';
+
+  const catExpenses = 'Категория товара';
 
   return (
     <div className={classes.root}>
@@ -37,12 +58,20 @@ const CustomTabs = props => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <TabForm endpoint={endpoints.expense} />
+            <TabForm
+              endpoint={endpoints.expense}
+              data={expensesCategory}
+              catName={catExpenses}
+            />
             <AccountTable eager />
             <TabSummary />
           </TabPanel>
           <TabPanel value="2">
-            <TabForm endpoint={endpoints.income} />
+            <TabForm
+              endpoint={endpoints.income}
+              data={incomesCategory}
+              catName={catIncomes}
+            />
             <AccountTable eager />
             <TabSummary />
           </TabPanel>
