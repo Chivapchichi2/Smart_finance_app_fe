@@ -12,4 +12,17 @@ const transaction = createReducer(initialUserState, {
   }),
 });
 
-export default combineReducers({ transaction });
+const incomeByMonth = createReducer([], {
+  [ledgerActions.getUserIncomeByMonthSuccess]: (state, { payload }) => [
+    ...state,
+    ...payload,
+  ],
+});
+const expenseByMonth = createReducer([], {
+  [ledgerActions.getUserExpenseByMonthSuccess]: (state, { payload }) => [
+    ...state,
+    ...payload,
+  ],
+});
+
+export default combineReducers({ transaction, incomeByMonth, expenseByMonth });
