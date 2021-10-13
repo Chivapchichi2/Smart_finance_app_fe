@@ -1,11 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getCurrentBalanceRequest = createAction('user/getCurrentBalanceRequest');
-const getCurrentBalanceSuccess = createAction('user/getCurrentBalanceSuccess');
-const getCurrentBalanceError = createAction('user/getCurrentBalanceError');
+const setCurrentBalanceRequest = createAction('user/setCurrentBalanceRequest');
+const setCurrentBalanceSuccess = createAction('user/setCurrentBalanceSuccess');
+const setCurrentBalanceError = createAction('user/setCurrentBalanceError');
 
 export default {
-  getCurrentBalanceRequest,
-  getCurrentBalanceSuccess,
-  getCurrentBalanceError,
+  setCurrentBalanceRequest,
+  setCurrentBalanceSuccess,
+  setCurrentBalanceError,
 };

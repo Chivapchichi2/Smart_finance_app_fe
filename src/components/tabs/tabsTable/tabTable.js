@@ -1,9 +1,14 @@
-import React, { useEffect, useState, createRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  // createRef
+} from 'react';
+import PropTypes from 'prop-types';
 
 // import MaterialTable from 'material-table';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  Grid,
+  // Grid,
   Paper,
   Table,
   TableBody,
@@ -20,7 +25,7 @@ import styles from './styles';
 const AccountTable = props => {
   const { eager } = props;
 
-  const tableRef = createRef();
+  // const tableRef = createRef();
 
   const classes = makeStyles(theme => styles(theme))();
 
@@ -29,21 +34,21 @@ const AccountTable = props => {
     rows: [],
   });
 
-  const tableOptions = {
-    search: false,
-    toolbar: false,
-    actionsColumnIndex: -1,
-    actionsColumn: '',
-    emptyRowsWhenPaging: false,
-    pageSize: 7,
-    pageSizeOptions: [7, 14, 21],
-  };
+  // const tableOptions = {
+  //   search: false,
+  //   toolbar: false,
+  //   actionsColumnIndex: -1,
+  //   actionsColumn: '',
+  //   emptyRowsWhenPaging: false,
+  //   pageSize: 7,
+  //   pageSizeOptions: [7, 14, 21],
+  // };
 
-  const localization = {
-    toolbar: { searchPlaceholder: 'Search' },
-    pagination: { labelRowsSelect: 'Rows' },
-    body: { emptyDataSourceMessage: 'No data' },
-  };
+  // const localization = {
+  //   toolbar: { searchPlaceholder: 'Search' },
+  //   pagination: { labelRowsSelect: 'Rows' },
+  //   body: { emptyDataSourceMessage: 'No data' },
+  // };
 
   useEffect(() => {
     setState(prev => ({
@@ -152,10 +157,10 @@ const AccountTable = props => {
             </TableRow>
           </TableHead>
           <TableBody className={classes.tableBody}>
-            {result?.map((item, key) => {
+            {result?.map(item => {
               const { date, description, category, sum, action } = item;
               return (
-                <TableRow key={description}>
+                <TableRow key={date + description + sum + Math.random()}>
                   <TableCell component="th" scope="row">
                     {date}
                   </TableCell>
@@ -172,5 +177,6 @@ const AccountTable = props => {
     </div>
   );
 };
+AccountTable.propTypes = { eager: PropTypes.bool.isRequired };
 
 export default AccountTable;

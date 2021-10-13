@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   root: {
     // '&>.MuiGrid-root.MuiGrid-container': {
     '@media screen and (min-width: 768px)': {

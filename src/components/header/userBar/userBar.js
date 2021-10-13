@@ -3,7 +3,7 @@ import { useWindowWidth } from '@react-hook/window-size';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
 import authSelector from '../../../redux/auth/auth-selectors';
-import authOperations from '../../../redux/auth/auth-operations';
+// import authOperations from '../../../redux/auth/auth-operations';
 
 import styles from './userBar.module.css';
 import authActions from '../../../redux/auth/auth-actions';

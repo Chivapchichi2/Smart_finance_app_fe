@@ -16,12 +16,12 @@ const token = {
 
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
-  dispatch(userActions.getCurrentBalanceRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/signup', credentials);
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
-    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
   }
@@ -29,13 +29,13 @@ const register = credentials => async dispatch => {
 
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
-  dispatch(userActions.getCurrentBalanceRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/signin', credentials);
     token.set(response.data.token);
 
     dispatch(authActions.loginSuccess(response.data));
-    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
@@ -43,13 +43,13 @@ const login = credentials => async dispatch => {
 
 const google = credentials => async dispatch => {
   dispatch(authActions.googleRequest());
-  dispatch(userActions.getCurrentBalanceRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/google', credentials);
     token.set(response.data.token);
 
     dispatch(authActions.googleSuccess(response.data));
-    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.googleError(error.message));
   }
@@ -77,12 +77,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
   token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
-  dispatch(userActions.getCurrentBalanceRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
 
   try {
     const response = await axios.get('/api/users/current');
     dispatch(authActions.getCurrentUserSuccess(response.data));
-    dispatch(userActions.getCurrentBalanceSuccess(response.data.balance));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
   }

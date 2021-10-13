@@ -1,9 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import routes from '../../../routes/routes';
 import s from './homeNav.module.css';
 
 const HomeNav = () => {
-  const location = useLocation();
+  // const location = useLocation();
 
   // console.log(location);
   console.log(routes.reportExpenses);

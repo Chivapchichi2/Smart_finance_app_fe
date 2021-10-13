@@ -28,7 +28,7 @@ const Balance = () => {
       e.preventDefault();
       setIsLoading(true);
       setValue(Number(value).toFixed(2));
-      dispatch(userOperations.getCurrentBalance(value));
+      dispatch(userOperations.setCurrentBalance(value));
       setTimeout(() => {
         setIsLoading(false);
       }, 500);

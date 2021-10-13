@@ -6,8 +6,8 @@ import { Divider } from '@material-ui/core';
 import iconDelete from '../tabsTable/delete.svg';
 import styles from './styles';
 
-const MobileTable = props => {
-  const { rows } = props;
+const MobileTable = () => {
+  // const { rows } = props;
 
   const classes = makeStyles(theme => styles(theme))();
 

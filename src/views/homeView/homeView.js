@@ -1,4 +1,4 @@
-import { useState, Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -62,7 +62,7 @@ const HomeView = () => {
         </>
       ) : null}
 
-      <Suspense fallback={Preloader}>
+      <Suspense fallback={<Preloader />}>
         <Switch>
           <Route
             exact

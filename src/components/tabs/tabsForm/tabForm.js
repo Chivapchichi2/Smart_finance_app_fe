@@ -1,10 +1,9 @@
-// import axios from 'axios';
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import ProductDescription from './input/productDescription';
 
+import ProductDescription from './input/productDescription';
 import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
@@ -50,6 +49,10 @@ const TabForm = ({ endpoint }) => {
       <ProductButtons />
     </form>
   );
+};
+
+TabForm.propTypes = {
+  endpoint: PropTypes.string.isRequired,
 };
 
 export default TabForm;

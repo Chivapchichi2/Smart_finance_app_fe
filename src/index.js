@@ -11,7 +11,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store.store}>
-      <PersistGate loading={Preloader} persistor={store.persistor}>
+      <PersistGate loading={<Preloader />} persistor={store.persistor}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
