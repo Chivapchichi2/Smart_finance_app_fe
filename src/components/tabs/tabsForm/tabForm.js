@@ -1,26 +1,23 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import ProductDescription from './input/productDescription';
-import serviceApi from '../../../service/api';
 import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
 
 import routes from '../../../routes/routes';
-
-import ledgerOperations from '../../../redux/ledger/ledger-operations';
-
+import { ledgerOperations } from '../../../redux/ledger';
 import s from './tabsFrom.module.css';
 
 const TabForm = ({ endpoint }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  // const [trans, setTrans] = useState({});
-  // console.log(trans);
+  const [trans, setTrans] = useState([]);
+
   const handlerSubmit = e => {
     e.preventDefault();
     const transaction = {
@@ -29,12 +26,14 @@ const TabForm = ({ endpoint }) => {
       category: e.target[2].textContent,
       value: e.target[3].valueAsNumber,
     };
-    // setTrans(transaction);
 
-    // serviceApi.addUserIncome(endpoint, transaction);
+    setTrans([...trans, transaction]);
 
-    dispatch(ledgerOperations.addUserIncome(endpoint, transaction));
+    dispatch(ledgerOperations.addUserBank(endpoint, transaction));
   };
+
+  console.log(trans);
+
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>
       {location.pathname === routes.reportExpenses ||
@@ -50,6 +49,10 @@ const TabForm = ({ endpoint }) => {
       <ProductButtons />
     </form>
   );
+};
+
+TabForm.propTypes = {
+  endpoint: PropTypes.string.isRequired,
 };
 
 export default TabForm;

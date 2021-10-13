@@ -20,10 +20,6 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
-const getCurrentBalanceRequest = createAction('auth/getCurrentBalanceRequest');
-const getCurrentBalanceSuccess = createAction('auth/getCurrentBalanceSuccess');
-const getCurrentBalanceError = createAction('auth/getCurrentBalanceError');
-
 const isModalShow = createAction('auth/isModalShow');
 
 export default {
@@ -39,9 +35,6 @@ export default {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-  getCurrentBalanceRequest,
-  getCurrentBalanceSuccess,
-  getCurrentBalanceError,
   googleRequest,
   googleSuccess,
   googleError,

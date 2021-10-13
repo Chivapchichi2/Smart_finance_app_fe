@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useCallback, useEffect } from 'react';
+import React, {
+  // useCallback,
+  useEffect,
+} from 'react';
 import { createPortal } from 'react-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  // useSelector,
+  useDispatch,
+} from 'react-redux';
 import authActions from '../../redux/auth/auth-actions';
 import authOperations from '../../redux/auth/auth-operations';
 import { ReactComponent as IconClose } from '../../svg/close.svg';
@@ -14,10 +20,7 @@ const Modal = ({ text }) => {
 
   const closeModal = () => dispatch(authActions.isModalShow());
 
-  const onLogout = useCallback(
-    () => dispatch(authOperations.logOut()),
-    [dispatch],
-  );
+  const onLogout = () => dispatch(authOperations.logOut());
 
   const handleKeydown = e => {
     console.log('KEY', e.code);

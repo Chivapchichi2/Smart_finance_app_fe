@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
@@ -50,5 +51,6 @@ const CustomTabs = props => {
     </div>
   );
 };
+CustomTabs.propTypes = { classes: PropTypes.shape().isRequired };
 
 export default withStyles(styles)(CustomTabs);

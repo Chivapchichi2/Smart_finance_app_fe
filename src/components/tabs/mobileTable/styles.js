@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   transactionsList: {
     padding: '10px 20px',
     '& .transactionWrapper': {

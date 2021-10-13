@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useWindowWidth } from '@react-hook/window-size';
+// import { useWindowWidth } from '@react-hook/window-size';
 import Balance from './balance';
 import GoToReports from './goToReports';
 import routes from '../../routes/routes';
@@ -10,7 +10,7 @@ import s from './balanceWrapper.module.css';
 
 const balanceWrapper = () => {
   const location = useLocation();
-  const width = useWindowWidth();
+  // const width = useWindowWidth();
 
   // console.log(location);
   return (

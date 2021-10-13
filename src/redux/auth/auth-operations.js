@@ -1,4 +1,5 @@
 import axios from 'axios';
+import userActions from '../user/user-actions';
 import authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com';
@@ -15,11 +16,12 @@ const token = {
 
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
-
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/signup', credentials);
     token.set(response.data.token);
     dispatch(authActions.registerSuccess(response.data));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
   }
@@ -27,11 +29,13 @@ const register = credentials => async dispatch => {
 
 const login = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/signin', credentials);
     token.set(response.data.token);
 
     dispatch(authActions.loginSuccess(response.data));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
   }
@@ -39,11 +43,13 @@ const login = credentials => async dispatch => {
 
 const google = credentials => async dispatch => {
   dispatch(authActions.googleRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
   try {
     const response = await axios.post('/api/users/google', credentials);
     token.set(response.data.token);
 
     dispatch(authActions.googleSuccess(response.data));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.googleError(error.message));
   }
@@ -55,6 +61,7 @@ const logOut = () => async dispatch => {
     await axios.get('/api/users/logout');
     token.unset();
     dispatch(authActions.logoutSuccess());
+    dispatch(authActions.isModalShow());
   } catch (error) {
     dispatch(authActions.logoutError(error.message));
   }
@@ -70,26 +77,14 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
   token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
+  dispatch(userActions.setCurrentBalanceRequest());
 
   try {
     const response = await axios.get('/api/users/current');
     dispatch(authActions.getCurrentUserSuccess(response.data));
+    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
-  }
-};
-
-const getCurrentBalance = balanceValue => async dispatch => {
-  dispatch(authActions.getCurrentBalanceRequest());
-
-  try {
-    const response = await axios.patch('/api/users/balance', {
-      value: balanceValue,
-    });
-
-    dispatch(authActions.getCurrentBalanceSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.getCurrentBalanceError(error.message));
   }
 };
 
@@ -98,6 +93,5 @@ export default {
   login,
   logOut,
   getCurrentUser,
-  getCurrentBalance,
   google,
 };
