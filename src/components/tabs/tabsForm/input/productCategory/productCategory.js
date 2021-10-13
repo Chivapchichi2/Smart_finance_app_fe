@@ -1,21 +1,7 @@
 import { useState } from 'react';
 import s from './productCategory.module.css';
 
-const category = [
-  'Транспорт',
-  'Продукты',
-  'Здоровье',
-  'Алкоголь',
-  'Развлечения',
-  'Всё для дома',
-  'Техника',
-  'Коммуналка, связь',
-  'Спорт, хобби',
-  'Образование',
-  'Прочее',
-];
-
-const ProductCategory = () => {
+const ProductCategory = ({ category, categoryType }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
@@ -35,7 +21,7 @@ const ProductCategory = () => {
         className={!value ? s.button : `${s.button} ${s.black}`}
         onClick={handleOpen}
       >
-        {!value ? 'Категория товара' : value}
+        {!value ? categoryType : value}
       </button>
 
       {open && (
