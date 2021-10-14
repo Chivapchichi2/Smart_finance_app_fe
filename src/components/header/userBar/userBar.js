@@ -3,9 +3,10 @@ import { useWindowWidth } from '@react-hook/window-size';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as LogOutBtnImg } from './logout.svg';
 import authSelector from '../../../redux/auth/auth-selectors';
-import authOperations from '../../../redux/auth/auth-operations';
+// import authOperations from '../../../redux/auth/auth-operations';
 
 import styles from './userBar.module.css';
+import authActions from '../../../redux/auth/auth-actions';
 
 function UserBar() {
   const width = useWindowWidth();
@@ -15,8 +16,6 @@ function UserBar() {
   const userAvatar = useSelector(authSelector.getUserAvatar);
 
   const userName = userEmail.split('@');
-
-  console.log(userAvatar);
 
   const nameCondition =
     width > 767 ? (
@@ -36,8 +35,13 @@ function UserBar() {
 
   const dispatch = useDispatch();
 
+  // const onLogout = useCallback(
+  //   () => dispatch(authOperations.logOut()),
+  //   [dispatch],
+  // );
+
   const onLogout = useCallback(
-    () => dispatch(authOperations.logOut()),
+    () => dispatch(authActions.isModalShow()),
     [dispatch],
   );
 

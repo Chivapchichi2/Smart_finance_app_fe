@@ -7,16 +7,14 @@ import routes from '../../../routes/routes';
 import styles from './balance.module.css';
 import BalanceNotify from './balanceNotification';
 import BalanceMobile from './balanceMobile';
-import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
-import authOperations from '../../../redux/auth/auth-operations';
+import { userSelectors, userOperations } from '../../../redux/user';
 
-const Balance = () => {
+
+  const Balance = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const width = useWindowWidth();
-
-  const balance = useSelector(ledgerSelectors.getUserBalance);
-
+  const balance = useSelector(userSelectors.getUserBalance);
   const [value, setValue] = useState(balance.toFixed(2));
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,7 +25,7 @@ const Balance = () => {
       e.preventDefault();
       setIsLoading(true);
       setValue(Number(value).toFixed(2));
-      dispatch(authOperations.getCurrentBalance(value));
+      dispatch(userOperations.setCurrentBalance(value));
       setTimeout(() => {
         setIsLoading(false);
       }, 500);

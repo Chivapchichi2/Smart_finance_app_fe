@@ -11,10 +11,6 @@ const user = createReducer(initialUserState, {
   [authActions.googleSuccess]: (_, { payload }) => payload.user,
   [authActions.logoutSuccess]: () => null,
   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload.user,
-  [authActions.getCurrentBalanceSuccess]: (state, { payload }) => ({
-    ...state,
-    ...payload,
-  }),
 });
 
 const token = createReducer(null, {
@@ -36,8 +32,13 @@ const isAuthenticated = createReducer(false, {
   [authActions.getCurrentUserError]: () => false,
 });
 
+const isShowModal = createReducer(false, {
+  [authActions.isModalShow]: state => !state,
+});
+
 export default combineReducers({
   user,
   token,
   isAuthenticated,
+  isShowModal,
 });

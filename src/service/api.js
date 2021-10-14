@@ -18,15 +18,15 @@ const serviceApi = {
   refreshUserBalance(balance) {
     return axios.patch(`api/users/balance`, balance);
   },
+
   google(data) {
     return axios.post(`api/users/google`, data);
   },
-  addUserIncome(transaction) {
-    return axios.post(`api/ledgers/income`, transaction);
+  
+  addUserIncome(endpoint, transaction) {
+    return axios.post(endpoint, transaction);
   },
-  addUserExpense(transaction) {
-    return axios.post(`api/ledgers/expense`, transaction);
-  },
+ 
   deleteTransaction(id) {
     return axios.delete(`api/ledgers/:${id}`);
   },

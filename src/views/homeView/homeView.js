@@ -1,7 +1,16 @@
-import { useState, Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
-import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  useLocation,
+  Route,
+  Switch,
+  Redirect,
+  useHistory,
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Preloader from '../../components/loader';
+
+import authSelectors from '../../redux/auth/auth-selectors';
 
 import routes from '../../routes/routes';
 
@@ -35,9 +44,15 @@ const MobileIncomesView = lazy(() =>
 );
 
 const HomeView = () => {
-  const [showModal, setShowModal] = useState(false);
+  const isAuth = useSelector(authSelectors.getModal);
+
+  console.log('isAuth', isAuth);
+
   const width = useWindowWidth();
   const location = useLocation();
+  const history = useHistory();
+  console.log('location', location);
+  console.log('history', history);
 
   return (
     <MainHome>
@@ -56,7 +71,7 @@ const HomeView = () => {
         </>
       ) : null}
 
-      <Suspense fallback={Preloader}>
+      <Suspense fallback={<Preloader />}>
         <Switch>
           <Route
             exact
@@ -67,10 +82,10 @@ const HomeView = () => {
           <Route path={routes.reportExpenses} component={MobileExpensesView} />
           <Route path={routes.reportIncomes} component={MobileIncomesView} />
 
-          <Redirect to={routes.homePage} />
+          {/* <Redirect to={routes.homePage} /> */}
         </Switch>
       </Suspense>
-      {showModal && <Modal text="Вы действительно хотите выйти?" />}
+      {isAuth && <Modal text="Вы действительно хотите выйти?" />}
     </MainHome>
   );
 };
