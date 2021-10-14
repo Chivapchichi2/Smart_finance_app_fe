@@ -18,18 +18,23 @@ const incomes = createReducer([], {
 });
 
 const incomeByMonth = createReducer([], {
-  [ledgerActions.getUserIncomeByMonthSuccess]: (state, { payload }) => [
-    ...state,
-    ...payload,
-  ],
+  [ledgerActions.getUserIncomeByMonthSuccess]: (_, { payload }) => [...payload],
 });
+
 const expenseByMonth = createReducer([], {
-  [ledgerActions.getUserExpenseByMonthSuccess]: (state, { payload }) => [
-    ...state,
+  [ledgerActions.getUserExpenseByMonthSuccess]: (_, { payload }) => [
     ...payload,
   ],
 });
 
-export default combineReducers({ expenses, incomes, incomeByMonth, expenseByMonth });
+const reportSliderValue = createReducer('Расходы', {
+  [ledgerActions.setReportSliderValue]: (_, { payload }) => payload,
+});
 
-
+export default combineReducers({
+  expenses,
+  incomes,
+  incomeByMonth,
+  expenseByMonth,
+  reportSliderValue,
+});

@@ -35,7 +35,7 @@ const getIncomeByMonth = date => async dispatch => {
 const getExpenseByMonth = date => async dispatch => {
   dispatch(ledgerActions.getUserExpenseByMonthRequest());
   try {
-    const response = await axios.get(`/api/ledgers/income/${date}`);
+    const response = await axios.get(`/api/ledgers/expense/${date}`);
 
     dispatch(ledgerActions.getUserExpenseByMonthSuccess(response.data));
   } catch (error) {

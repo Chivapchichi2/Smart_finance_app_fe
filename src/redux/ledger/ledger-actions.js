@@ -28,6 +28,8 @@ const getUserExpenseByMonthError = createAction(
   'ledger/getUserExpenseByMonthError',
 );
 
+const setReportSliderValue = createAction('ledger/setReportSliderValue');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -41,4 +43,5 @@ export default {
   getUserExpenseByMonthRequest,
   getUserExpenseByMonthSuccess,
   getUserExpenseByMonthError,
+  setReportSliderValue,
 };
