@@ -62,8 +62,9 @@ const CustomTabs = props => {
               endpoint={endpoints.expense}
               data={expensesCategory}
               catName={catExpenses}
+              exp
             />
-            <AccountTable />
+            <AccountTable exp />
             <TabSummary />
           </TabPanel>
           <TabPanel value="2">

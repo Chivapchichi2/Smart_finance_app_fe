@@ -10,7 +10,6 @@ const reportSLiderLogic = () => {
 
   console.log('expensesByMonthData', expensesByMonthData);
 
-
   const foodExp = expensesByMonthData.filter(
     item => item.category === 'Продукты',
   );
@@ -25,7 +24,6 @@ const reportSLiderLogic = () => {
   };
 
   console.log(food);
-
 };
 
 export default reportSLiderLogic;
