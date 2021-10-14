@@ -10,21 +10,29 @@ const reportSLiderLogic = () => {
 
   console.log('expensesByMonthData', expensesByMonthData);
 
-//   const foodExp = expensesByMonthData.reduce((acc, item) => {
-//     if (acc.length === 0) {
-//       return acc.push({
-//         category: item.category,
-//         summary: item.value,
-//       });
-//       }
-      
-//       acc.forEach(elem => {
-//           elem[item.category] ? elem.
-//       })
-//   }, []);
-// };
+  const foodExp = expensesByMonthData.filter(
+    item => item.category === 'Продукты',
+  );
 
-// export default reportSLiderLogic;
+  const summary = foodExp.reduce((acc, item) => acc + item.value, 0);
+  console.log('foodExp', foodExp);
+  console.log('summary', summary);
+
+  const food = {
+    category: 'Продукты',
+    summary: summary,
+  };
+
+  console.log(food);
+
+  //   const healthExp = expensesByMonthData.filter(
+  //     item => item.category === 'Здоровье',
+  //   );
+
+  //   console.log('healthExp', healthExp);
+};
+
+export default reportSLiderLogic;
 
 // [
 //   {
