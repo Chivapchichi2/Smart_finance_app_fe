@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
@@ -13,10 +14,13 @@ import routes from '../../../routes/routes';
 import { ledgerOperations } from '../../../redux/ledger';
 import s from './tabsFrom.module.css';
 
-const TabForm = ({ endpoint, data, catName }) => {
+const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
+  const [dater, setDater] = useState(new Date());
+
+  const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
 
   const handlerSubmit = e => {
     e.preventDefault();
@@ -30,6 +34,8 @@ const TabForm = ({ endpoint, data, catName }) => {
     setTrans([...trans, transaction]);
 
     dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
   };
 
   return (

@@ -10,21 +10,18 @@ const reportSLiderLogic = () => {
 
   console.log('expensesByMonthData', expensesByMonthData);
 
-//   const foodExp = expensesByMonthData.reduce((acc, item) => {
-//     if (acc.length === 0) {
-//       return acc.push({
-//         category: item.category,
-//         summary: item.value,
-//       });
-//       }
-      
-//       acc.forEach(elem => {
-//           elem[item.category] ? elem.
-//       })
-//   }, []);
-// };
+  // const foodExp = expensesByMonthData.reduce((acc, item) => {
+  //   console.log(acc);
+  //   acc.length === 0
+  //     ? acc.push({ category: item.category, summary: item.value })
+  //     : acc;
+  //   return acc;
+  // }, []);
 
-// export default reportSLiderLogic;
+  // console.log('foodExp', foodExp);
+};
+
+export default reportSLiderLogic;
 
 // [
 //   {
