@@ -24,12 +24,6 @@ const reportSLiderLogic = () => {
   };
 
   console.log(food);
-
-  //   const healthExp = expensesByMonthData.filter(
-  //     item => item.category === 'Здоровье',
-  //   );
-
-  //   console.log('healthExp', healthExp);
 };
 
 export default reportSLiderLogic;
