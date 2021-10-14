@@ -10,26 +10,22 @@ const reportSLiderLogic = () => {
 
   console.log('expensesByMonthData', expensesByMonthData);
 
-  // const foodExp = expensesByMonthData.reduce((acc, item) => {
-  //   console.log(acc);
-  //   acc.length === 0
-  //     ? acc.push({ category: item.category, summary: item.value })
-  //     : acc;
-  //   return acc;
-  // }, []);
 
-  // console.log('foodExp', foodExp);
+  const foodExp = expensesByMonthData.filter(
+    item => item.category === 'Продукты',
+  );
+
+  const summary = foodExp.reduce((acc, item) => acc + item.value, 0);
+  console.log('foodExp', foodExp);
+  console.log('summary', summary);
+
+  const food = {
+    category: 'Продукты',
+    summary: summary,
+  };
+
+  console.log(food);
+
 };
 
 export default reportSLiderLogic;
-
-// [
-//   {
-//     category: 'Продукты',
-//     summary: 35000,
-//   },
-//   {
-//     category: 'Здоровье',
-//     summary: 50000,
-//   },
-// ];
