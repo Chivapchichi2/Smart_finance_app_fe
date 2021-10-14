@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -22,21 +22,24 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
 
   const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
 
-  const handlerSubmit = e => {
-    e.preventDefault();
-    const transaction = {
-      date: e.target[0].defaultValue,
-      description: e.target[1].value,
-      category: e.target[2].textContent,
-      value: e.target[3].valueAsNumber,
-    };
+  const handlerSubmit = useCallback(
+    e => {
+      e.preventDefault();
+      const transaction = {
+        date: e.target[0].defaultValue,
+        description: e.target[1].value,
+        category: e.target[2].textContent,
+        value: e.target[3].valueAsNumber,
+      };
 
-    setTrans([...trans, transaction]);
+      setTrans([...trans, transaction]);
 
-    dispatch(ledgerOperations.addUserBank(endpoint, transaction));
-    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
-  };
+      dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+      inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
+      exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+    },
+    [dispatch],
+  );
 
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>
