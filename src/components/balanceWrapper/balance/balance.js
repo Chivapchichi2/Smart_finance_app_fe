@@ -16,8 +16,6 @@ const Balance = () => {
 
   const balance = useSelector(userSelectors.getUserBalance);
 
-  console.log(balance);
-
   const [value, setValue] = useState(balance.toFixed(2));
   const [isLoading, setIsLoading] = useState(false);
 

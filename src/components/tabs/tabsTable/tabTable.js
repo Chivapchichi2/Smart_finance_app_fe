@@ -32,8 +32,6 @@ const AccountTable = props => {
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
 
-  console.log(expensesByMonthData);
-
   const [state, setState] = useState({
     headers: [
       { title: 'Дата', field: 'date' },
@@ -64,8 +62,6 @@ const AccountTable = props => {
 
   const onDeleteHandler = id => {
     dispatch(ledgerOperations.deleteUserTransaction(id));
-
-    // dispatch(ledgerOperations.addUserBank(endpoint, transaction));
 
     inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
     exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
