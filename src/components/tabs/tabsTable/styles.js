@@ -13,6 +13,7 @@ const styles = () => ({
       boxShadow: 'none',
       borderRadius: '20px 20px 0px 0px',
       outline: '2px solid #F5F6FB',
+      height: '344px',
     },
 
     '& .MuiTable-root': {
@@ -36,6 +37,8 @@ const styles = () => ({
 
       '& .MuiTableHead-root': {
         height: 0,
+        position: 'sticky',
+        top: 0,
         backgroundColor: '#F5F6FB',
         borderRadius: '20px 20px 0px 0px !important',
 
