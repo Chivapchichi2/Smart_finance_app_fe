@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -56,15 +57,19 @@ const AccountTable = props => {
         }));
   }, [expensesByMonthData, incomesByMonthData]);
 
-  useEffect(
-    () =>
-      inc
-        ? dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear))
-        : dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear)),
-    [dispatch, dater],
-  );
+  useEffect(() => {
+    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+  }, [dispatch, dater]);
 
-  const onDeleteHandler = () => {};
+  const onDeleteHandler = id => {
+    dispatch(ledgerOperations.deleteUserTransaction(id));
+
+    // dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+
+    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+  };
 
   const { headers, rows } = state;
 
@@ -86,7 +91,7 @@ const AccountTable = props => {
     ) : (
       <span className="low">{item.value}</span>
     ),
-    action: getAction(),
+    action: getAction(item._id),
   }));
 
   return (

@@ -28,6 +28,16 @@ const getUserExpenseByMonthError = createAction(
   'ledger/getUserExpenseByMonthError',
 );
 
+const deleteUserTransactionRequest = createAction(
+  'ledger/deleteUserTransactionRequest',
+);
+const deleteUserTransactionSuccess = createAction(
+  'ledger/deleteUserTransactionSuccess',
+);
+const deleteUserTransactionError = createAction(
+  'ledger/deleteUserTransactionError',
+);
+
 const setReportSliderValue = createAction('ledger/setReportSliderValue');
 
 export default {
@@ -44,4 +54,7 @@ export default {
   getUserExpenseByMonthSuccess,
   getUserExpenseByMonthError,
   setReportSliderValue,
+  deleteUserTransactionRequest,
+  deleteUserTransactionSuccess,
+  deleteUserTransactionError,
 };
