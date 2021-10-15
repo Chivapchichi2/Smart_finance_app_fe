@@ -43,4 +43,20 @@ const getExpenseByMonth = date => async dispatch => {
   }
 };
 
-export default { addUserBank, getIncomeByMonth, getExpenseByMonth };
+const deleteUserTransaction = transactionId => async dispatch => {
+  dispatch(ledgerActions.deleteUserTransactionRequest());
+  try {
+    await axios.delete(`/api/ledgers/${transactionId}`);
+
+    await dispatch(ledgerActions.deleteUserTransactionSuccess(transactionId));
+  } catch (error) {
+    dispatch(ledgerActions.deleteUserTransactionError(error.message));
+  }
+};
+
+export default {
+  addUserBank,
+  getIncomeByMonth,
+  getExpenseByMonth,
+  deleteUserTransaction,
+};

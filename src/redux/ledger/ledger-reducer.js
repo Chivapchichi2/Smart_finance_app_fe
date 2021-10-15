@@ -27,6 +27,11 @@ const expenseByMonth = createReducer([], {
   ],
 });
 
+const deleteUserTransaction = createReducer([], {
+  [ledgerActions.deleteUserTransactionSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+});
+
 const reportSliderValue = createReducer('Расходы', {
   [ledgerActions.setReportSliderValue]: (_, { payload }) => payload,
 });
@@ -37,4 +42,5 @@ export default combineReducers({
   incomeByMonth,
   expenseByMonth,
   reportSliderValue,
+  deleteUserTransaction,
 });
