@@ -83,9 +83,13 @@ const AccountTable = props => {
   const result = rows.map(item => ({
     ...item,
     value: inc ? (
-      <span className="high">{item.value}</span>
+      <TableCell align="left" className="high">
+        {item.value}
+      </TableCell>
     ) : (
-      <span className="low">{item.value}</span>
+      <TableCell align="left" className="low">
+        {`-${item.value}`}
+      </TableCell>
     ),
     action: getAction(item._id),
   }));
@@ -117,13 +121,13 @@ const AccountTable = props => {
             {result?.map(item => {
               const { date, description, category, value, action } = item;
               return (
-                <TableRow key={date + description + value + Math.random()}>
+                <TableRow key={item._id}>
                   <TableCell component="th" scope="row">
                     {date}
                   </TableCell>
                   <TableCell align="left">{description}</TableCell>
                   <TableCell align="left">{category}</TableCell>
-                  <TableCell align="left">{value}</TableCell>
+                  {value}
                   <TableCell align="left">{action}</TableCell>
                 </TableRow>
               );

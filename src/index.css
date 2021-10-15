@@ -84,3 +84,9 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(176, 255, 156);
 }
+
+div .Toastify__toast--error,
+div .Toastify__toast--warning {
+  background: rgba(255, 117, 29, 04);
+   border-radius: 4px;
+}
