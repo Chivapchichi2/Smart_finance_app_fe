@@ -14,6 +14,11 @@ import {
 } from '@material-ui/core';
 import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 import ledgerOperations from '../../../redux/ledger/ledger-operations';
+import {
+  userActions,
+  userOperations,
+  userSelectors,
+} from '../../../redux/user';
 import iconDelete from './delete.svg';
 
 import styles from './styles';
@@ -31,8 +36,9 @@ const AccountTable = props => {
 
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
+  const balance = useSelector(userSelectors.getUserBalance);
 
-  console.log(expensesByMonthData);
+  // console.log(expensesByMonthData);
 
   const [state, setState] = useState({
     headers: [
@@ -62,8 +68,13 @@ const AccountTable = props => {
     exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
   }, [dispatch, dater]);
 
-  const onDeleteHandler = id => {
+  const onDeleteHandler = (id, value) => {
+    const newBalance = balance + value;
+
     dispatch(ledgerOperations.deleteUserTransaction(id));
+    dispatch(userActions.refreshUserBalance(1));
+
+    dispatch(userOperations.setCurrentBalance(newBalance));
 
     // dispatch(ledgerOperations.addUserBank(endpoint, transaction));
 
@@ -73,12 +84,12 @@ const AccountTable = props => {
 
   const { headers, rows } = state;
 
-  const getAction = id => (
+  const getAction = (id, value) => (
     // eslint-disable-next-line react/button-has-type
     <button
       className="delButton"
       style={{ backgroundImage: `url(${iconDelete})` }}
-      onClick={() => onDeleteHandler(id)}
+      onClick={() => onDeleteHandler(id, value)}
     >
       {' '}
     </button>
@@ -91,7 +102,7 @@ const AccountTable = props => {
     ) : (
       <span className="low">{item.value}</span>
     ),
-    action: getAction(item._id),
+    action: getAction(item._id, item.value),
   }));
 
   return (
