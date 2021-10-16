@@ -25,9 +25,7 @@ const AccountTable = props => {
 
   const dispatch = useDispatch();
 
-  const [dater, setDater] = useState(new Date());
-
-  const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
+  const dater = useSelector(ledgerSelectors.datepickerValue);
 
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
@@ -56,15 +54,17 @@ const AccountTable = props => {
   }, [expensesByMonthData, incomesByMonthData]);
 
   useEffect(() => {
-    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+    if (dater) {
+      inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+      exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+    }
   }, [dispatch, dater]);
 
-  const onDeleteHandler = id => {
-    dispatch(ledgerOperations.deleteUserTransaction(id));
+  const onDeleteHandler = async id => {
+    await dispatch(ledgerOperations.deleteUserTransaction(id));
 
-    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
   };
 
   const { headers, rows } = state;
