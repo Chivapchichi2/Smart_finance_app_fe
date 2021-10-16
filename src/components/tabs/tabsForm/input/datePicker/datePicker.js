@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
@@ -15,9 +16,9 @@ function DatePicker() {
   const location = useLocation();
   const width = useWindowWidth();
 
-  const normalizedDate = `${
-    startDate.getMonth() + 1
-  }.${startDate.getFullYear()}`;
+  const normalizedDate = (
+    '0' + `${startDate.getMonth() + 1}.${startDate.getFullYear()}`
+  ).slice(-7);
 
   useEffect(() => {
     dispatch(ledgerActions.setCurrentDateValue(normalizedDate));

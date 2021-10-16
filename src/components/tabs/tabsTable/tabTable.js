@@ -60,8 +60,8 @@ const AccountTable = props => {
     }
   }, [dispatch, dater]);
 
-  const onDeleteHandler = id => {
-    dispatch(ledgerOperations.deleteUserTransaction(id));
+  const onDeleteHandler = async id => {
+    await dispatch(ledgerOperations.deleteUserTransaction(id));
 
     inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
     exp && dispatch(ledgerOperations.getExpenseByMonth(dater));

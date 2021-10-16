@@ -27,7 +27,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const dater = useSelector(ledgerSelectors.datepickerValue);
   console.log('DATA', dater);
 
-  const handlerSubmit = e => {
+  const handlerSubmit = async e => {
     e.preventDefault();
     const transaction = {
       date: e.target[0].defaultValue,
@@ -38,10 +38,10 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
 
     setTrans([...trans, transaction]);
 
-    dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+    await dispatch(ledgerOperations.addUserBank(endpoint, transaction));
 
-    // inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
-    // exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
   };
 
   return (

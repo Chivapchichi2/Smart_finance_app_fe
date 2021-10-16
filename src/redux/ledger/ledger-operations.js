@@ -10,16 +10,6 @@ const addUserBank = (endpoint, transaction) => async dispatch => {
     const response = await axios.post(endpoint, transaction);
 
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
-
-    if (endpoint === 'api/ledgers/income') {
-      await dispatch(
-        ledgerActions.addUserIncomeSuccess(response.data.transaction),
-      );
-    } else {
-      await dispatch(
-        ledgerActions.addUserExpenseSuccess(response.data.transaction),
-      );
-    }
   } catch (error) {
     dispatch(userActions.setCurrentBalanceError(error.message));
   }
@@ -31,7 +21,7 @@ const getIncomeByMonth = date => async dispatch => {
     const response = await axios.get(`/api/ledgers/income/${date}`);
     const resp = response.data.reverse();
 
-    dispatch(ledgerActions.getUserIncomeByMonthSuccess(resp));
+    await dispatch(ledgerActions.getUserIncomeByMonthSuccess(resp));
   } catch (error) {
     dispatch(ledgerActions.getUserIncomeByMonthError(error.message));
   }
