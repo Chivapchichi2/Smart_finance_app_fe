@@ -29,10 +29,13 @@ const CurrentPeriod = () => {
   const getMonthAndYear = `${date.getMonth() + 1}.${date.getFullYear()}`;
 
   useEffect(
-    () =>
-      reportSliderValue === 'Расходы'
-        ? dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear))
-        : dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear)),
+    () => {
+      dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+      dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
+    },
+    // reportSliderValue === 'Расходы'
+    //   ? dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear))
+    //   : dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear)),
     [dispatch, date, reportSliderValue],
   );
 
