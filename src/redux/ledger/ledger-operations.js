@@ -12,9 +12,13 @@ const addUserBank = (endpoint, transaction) => async dispatch => {
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
 
     if (endpoint === 'api/ledgers/income') {
-      dispatch(ledgerActions.addUserIncomeSuccess(response.data.transaction));
+      await dispatch(
+        ledgerActions.addUserIncomeSuccess(response.data.transaction),
+      );
     } else {
-      dispatch(ledgerActions.addUserExpenseSuccess(response.data.transaction));
+      await dispatch(
+        ledgerActions.addUserExpenseSuccess(response.data.transaction),
+      );
     }
   } catch (error) {
     dispatch(userActions.setCurrentBalanceError(error.message));

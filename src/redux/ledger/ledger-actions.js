@@ -40,6 +40,8 @@ const deleteUserTransactionError = createAction(
 
 const setReportSliderValue = createAction('ledger/setReportSliderValue');
 
+const setCurrentDateValue = createAction('ledger/setCurrentDateValue');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -57,4 +59,5 @@ export default {
   deleteUserTransactionRequest,
   deleteUserTransactionSuccess,
   deleteUserTransactionError,
+  setCurrentDateValue,
 };
