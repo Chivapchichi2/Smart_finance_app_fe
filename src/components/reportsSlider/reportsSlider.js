@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonArrow from '../buttonArrow';
 import { ReactComponent as ArrowLeft } from '../../svg/arrowLeft.svg';
@@ -16,6 +16,7 @@ const reportsSlider = () => {
   const [name, setName] = useState('Расходы');
   const [category, setCategory] = useState([]);
   const dispatch = useDispatch();
+  const ref = useRef();
 
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
@@ -42,16 +43,39 @@ const reportsSlider = () => {
   const handleClick = () => setValue(!value);
 
   const categoryHandler = prop => e => {
+    ref.current = e.target;
+
+    if (e.target.nodeName !== 'DIV') {
+      return;
+    }
+    [...e.target.closest('ul').children].map(elem =>
+      elem.childNodes[1].classList.remove(`${s.active}`),
+    );
+
+    e.target.classList.add(`${s.active}`);
     if (name === 'Расходы') {
-      const arr = expensesByMonthData.filter(
-        expense => expense.category === prop,
-      );
+      const arr = expensesByMonthData
+        .filter(expense => expense.category === prop)
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 10);
       dispatch(ledgerActions.setExpenseChartValue(arr));
     } else {
-      const arr = incomesByMonthData.filter(income => income.category === prop);
+      const arr = incomesByMonthData
+        .filter(income => income.category === prop)
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 10);
       dispatch(ledgerActions.setIncomeChartValue(arr));
     }
   };
+
+  console.log('REF', ref.current);
+
+  useEffect(
+    () => () => {
+      ref.current.classList.remove(`${s.active}`);
+    },
+    [],
+  );
 
   return (
     <div className={s.container}>
@@ -69,7 +93,7 @@ const reportsSlider = () => {
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
           <li className={s.item} onClick={categoryHandler(elem.category)}>
             <p className={s.value}>{elem.summary}</p>
-            <div className={s.svgBox}>
+            <div className={s.svgBox} ref={ref}>
               <svg width="58" height="58">
                 <use xlinkHref={`${sprite}#${icons[elem.category]}`} />
               </svg>

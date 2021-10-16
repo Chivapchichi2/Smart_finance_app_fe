@@ -102,3 +102,8 @@
     width: 660px;
   }
 }
+
+.active {
+  fill: #ff751d;
+  background-color: #ffdac0;
+}
