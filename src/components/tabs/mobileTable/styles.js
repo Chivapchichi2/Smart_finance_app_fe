@@ -1,6 +1,8 @@
 const styles = () => ({
   transactionsList: {
     padding: '10px 20px',
+    height: '160px',
+    overflowY: 'scroll',
     '& .transactionWrapper': {
       display: 'flex',
       justifyContent: 'space-between',

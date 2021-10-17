@@ -11,14 +11,21 @@ const reportView = () => {
   const chartValueExpense = useSelector(ledgerSelectors.getExpenseChartValue);
   const chartValueIncome = useSelector(ledgerSelectors.getIncomeChartValue);
   const reportSliderValue = useSelector(ledgerSelectors.getReportSliderValue);
+  const dataMonth = useSelector(ledgerSelectors.currentPeriodDateValue);
 
   useEffect(
     () => () => {
       dispatch(ledgerActions.setExpenseChartValue([]));
+      dispatch(ledgerActions.setIncomeChartValue([]));
     },
 
     [dispatch],
   );
+
+  useEffect(() => {
+    dispatch(ledgerActions.setExpenseChartValue([]));
+    dispatch(ledgerActions.setIncomeChartValue([]));
+  }, [dispatch, dataMonth]);
 
   return (
     <>

@@ -8,8 +8,14 @@ import TabPanel from '@material-ui/lab/TabPanel';
 import withStyles from '@material-ui/core/styles/withStyles';
 import TabForm from './tabsForm/tabForm';
 import TabSummary from './tabsSummary';
-
 import AccountTable from './tabsTable/tabTable';
+import {
+  endpoints,
+  expensesCategory,
+  incomesCategory,
+  catIncomes,
+  catExpenses,
+} from '../../helpers';
 
 import { styles } from './styles';
 
@@ -21,31 +27,6 @@ const CustomTabs = props => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const endpoints = {
-    income: 'api/ledgers/income',
-    expense: 'api/ledgers/expense',
-  };
-
-  const expensesCategory = [
-    'Транспорт',
-    'Продукты',
-    'Здоровье',
-    'Алкоголь',
-    'Развлечения',
-    'Всё для дома',
-    'Техника',
-    'Коммуналка, связь',
-    'Спорт, хобби',
-    'Образование',
-    'Прочее',
-  ];
-
-  const incomesCategory = ['ЗП', 'Дополнительные доходы'];
-
-  const catIncomes = 'Категория дохода';
-
-  const catExpenses = 'Категория товара';
 
   return (
     <div className={classes.root}>

@@ -45,14 +45,8 @@ const MobileIncomesView = lazy(() =>
 
 const HomeView = () => {
   const isAuth = useSelector(authSelectors.getModal);
-
-  // console.log('isAuth', isAuth);
-
   const width = useWindowWidth();
   const location = useLocation();
-  // const history = useHistory();
-  // console.log('location', location);
-  // console.log('history', history);
 
   return (
     <MainHome>

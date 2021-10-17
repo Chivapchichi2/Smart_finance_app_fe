@@ -27,14 +27,7 @@ const customBarLabelMobile = ({ x, y, width, name, value }) => (
     >
       {`${name}`}
     </text>
-    <text
-      style={{}}
-      x={x + width / 1.3}
-      y={y}
-      fill="#52555F"
-      fontSize="10"
-      dy={-4}
-    >
+    <text x={x + width / 1.3} y={y} fill="#52555F" fontSize="10" dy={-4}>
       {`${value}грн.`}
     </text>
   </>
@@ -45,7 +38,7 @@ const customBarLabelTablet = ({ x, y, width, value }) => (
     x={x + width / 100}
     y={y}
     fill="#52555F"
-    fontSize="10"
+    fontSize="12"
     textAnchor="start"
     dy={-4}
   >{`${value}грн.`}</text>
@@ -74,10 +67,10 @@ export default function charts() {
         <ComposedChart
           layout="vertical"
           width={500}
-          height={200}
+          height={400}
           data={data}
           margin={{
-            top: 20,
+            top: 10,
             right: 20,
             bottom: 10,
             left: 10,
@@ -85,11 +78,17 @@ export default function charts() {
         >
           <CartesianGrid stroke="#f5f5f5" vertical={false} horizontal={false} />
           <XAxis type="number" hide />
-          <YAxis dataKey="name" type="category" scale="band" hide />
+          <YAxis
+            padding={{ top: -50, bottom: -50 }}
+            dataKey="name"
+            type="category"
+            scale="band"
+            hide
+          />
 
           <Bar
             dataKey="value"
-            barSize={14}
+            barSize={15}
             fill="#FF751D"
             radius={[0, 10, 10, 0]}
             label={customBarLabelMobile}
@@ -126,6 +125,7 @@ export default function charts() {
           <Bar
             dataKey="value"
             barSize={40}
+            radius={[10, 10, 0, 0]}
             fill="#FF751D"
             label={customBarLabelTablet}
           >
