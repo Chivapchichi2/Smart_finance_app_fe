@@ -1,9 +1,6 @@
 import axios from 'axios';
-<<<<<<< HEAD
 import { toast } from 'react-toastify';
-=======
 import ledgerActions from '../ledger/ledger-actions';
->>>>>>> origin/dev
 import userActions from '../user/user-actions';
 import authActions from './auth-actions';
 
