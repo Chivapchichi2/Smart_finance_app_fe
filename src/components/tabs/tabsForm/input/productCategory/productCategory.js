@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import s from './productCategory.module.css';
 
 const ProductCategory = ({ category, categoryType }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => setCategories(category), [category]);
 
   const handleOpen = () => setOpen(!open);
 
@@ -24,19 +27,20 @@ const ProductCategory = ({ category, categoryType }) => {
         {!value ? categoryType : value}
       </button>
 
-      {open && (
+      {open && category && (
         <ul className={s.menu}>
-          {category.map(item => (
-            <li
-              key={item}
-              className={s.item}
-              onClick={handleClick}
-              onKeyDown={keyDown}
-              role="none"
-            >
-              {item}
-            </li>
-          ))}
+          {category &&
+            category.map(item => (
+              <li
+                key={item}
+                className={s.item}
+                onClick={handleClick}
+                onKeyDown={keyDown}
+                role="none"
+              >
+                {item}
+              </li>
+            ))}
         </ul>
       )}
     </div>

@@ -34,21 +34,6 @@ const reportSLiderLogic = () => {
   };
 
   console.log(getData(result));
-
-  // const foodExp = expensesByMonthData.filter(
-  //   item => item.category === 'Продукты',
-  // );
-
-  // const summary = foodExp.reduce((acc, item) => acc + item.value, 0);
-  // console.log('foodExp', foodExp);
-  // console.log('summary', summary);
-
-  // const food = {
-  //   category: 'Продукты',
-  //   summary: summary,
-  // };
-
-  // console.log(food);
 };
 
 export default reportSLiderLogic;

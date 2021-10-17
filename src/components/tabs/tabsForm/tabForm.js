@@ -20,6 +20,8 @@ import {
 import s from './tabsFrom.module.css';
 
 const TabForm = ({ endpoint, data, catName, inc, exp }) => {
+  console.log(data);
+
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
