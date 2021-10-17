@@ -34,9 +34,15 @@ const setDateValue = createReducer('', {
   [ledgerActions.setCurrentDateValue]: (_, { payload }) => payload,
 });
 
+const expenseChartValue = createReducer([], {
+  [ledgerActions.setExpenseChartValue]: (_, { payload }) => [...payload],
+});
+
+const incomeChartValue = createReducer([], {
+  [ledgerActions.setIncomeChartValue]: (_, { payload }) => [...payload],
+});
+
 export default combineReducers({
-  // expenses,
-  // incomes,
   incomeByMonth,
   expenseByMonth,
   incomeByMonthError,
@@ -44,4 +50,6 @@ export default combineReducers({
   expenseByMonthError,
   deleteUserTransaction,
   setDateValue,
+  expenseChartValue,
+  incomeChartValue,
 });

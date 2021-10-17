@@ -42,6 +42,10 @@ const setReportSliderValue = createAction('ledger/setReportSliderValue');
 
 const setCurrentDateValue = createAction('ledger/setCurrentDateValue');
 
+const setExpenseChartValue = createAction('ledger/setExpenseChartValue');
+
+const setIncomeChartValue = createAction('ledger/setIncomeChartValue');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -60,4 +64,6 @@ export default {
   deleteUserTransactionSuccess,
   deleteUserTransactionError,
   setCurrentDateValue,
+  setExpenseChartValue,
+  setIncomeChartValue,
 };
