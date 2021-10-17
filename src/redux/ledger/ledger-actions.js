@@ -56,6 +56,8 @@ const setExpenseChartValue = createAction('ledger/setExpenseChartValue');
 
 const setIncomeChartValue = createAction('ledger/setIncomeChartValue');
 
+const setCurrentPeriodDate = createAction('ledger/setCurrentPeriodDate');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -79,4 +81,5 @@ export default {
   setCurrentDateValue,
   setExpenseChartValue,
   setIncomeChartValue,
+  setCurrentPeriodDate,
 };

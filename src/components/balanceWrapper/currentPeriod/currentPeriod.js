@@ -3,8 +3,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconArrowLeft } from '../../../svg/arrowLeft.svg';
 import { ReactComponent as IconArrowRight } from '../../../svg/arrowRight.svg';
-import ledgerOperations from '../../../redux/ledger/ledger-operations';
-import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
+import {
+  ledgerOperations,
+  ledgerSelectors,
+  ledgerActions,
+} from '../../../redux/ledger';
+
 import styles from './currentPeriod.module.css';
 
 const CurrentPeriod = () => {
@@ -30,16 +34,11 @@ const CurrentPeriod = () => {
     '0' + `${date.getMonth() + 1}.${date.getFullYear()}`
   ).slice(-7);
 
-  useEffect(
-    () => {
-      dispatch(ledgerOperations.getExpenseByMonth(normalizedDate));
-      dispatch(ledgerOperations.getIncomeByMonth(normalizedDate));
-    },
-    // reportSliderValue === 'Расходы'
-    //   ? dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear))
-    //   : dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear)),
-    [dispatch, date, reportSliderValue],
-  );
+  useEffect(async () => {
+    await dispatch(ledgerActions.setCurrentPeriodDate(normalizedDate));
+    await dispatch(ledgerOperations.getExpenseByMonth(normalizedDate));
+    await dispatch(ledgerOperations.getIncomeByMonth(normalizedDate));
+  }, [dispatch, date, reportSliderValue]);
 
   const year = date.getFullYear();
   const month = date.toLocaleDateString('ru', { month: 'long' });
