@@ -13,6 +13,7 @@ const styles = () => ({
       boxShadow: 'none',
       borderRadius: '20px 20px 0px 0px',
       outline: '2px solid #F5F6FB',
+      height: '344px',
     },
 
     '& .MuiTable-root': {
@@ -22,6 +23,7 @@ const styles = () => ({
       '& .delButton': {
         width: 32,
         height: 32,
+        textAlign: 'center',
         border: 'none',
         borderRadius: '50%',
         backgroundColor: '#F5F6FB',
@@ -36,6 +38,8 @@ const styles = () => ({
 
       '& .MuiTableHead-root': {
         height: 0,
+        position: 'sticky',
+        top: 0,
         backgroundColor: '#F5F6FB',
         borderRadius: '20px 20px 0px 0px !important',
 
@@ -90,11 +94,11 @@ const styles = () => ({
         lineHeight: 1.67,
         color: '#52555F',
 
-        '& .high': {
+        '&.high': {
           color: '#407946',
         },
 
-        '& .low': {
+        '&.low': {
           color: '#E7192E',
         },
       },

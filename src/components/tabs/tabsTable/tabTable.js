@@ -1,14 +1,9 @@
-import React, {
-  useEffect,
-  useState,
-  // createRef
-} from 'react';
-import PropTypes from 'prop-types';
-
-// import MaterialTable from 'material-table';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-expressions */
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  // Grid,
   Paper,
   Table,
   TableBody,
@@ -17,97 +12,60 @@ import {
   TableHead,
   TableRow,
 } from '@material-ui/core';
-
+import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
+import ledgerOperations from '../../../redux/ledger/ledger-operations';
 import iconDelete from './delete.svg';
 
 import styles from './styles';
 
 const AccountTable = props => {
-  const { eager } = props;
-
-  // const tableRef = createRef();
+  const { exp, inc } = props;
 
   const classes = makeStyles(theme => styles(theme))();
 
+  const dispatch = useDispatch();
+
+  const dater = useSelector(ledgerSelectors.datepickerValue);
+
+  const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
+  const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
+
   const [state, setState] = useState({
-    headers: [],
+    headers: [
+      { title: 'Дата', field: 'date' },
+      { title: 'Описание', field: 'description' },
+      { title: 'Категория', field: 'category' },
+      { title: 'Сумма', field: 'sum' },
+      { title: '', field: 'action' },
+    ],
     rows: [],
   });
 
-  // const tableOptions = {
-  //   search: false,
-  //   toolbar: false,
-  //   actionsColumnIndex: -1,
-  //   actionsColumn: '',
-  //   emptyRowsWhenPaging: false,
-  //   pageSize: 7,
-  //   pageSizeOptions: [7, 14, 21],
-  // };
-
-  // const localization = {
-  //   toolbar: { searchPlaceholder: 'Search' },
-  //   pagination: { labelRowsSelect: 'Rows' },
-  //   body: { emptyDataSourceMessage: 'No data' },
-  // };
+  useEffect(() => {
+    inc
+      ? setState(prev => ({
+          ...prev,
+          rows: [...incomesByMonthData],
+        }))
+      : setState(prev => ({
+          ...prev,
+          rows: [...expensesByMonthData],
+        }));
+  }, [expensesByMonthData, incomesByMonthData]);
 
   useEffect(() => {
-    setState(prev => ({
-      ...prev,
-      headers: [
-        { title: 'Дата', field: 'date' },
-        { title: 'Описание', field: 'description' },
-        { title: 'Категория', field: 'category' },
-        { title: 'Сумма', field: 'sum' },
-        { title: '', field: 'action' },
-      ],
-    }));
-
-    if (eager) {
-      setState(prev => ({
-        ...prev,
-        rows: [
-          {
-            date: '09.10.2021',
-            description: 'tttttt',
-            category: 'food',
-            sum: '-300',
-          },
-          {
-            date: '09.10.2021',
-            description: 'yummy',
-            category: 'food',
-            sum: '200',
-          },
-          {
-            date: '09.10.2021',
-            description: 'yummy',
-            category: 'food',
-            sum: '-100',
-          },
-          {
-            date: '09.10.2021',
-            description: 'yummy',
-            category: 'food',
-            sum: '350',
-          },
-          {
-            date: '09.10.2021',
-            description: 'yummy',
-            category: 'food',
-            sum: '100',
-          },
-          {
-            date: '09.10.2021',
-            description: 'yummy',
-            category: 'food',
-            sum: '350',
-          },
-        ],
-      }));
+    if (dater) {
+      inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+      exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
     }
-  }, []);
+  }, [dispatch, dater]);
 
-  const onDeleteHandler = () => {};
+  const onDeleteHandler = async id => {
+    await dispatch(ledgerOperations.deleteUserTransaction(id));
+
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+  };
 
   const { headers, rows } = state;
 
@@ -124,13 +82,16 @@ const AccountTable = props => {
 
   const result = rows.map(item => ({
     ...item,
-    sum:
-      item.sum > 0 ? (
-        <span className="high">{item.sum}</span>
-      ) : (
-        <span className="low">{item.sum}</span>
-      ),
-    action: getAction(),
+    value: inc ? (
+      <TableCell align="left" className="high">
+        {item.value}
+      </TableCell>
+    ) : (
+      <TableCell align="left" className="low">
+        {`-${item.value}`}
+      </TableCell>
+    ),
+    action: getAction(item._id),
   }));
 
   return (
@@ -158,15 +119,15 @@ const AccountTable = props => {
           </TableHead>
           <TableBody className={classes.tableBody}>
             {result?.map(item => {
-              const { date, description, category, sum, action } = item;
+              const { date, description, category, value, action } = item;
               return (
-                <TableRow key={date + description + sum + Math.random()}>
+                <TableRow key={item._id}>
                   <TableCell component="th" scope="row">
                     {date}
                   </TableCell>
                   <TableCell align="left">{description}</TableCell>
                   <TableCell align="left">{category}</TableCell>
-                  <TableCell align="left">{sum}</TableCell>
+                  {value}
                   <TableCell align="left">{action}</TableCell>
                 </TableRow>
               );
@@ -177,6 +138,5 @@ const AccountTable = props => {
     </div>
   );
 };
-AccountTable.propTypes = { eager: PropTypes.bool.isRequired };
 
 export default AccountTable;

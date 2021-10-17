@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ProductDescription from './input/productDescription';
 import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
+import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 
 import routes from '../../../routes/routes';
-import { ledgerOperations } from '../../../redux/ledger';
+import {
+  ledgerOperations,
+  ledgerSelectors,
+  ledgerActions,
+} from '../../../redux/ledger';
+
 import s from './tabsFrom.module.css';
 
-const TabForm = ({ endpoint, data, catName }) => {
+const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
 
-  const handlerSubmit = e => {
+  const error = useSelector(ledgerSelectors.errorByYear);
+  const dater = useSelector(ledgerSelectors.datepickerValue);
+  console.log('DATA', dater);
+
+  const handlerSubmit = async e => {
     e.preventDefault();
     const transaction = {
       date: e.target[0].defaultValue,
@@ -29,7 +40,10 @@ const TabForm = ({ endpoint, data, catName }) => {
 
     setTrans([...trans, transaction]);
 
-    dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+    await dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
   };
 
   return (

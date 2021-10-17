@@ -62,8 +62,9 @@ const CustomTabs = props => {
               endpoint={endpoints.expense}
               data={expensesCategory}
               catName={catExpenses}
+              exp
             />
-            <AccountTable eager />
+            <AccountTable exp />
             <TabSummary />
           </TabPanel>
           <TabPanel value="2">
@@ -71,8 +72,9 @@ const CustomTabs = props => {
               endpoint={endpoints.income}
               data={incomesCategory}
               catName={catIncomes}
+              inc
             />
-            <AccountTable eager />
+            <AccountTable inc />
             <TabSummary />
           </TabPanel>
         </TabContext>

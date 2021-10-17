@@ -28,6 +28,34 @@ const getUserExpenseByMonthError = createAction(
   'ledger/getUserExpenseByMonthError',
 );
 
+const getUserTransactionsByYearRequest = createAction(
+  'ledger/getUserTransactionsByYearRequest',
+);
+const getUserTransactionsByYearSuccess = createAction(
+  'ledger/getUserTransactionsByYearSuccess',
+);
+const getUserTransactionsByYearError = createAction(
+  'ledger/getUserTransactionsByYearError',
+);
+
+const deleteUserTransactionRequest = createAction(
+  'ledger/deleteUserTransactionRequest',
+);
+const deleteUserTransactionSuccess = createAction(
+  'ledger/deleteUserTransactionSuccess',
+);
+const deleteUserTransactionError = createAction(
+  'ledger/deleteUserTransactionError',
+);
+
+const setReportSliderValue = createAction('ledger/setReportSliderValue');
+
+const setCurrentDateValue = createAction('ledger/setCurrentDateValue');
+
+const setExpenseChartValue = createAction('ledger/setExpenseChartValue');
+
+const setIncomeChartValue = createAction('ledger/setIncomeChartValue');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -41,4 +69,14 @@ export default {
   getUserExpenseByMonthRequest,
   getUserExpenseByMonthSuccess,
   getUserExpenseByMonthError,
+  setReportSliderValue,
+  deleteUserTransactionRequest,
+  deleteUserTransactionSuccess,
+  deleteUserTransactionError,
+  getUserTransactionsByYearRequest,
+  getUserTransactionsByYearSuccess,
+  getUserTransactionsByYearError,
+  setCurrentDateValue,
+  setExpenseChartValue,
+  setIncomeChartValue,
 };

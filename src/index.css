@@ -67,3 +67,26 @@ svg {
 a {
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #ff751d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(176, 255, 156);
+}
+
+div .Toastify__toast--error,
+div .Toastify__toast--warning {
+  background: rgba(255, 117, 29, 04);
+   border-radius: 4px;
+}
