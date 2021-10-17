@@ -4,6 +4,14 @@ import ReportsChart from '../../components/reportsChart';
 import ReportByMonth from '../../components/reportByMonth';
 import { ledgerSelectors } from '../../redux/ledger';
 
+const reportView = () => (
+  <>
+    <ReportByMonth />
+    <ReportSlider />
+    <ReportsChart />
+  </>
+);
+
 const reportView = () => {
   const chartValueExpense = useSelector(ledgerSelectors.getExpenseChartValue);
   const chartValueIncome = useSelector(ledgerSelectors.getIncomeChartValue);

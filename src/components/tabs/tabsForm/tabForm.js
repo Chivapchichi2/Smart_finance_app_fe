@@ -9,6 +9,7 @@ import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
+import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 
 import routes from '../../../routes/routes';
 import {
@@ -24,6 +25,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
 
+  const error = useSelector(ledgerSelectors.errorByYear);
   const dater = useSelector(ledgerSelectors.datepickerValue);
   console.log('DATA', dater);
 
