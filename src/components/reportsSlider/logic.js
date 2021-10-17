@@ -1,8 +1,6 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-return-assign */
-import { useSelector } from 'react-redux';
-import ledgerSelectors from '../../redux/ledger/ledger-selectors';
 
 const reportSLiderLogic = dataToParse => {
   const result = dataToParse.reduce(
@@ -25,6 +23,7 @@ const reportSLiderLogic = dataToParse => {
     return arr;
   };
 
+  console.log(getData(result));
   return getData(result);
 };
 

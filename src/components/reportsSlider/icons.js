@@ -1,7 +1,7 @@
 export default {
   Продукты: 'icon-food',
   Алкоголь: 'icon-cocktail',
-  Развлечение: 'icon-kite',
+  Развлечения: 'icon-kite',
   Здоровье: 'icon-health',
   Транспорт: 'icon-car',
   'Всё для дома': 'icon-couch',

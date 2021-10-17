@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import ledgerActions from '../ledger/ledger-actions';
 import userActions from '../user/user-actions';
 import authActions from './auth-actions';
@@ -25,6 +26,7 @@ const register = credentials => async dispatch => {
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.registerError(error.message));
+    toast.warn(error.response.data.message);
   }
 };
 
@@ -39,6 +41,7 @@ const login = credentials => async dispatch => {
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
+    toast.warn(error.response.data.message);
   }
 };
 
@@ -53,6 +56,7 @@ const google = credentials => async dispatch => {
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(authActions.googleError(error.message));
+    toast.warn(error.response.data.message);
   }
 };
 
@@ -65,6 +69,7 @@ const logOut = () => async dispatch => {
     dispatch(authActions.isModalShow());
   } catch (error) {
     dispatch(authActions.logoutError(error.message));
+    toast.warn(error.response.data.message);
   }
 };
 
@@ -89,6 +94,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     );
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
+    toast.warn(error.response.data.message);
     dispatch(ledgerActions.getUserTransactionsByYearError(error.message));
   }
 };

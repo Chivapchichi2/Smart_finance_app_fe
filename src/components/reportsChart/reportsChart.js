@@ -61,8 +61,11 @@ export default function charts() {
   const width = useWindowWidth();
   console.log('DATA CHARTS', data);
 
+  const transformData = arr =>
+    arr.map(item => ({ ...item, name: item.description }));
+
   useEffect(() => {
-    setData(chartValue);
+    setData(transformData(chartValue));
   }, [chartValue]);
 
   return width < 768 ? (
@@ -85,7 +88,7 @@ export default function charts() {
           <YAxis dataKey="name" type="category" scale="band" hide />
 
           <Bar
-            dataKey="price"
+            dataKey="value"
             barSize={14}
             fill="#FF751D"
             radius={[0, 10, 10, 0]}

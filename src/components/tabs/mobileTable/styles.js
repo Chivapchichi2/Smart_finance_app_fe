@@ -11,6 +11,7 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        alignItems: 'flex-start',
         '& .smallWr': {
           display: 'flex',
         },
@@ -28,7 +29,10 @@ const styles = () => ({
         fontWeight: 'bold',
         fontSize: 12,
         letterSpacing: '0.02em',
+        textTransform: 'capitalize',
         color: '#52555F',
+        maxWidth: '52.5vw',
+        overflow: 'hidden',
       },
 
       '& .date': {
