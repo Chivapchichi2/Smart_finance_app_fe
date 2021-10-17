@@ -38,6 +38,7 @@ const transactionsByYear = createReducer([], {
 
 const errorByYear = createReducer('', {
   [ledgerActions.getUserExpenseByYearError]: (_, { payload }) => payload,
+});
 
 const setDateValue = createReducer('', {
   [ledgerActions.setCurrentDateValue]: (_, { payload }) => payload,
@@ -49,7 +50,6 @@ const expenseChartValue = createReducer([], {
 
 const incomeChartValue = createReducer([], {
   [ledgerActions.setIncomeChartValue]: (_, { payload }) => [...payload],
-
 });
 
 export default combineReducers({

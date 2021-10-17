@@ -70,12 +70,7 @@ const reportsSlider = () => {
 
   console.log('REF', ref.current);
 
-  useEffect(
-    () => () => {
-      ref.current.classList.remove(`${s.active}`);
-    },
-    [],
-  );
+  useEffect(() => () => ref.current.classList.remove(`${s.active}`), []);
 
   return (
     <div className={s.container}>
