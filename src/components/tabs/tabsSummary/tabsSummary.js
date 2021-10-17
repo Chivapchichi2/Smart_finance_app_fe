@@ -1,3 +1,5 @@
+import { ledgerSelectors } from '../../../redux/ledger';
+import serviceApi from '../../../service/api';
 import styles from './tabsSummary.module.css';
 
 const data = [
@@ -10,6 +12,8 @@ const data = [
 ];
 
 function TabsSummary() {
+  const currentYear = new Date().getFullYear().toString();
+
   return (
     <table className={styles.table}>
       <th className={styles.title}>Сводка</th>

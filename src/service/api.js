@@ -22,5 +22,8 @@ const serviceApi = {
   getExpenseByMonth(date) {
     return axios.get(`api/ledgers/expense/:${date}`).then(r => r.data);
   },
+  getCurrentUser() {
+    return axios.get(`api/users/current`).then(r => r.data);
+  },
 };
 export default serviceApi;
