@@ -4,23 +4,15 @@
 import { useSelector } from 'react-redux';
 import ledgerSelectors from '../../redux/ledger/ledger-selectors';
 
-const reportSLiderLogic = () => {
-  const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
-
-  const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
-
-  console.log('incomesByMonthData', incomesByMonthData);
-
-  console.log('expensesByMonthData', expensesByMonthData);
-
-  const result = expensesByMonthData.reduce(
+const reportSLiderLogic = dataToParse => {
+  const result = dataToParse.reduce(
     (acc, { category, value }) =>
       !acc[category]
         ? { ...acc, [category]: value }
         : { ...acc, [category]: acc[category] + value },
     {},
   );
-  console.log(result);
+  // console.log(result);
 
   const getData = data => {
     const arr = [];
@@ -34,6 +26,7 @@ const reportSLiderLogic = () => {
   };
 
   console.log(getData(result));
+  return getData(result);
 };
 
 export default reportSLiderLogic;

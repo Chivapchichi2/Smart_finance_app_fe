@@ -1,0 +1,15 @@
+export default {
+  Продукты: 'icon-food',
+  Алкоголь: 'icon-cocktail',
+  Развлечение: 'icon-kite',
+  Здоровье: 'icon-health',
+  Транспорт: 'icon-car',
+  'Всё для дома': 'icon-couch',
+  Техника: 'icon-tools',
+  'Коммуналка, связь': 'icon-invoice',
+  'Спорт, хобби': 'icon-clay',
+  Образование: 'icon-book',
+  Прочее: 'icon-ufo',
+  ЗП: 'icon-salary',
+  'Дополнительные доходы': 'icon-addsalary',
+};
