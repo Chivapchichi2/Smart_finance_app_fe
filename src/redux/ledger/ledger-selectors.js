@@ -9,7 +9,6 @@ const datepickerValue = state => state.ledger.setDateValue;
 const getExpenseChartValue = state => state.ledger.expenseChartValue;
 const getIncomeChartValue = state => state.ledger.incomeChartValue;
 
-
 export default {
   getUserBalance,
   getReportSliderValue,

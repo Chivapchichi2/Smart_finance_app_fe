@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ledgerSelectors from '../../redux/ledger/ledger-selectors';
 
@@ -12,6 +13,8 @@ const reportByMonth = () => {
     .split('.')
     .splice(1, 1)
     .join('');
+
+  useEffect(() => {}, [incomesByYear, expensesByYear]);
 
   return (
     <div className={s.container}>

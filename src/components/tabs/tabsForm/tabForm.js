@@ -9,7 +9,6 @@ import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
-import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 
 import routes from '../../../routes/routes';
 import {
