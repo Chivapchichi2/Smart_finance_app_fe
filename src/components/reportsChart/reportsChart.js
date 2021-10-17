@@ -61,8 +61,11 @@ export default function charts() {
   const width = useWindowWidth();
   console.log('DATA CHARTS', data);
 
+  const transformData = arr =>
+    arr.map(item => ({ ...item, name: item.description }));
+
   useEffect(() => {
-    setData(chartValue);
+    setData(transformData(chartValue));
   }, [chartValue]);
 
   return width < 768 ? (
@@ -82,7 +85,7 @@ export default function charts() {
         >
           <CartesianGrid stroke="#f5f5f5" vertical={false} horizontal={false} />
           <XAxis type="number" hide />
-          <YAxis dataKey="description" type="category" scale="band" hide />
+          <YAxis dataKey="name" type="category" scale="band" hide />
 
           <Bar
             dataKey="value"
