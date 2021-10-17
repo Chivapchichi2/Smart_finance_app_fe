@@ -2,13 +2,14 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ProductDescription from './input/productDescription';
 import ProductCategory from './input/productCategory';
 import ProductValue from './input/productValue';
 import ProductButtons from './input/productButtons';
 import DatePicker from './input/datePicker';
+import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 
 import routes from '../../../routes/routes';
 import { ledgerOperations } from '../../../redux/ledger';
@@ -20,6 +21,8 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const [trans, setTrans] = useState([]);
   const [dater, setDater] = useState(new Date());
 
+  const error = useSelector(ledgerSelectors.errorByYear);
+  console.log('error ----- ', error);
   const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
 
   const handlerSubmit = useCallback(

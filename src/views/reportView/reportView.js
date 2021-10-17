@@ -4,9 +4,11 @@ import ReportsChart from '../../components/reportsChart';
 import ReportByMonth from '../../components/reportByMonth';
 // import MobileTable from '../../components/tabs/mobileTable';
 
+const data = { income: 1111, expense: 2222 };
+
 const reportView = () => (
   <>
-    <ReportByMonth />
+    <ReportByMonth data={data} />
     <ReportSlider />
     <ReportsChart />
   </>
