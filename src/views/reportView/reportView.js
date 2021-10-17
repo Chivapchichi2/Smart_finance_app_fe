@@ -1,17 +1,34 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import ReportSlider from '../../components/reportsSlider';
 import ReportsChart from '../../components/reportsChart';
 import ReportByMonth from '../../components/reportByMonth';
-// import MobileTable from '../../components/tabs/mobileTable';
-
-const data = { income: 1111, expense: 2222 };
+import { ledgerSelectors } from '../../redux/ledger';
 
 const reportView = () => (
   <>
-    <ReportByMonth data={data} />
+    <ReportByMonth />
     <ReportSlider />
     <ReportsChart />
   </>
 );
+
+const reportView = () => {
+  const chartValueExpense = useSelector(ledgerSelectors.getExpenseChartValue);
+  const chartValueIncome = useSelector(ledgerSelectors.getIncomeChartValue);
+  const reportSliderValue = useSelector(ledgerSelectors.getReportSliderValue);
+
+  return (
+    <>
+      <ReportByMonth />
+      <ReportSlider />
+      {chartValueExpense.length > 0 && reportSliderValue === 'Расходы' && (
+        <ReportsChart />
+      )}
+      {chartValueIncome.length > 0 && reportSliderValue === 'Доходы' && (
+        <ReportsChart />
+      )}
+    </>
+  );
+};
 
 export default reportView;

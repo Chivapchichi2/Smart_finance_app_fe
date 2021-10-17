@@ -23,6 +23,7 @@ const styles = () => ({
       '& .delButton': {
         width: 32,
         height: 32,
+        textAlign: 'center',
         border: 'none',
         borderRadius: '50%',
         backgroundColor: '#F5F6FB',
@@ -93,11 +94,11 @@ const styles = () => ({
         lineHeight: 1.67,
         color: '#52555F',
 
-        '& .high': {
+        '&.high': {
           color: '#407946',
         },
 
-        '& .low': {
+        '&.low': {
           color: '#E7192E',
         },
       },

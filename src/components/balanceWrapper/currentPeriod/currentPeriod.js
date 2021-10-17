@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as IconArrowLeft } from '../../../svg/arrowLeft.svg';
@@ -10,8 +11,6 @@ const CurrentPeriod = () => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
   const reportSliderValue = useSelector(ledgerSelectors.getReportSliderValue);
-
-  console.log('reportSliderValue', reportSliderValue);
 
   const changeMonth = action => {
     const value = action === 'prev' ? -1 : 1;
@@ -26,13 +25,19 @@ const CurrentPeriod = () => {
     });
   };
 
-  const getMonthAndYear = `${date.getMonth() + 1}.${date.getFullYear()}`;
+  // const getMonthAndYear = `${date.getMonth() + 1}.${date.getFullYear()}`;
+  const normalizedDate = (
+    '0' + `${date.getMonth() + 1}.${date.getFullYear()}`
+  ).slice(-7);
 
   useEffect(
-    () =>
-      reportSliderValue === 'Расходы'
-        ? dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear))
-        : dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear)),
+    () => {
+      dispatch(ledgerOperations.getExpenseByMonth(normalizedDate));
+      dispatch(ledgerOperations.getIncomeByMonth(normalizedDate));
+    },
+    // reportSliderValue === 'Расходы'
+    //   ? dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear))
+    //   : dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear)),
     [dispatch, date, reportSliderValue],
   );
 

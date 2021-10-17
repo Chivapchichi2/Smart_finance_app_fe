@@ -25,9 +25,7 @@ const AccountTable = props => {
 
   const dispatch = useDispatch();
 
-  const [dater, setDater] = useState(new Date());
-
-  const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
+  const dater = useSelector(ledgerSelectors.datepickerValue);
 
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
@@ -56,15 +54,17 @@ const AccountTable = props => {
   }, [expensesByMonthData, incomesByMonthData]);
 
   useEffect(() => {
-    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+    if (dater) {
+      inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+      exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+    }
   }, [dispatch, dater]);
 
-  const onDeleteHandler = id => {
-    dispatch(ledgerOperations.deleteUserTransaction(id));
+  const onDeleteHandler = async id => {
+    await dispatch(ledgerOperations.deleteUserTransaction(id));
 
-    inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-    exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
   };
 
   const { headers, rows } = state;
@@ -83,9 +83,13 @@ const AccountTable = props => {
   const result = rows.map(item => ({
     ...item,
     value: inc ? (
-      <span className="high">{item.value}</span>
+      <TableCell align="left" className="high">
+        {item.value}
+      </TableCell>
     ) : (
-      <span className="low">{item.value}</span>
+      <TableCell align="left" className="low">
+        {`-${item.value}`}
+      </TableCell>
     ),
     action: getAction(item._id),
   }));
@@ -117,13 +121,13 @@ const AccountTable = props => {
             {result?.map(item => {
               const { date, description, category, value, action } = item;
               return (
-                <TableRow key={date + description + value + Math.random()}>
+                <TableRow key={item._id}>
                   <TableCell component="th" scope="row">
                     {date}
                   </TableCell>
                   <TableCell align="left">{description}</TableCell>
                   <TableCell align="left">{category}</TableCell>
-                  <TableCell align="left">{value}</TableCell>
+                  {value}
                   <TableCell align="left">{action}</TableCell>
                 </TableRow>
               );

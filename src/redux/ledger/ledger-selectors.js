@@ -5,6 +5,10 @@ const expenseByMonthData = state => state.ledger.expenseByMonth;
 const incomesByYear = state => state.ledger.transactionsByYear[0].incomes;
 const expenseByYear = state => state.ledger.transactionsByYear[0].expense;
 const errorByYear = state => state.ledger.errorByYear;
+const datepickerValue = state => state.ledger.setDateValue;
+const getExpenseChartValue = state => state.ledger.expenseChartValue;
+const getIncomeChartValue = state => state.ledger.incomeChartValue;
+
 
 export default {
   getUserBalance,
@@ -14,4 +18,7 @@ export default {
   errorByYear,
   incomesByYear,
   expenseByYear,
+  datepickerValue,
+  getExpenseChartValue,
+  getIncomeChartValue,
 };

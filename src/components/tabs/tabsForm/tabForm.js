@@ -12,37 +12,39 @@ import DatePicker from './input/datePicker';
 import ledgerSelectors from '../../../redux/ledger/ledger-selectors';
 
 import routes from '../../../routes/routes';
-import { ledgerOperations } from '../../../redux/ledger';
+import {
+  ledgerOperations,
+  ledgerSelectors,
+  ledgerActions,
+} from '../../../redux/ledger';
+
 import s from './tabsFrom.module.css';
 
 const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
-  const [dater, setDater] = useState(new Date());
 
   const error = useSelector(ledgerSelectors.errorByYear);
-  console.log('error ----- ', error);
-  const getMonthAndYear = `${dater.getMonth() + 1}.${dater.getFullYear()}`;
+  const dater = useSelector(ledgerSelectors.datepickerValue);
+  console.log('DATA', dater);
 
-  const handlerSubmit = useCallback(
-    e => {
-      e.preventDefault();
-      const transaction = {
-        date: e.target[0].defaultValue,
-        description: e.target[1].value,
-        category: e.target[2].textContent,
-        value: e.target[3].valueAsNumber,
-      };
+  const handlerSubmit = async e => {
+    e.preventDefault();
+    const transaction = {
+      date: e.target[0].defaultValue,
+      description: e.target[1].value,
+      category: e.target[2].textContent,
+      value: e.target[3].valueAsNumber,
+    };
 
-      setTrans([...trans, transaction]);
+    setTrans([...trans, transaction]);
 
-      dispatch(ledgerOperations.addUserBank(endpoint, transaction));
-      inc && dispatch(ledgerOperations.getIncomeByMonth(getMonthAndYear));
-      exp && dispatch(ledgerOperations.getExpenseByMonth(getMonthAndYear));
-    },
-    [dispatch],
-  );
+    await dispatch(ledgerOperations.addUserBank(endpoint, transaction));
+
+    inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
+    exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+  };
 
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>

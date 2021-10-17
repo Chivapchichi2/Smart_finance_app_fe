@@ -50,6 +50,12 @@ const deleteUserTransactionError = createAction(
 
 const setReportSliderValue = createAction('ledger/setReportSliderValue');
 
+const setCurrentDateValue = createAction('ledger/setCurrentDateValue');
+
+const setExpenseChartValue = createAction('ledger/setExpenseChartValue');
+
+const setIncomeChartValue = createAction('ledger/setIncomeChartValue');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -70,4 +76,7 @@ export default {
   getUserTransactionsByYearRequest,
   getUserTransactionsByYearSuccess,
   getUserTransactionsByYearError,
+  setCurrentDateValue,
+  setExpenseChartValue,
+  setIncomeChartValue,
 };

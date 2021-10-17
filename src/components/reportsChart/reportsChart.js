@@ -9,38 +9,12 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import s from './reportsChart.module.css';
 
-const data = [
-  {
-    name: 'Page A',
-    price: 4000,
-  },
-  {
-    name: 'Page B',
-    price: 3000,
-  },
-  {
-    name: 'Page C',
-    price: 2000,
-  },
-  {
-    name: 'Page D',
-    price: 2780,
-  },
-  {
-    name: 'Page E',
-    price: 1890,
-  },
-  {
-    name: 'Page F',
-    price: 2390,
-  },
-  {
-    name: 'Page G',
-    price: 3490,
-  },
-];
+import { ledgerSelectors } from '../../redux/ledger';
+
 const customBarLabelMobile = ({ x, y, width, name, value }) => (
   <>
     <text
@@ -78,7 +52,19 @@ const customBarLabelTablet = ({ x, y, width, value }) => (
 );
 
 export default function charts() {
+  const condition = useSelector(ledgerSelectors.getReportSliderValue);
+  const chartValue =
+    condition === 'Расходы'
+      ? useSelector(ledgerSelectors.getExpenseChartValue)
+      : useSelector(ledgerSelectors.getIncomeChartValue);
+  const [data, setData] = useState(chartValue);
   const width = useWindowWidth();
+  console.log('DATA CHARTS', data);
+
+  useEffect(() => {
+    setData(chartValue);
+  }, [chartValue]);
+
   return width < 768 ? (
     <div className={s.mob_wrapper}>
       <ResponsiveContainer width="100%" aspect={1}>
@@ -127,7 +113,7 @@ export default function charts() {
         >
           <CartesianGrid stroke="#f5f5f5" vertical={false} />
           <XAxis
-            dataKey="name"
+            dataKey="description"
             type="category"
             axisLine={false}
             tickLine={false}
@@ -135,7 +121,7 @@ export default function charts() {
           <YAxis height={500} type="number" tickCount={25} hide />
 
           <Bar
-            dataKey="price"
+            dataKey="value"
             barSize={40}
             fill="#FF751D"
             label={customBarLabelTablet}
