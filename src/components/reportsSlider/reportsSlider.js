@@ -21,11 +21,6 @@ const reportsSlider = () => {
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
   const expensesByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
 
-  console.log('incomesByMonthData', incomesByMonthData);
-  console.log('expensesByMonthData', expensesByMonthData);
-
-  console.log('categoryArray', category);
-
   useEffect(() => {
     if (value) {
       setName('Доходы');
@@ -34,7 +29,7 @@ const reportsSlider = () => {
       setName('Расходы');
       setCategory(reportSliderLogic(expensesByMonthData));
     }
-  }, [value]);
+  }, [value, incomesByMonthData, expensesByMonthData]);
 
   useEffect(() => {
     dispatch(ledgerActions.setReportSliderValue(name));
@@ -68,7 +63,7 @@ const reportsSlider = () => {
     }
   };
 
-  console.log('REF', ref.current);
+  // console.log('REF', ref.current);
 
   return (
     <div className={s.container}>
