@@ -54,12 +54,14 @@ const reportsSlider = () => {
         .sort((a, b) => b.value - a.value)
         .slice(0, 10);
       dispatch(ledgerActions.setExpenseChartValue(arr));
+      console.log('EXPENSES ARR', arr);
     } else {
       const arr = incomesByMonthData
         .filter(income => income.category === prop)
         .sort((a, b) => b.value - a.value)
         .slice(0, 10);
       dispatch(ledgerActions.setIncomeChartValue(arr));
+      console.log('INCOMES ARR', arr);
     }
   };
 
