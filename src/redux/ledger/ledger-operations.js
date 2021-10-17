@@ -7,12 +7,18 @@ axios.defaults.baseURL = 'https://smart-finance-app-be.herokuapp.com';
 
 const addUserBank = (endpoint, transaction) => async dispatch => {
   dispatch(userActions.setCurrentBalanceRequest());
+  dispatch(ledgerActions.getUserTransactionsByYearRequest());
   try {
     const response = await axios.post(endpoint, transaction);
 
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+    dispatch(
+      ledgerActions.getUserTransactionsByYearSuccess(response.data.ledger),
+    );
   } catch (error) {
     dispatch(userActions.setCurrentBalanceError(error.message));
+    dispatch(ledgerActions.getUserTransactionsByYearError(error.message));
+
     toast.warn(error.response.data.message);
     console.log(error.response.data.message);
   }

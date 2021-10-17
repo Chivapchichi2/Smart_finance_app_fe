@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ledgerSelectors from '../../redux/ledger/ledger-selectors';
 
@@ -14,22 +14,28 @@ const reportByMonth = () => {
     .splice(1, 1)
     .join('');
 
-  useEffect(() => {}, [incomesByYear, expensesByYear]);
+  const [incomes, setIncomes] = useState(
+    incomesByYear[currentYear][currentMonth],
+  );
+  const [expenses, setExpenses] = useState(
+    expensesByYear[currentYear][currentMonth],
+  );
+
+  useEffect(() => {
+    setIncomes(incomesByYear[currentYear][currentMonth]);
+    setExpenses(expensesByYear[currentYear][currentMonth]);
+  }, [incomesByYear, expensesByYear]);
 
   return (
     <div className={s.container}>
       <div className={s.expenseBox}>
         <p className={s.text}>Расходы:</p>
-        <p className={s.value}>
-          - {expensesByYear[currentYear][currentMonth]}.00 грн.
-        </p>
+        <p className={s.value}>- {expenses}.00 грн.</p>
       </div>
       <div className={s.divide} />
       <div className={s.incomeBox}>
         <p className={s.text}>Доходы:</p>
-        <p className={s.value}>
-          + {incomesByYear[currentYear][currentMonth]}.00 грн.
-        </p>
+        <p className={s.value}>+ {incomes}.00 грн.</p>
       </div>
     </div>
   );
