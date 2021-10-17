@@ -23,6 +23,7 @@ const reportSLiderLogic = dataToParse => {
     return arr;
   };
 
+  console.log(getData(result));
   return getData(result);
 };
 
