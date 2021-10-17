@@ -30,6 +30,16 @@ const reportSliderValue = createReducer('Расходы', {
   [ledgerActions.setReportSliderValue]: (_, { payload }) => payload,
 });
 
+const transactionsByYear = createReducer([], {
+  [ledgerActions.getUserTransactionsByYearSuccess]: (_, { payload }) => [
+    payload,
+  ],
+});
+
+const errorByYear = createReducer('', {
+  [ledgerActions.getUserExpenseByYearError]: (_, { payload }) => payload,
+});
+
 const setDateValue = createReducer('', {
   [ledgerActions.setCurrentDateValue]: (_, { payload }) => payload,
 });
@@ -42,6 +52,10 @@ const incomeChartValue = createReducer([], {
   [ledgerActions.setIncomeChartValue]: (_, { payload }) => [...payload],
 });
 
+const currentPeriodDate = createReducer('', {
+  [ledgerActions.setCurrentPeriodDate]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   incomeByMonth,
   expenseByMonth,
@@ -49,7 +63,10 @@ export default combineReducers({
   reportSliderValue,
   expenseByMonthError,
   deleteUserTransaction,
+  transactionsByYear,
+  errorByYear,
   setDateValue,
   expenseChartValue,
   incomeChartValue,
+  currentPeriodDate,
 });

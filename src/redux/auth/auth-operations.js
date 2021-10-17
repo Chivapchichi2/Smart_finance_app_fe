@@ -1,5 +1,9 @@
 import axios from 'axios';
+<<<<<<< HEAD
 import { toast } from 'react-toastify';
+=======
+import ledgerActions from '../ledger/ledger-actions';
+>>>>>>> origin/dev
 import userActions from '../user/user-actions';
 import authActions from './auth-actions';
 
@@ -83,14 +87,18 @@ const getCurrentUser = () => async (dispatch, getState) => {
   token.set(persistedToken);
   dispatch(authActions.getCurrentUserRequest());
   dispatch(userActions.setCurrentBalanceRequest());
-
+  dispatch(ledgerActions.getUserTransactionsByYearRequest());
   try {
     const response = await axios.get('/api/users/current');
     dispatch(authActions.getCurrentUserSuccess(response.data));
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+    dispatch(
+      ledgerActions.getUserTransactionsByYearSuccess(response.data.ledger),
+    );
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
     toast.warn(error.response.data.message);
+    dispatch(ledgerActions.getUserTransactionsByYearError(error.message));
   }
 };
 

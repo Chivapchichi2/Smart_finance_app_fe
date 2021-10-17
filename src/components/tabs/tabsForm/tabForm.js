@@ -26,6 +26,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
 
+  const error = useSelector(ledgerSelectors.errorByYear);
   const dater = useSelector(ledgerSelectors.datepickerValue);
   console.log('DATA', dater);
 

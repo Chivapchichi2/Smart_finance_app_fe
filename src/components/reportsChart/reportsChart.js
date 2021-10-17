@@ -82,10 +82,10 @@ export default function charts() {
         >
           <CartesianGrid stroke="#f5f5f5" vertical={false} horizontal={false} />
           <XAxis type="number" hide />
-          <YAxis dataKey="name" type="category" scale="band" hide />
+          <YAxis dataKey="description" type="category" scale="band" hide />
 
           <Bar
-            dataKey="price"
+            dataKey="value"
             barSize={14}
             fill="#FF751D"
             radius={[0, 10, 10, 0]}
