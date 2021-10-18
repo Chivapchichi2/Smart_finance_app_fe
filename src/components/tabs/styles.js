@@ -17,8 +17,8 @@ export const styles = {
       minHeight: 579,
     },
 
-    '& .PrivateTabIndicator-colorSecondary-8': {
-      display: 'none',
+    '& .PrivateTabIndicator-colorSecondary-8, & .MuiTabs-indicator': {
+      display: 'none !important',
     },
 
     '& .MuiButtonBase-root.MuiTab-root': {
