@@ -53,9 +53,6 @@ const CustomTabs = props => {
     }
   }, [incomesByYear, expensesByYear, parsedYear]);
 
-  console.log('incomes', incomes);
-  console.log('expenses', expenses);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
