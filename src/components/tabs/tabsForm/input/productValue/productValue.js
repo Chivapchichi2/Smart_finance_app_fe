@@ -5,7 +5,8 @@ import { ledgerSelectors } from '../../../../../redux/ledger';
 import s from './productValue.module.css';
 
 const ProductValue = ({ handleSum }) => {
-  const [sum, setSum] = useState(0);
+  const balance = 0;
+  const [sum, setSum] = useState(balance.toFixed(2));
   const inputClean = useSelector(ledgerSelectors.getResetedInputValues);
 
   const handleChange = e => {
@@ -17,7 +18,7 @@ const ProductValue = ({ handleSum }) => {
   }, [sum]);
 
   useEffect(() => {
-    setSum(0);
+    setSum(null);
   }, [inputClean]);
 
   return (
@@ -25,7 +26,7 @@ const ProductValue = ({ handleSum }) => {
       <input
         type="number"
         className={s.input}
-        placeholder="00.00"
+        placeholder="0.00"
         onChange={handleChange}
         value={sum}
       />
