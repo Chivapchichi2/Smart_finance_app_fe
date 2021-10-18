@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+Финальный проект React.js + Node.js - Smart finance.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Рабочая ссылка проекта:
+http://localhost3000
 
-## Available Scripts
+## Ссылка на документацию эндпонтов (swagger-ui):
+https://smart-finance-app-be.herokuapp.com/api-docs/
 
-In the project directory, you can run:
+## Перед началом работы
+Один раз на проект установить все зависимости.
+`npm i`
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Разработка:
+Запустить режим разработки.
+`npm start` 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Материалы проекта:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. [Репозиторий бэкенда](https://github.com/Chivapchichi2/smart_finance_app_be)
+2. [Репозиторий фронтенда](https://github.com/Chivapchichi2/smart_finance_app_fe)
+3. [Доска в trello](https://trello.com/b/tIzHt9wC/smartfinanceapp)
+4. [Инструкция по работе с github](https://docs.google.com/document/d/1CtGl_H7rDYTQsDhrsP2yHZ2sGw_ve9j3r1Ph5m_VmNI/edit)
+5. [Ссылка на Figma](https://www.figma.com/file/IHc8T3LE4yfMVp6c2CL1aP/%D0%A3%D1%87%D0%B5%D1%82-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2?node-id=0%3A1)
+6. [Ссылка на тех.задание](https://docs.google.com/spreadsheets/d/1VybP9jgmNKSg0PEmBUgU8qNXRrPddxZTC5vzFFCjvQE/edit#gid=0)
 
-### `yarn build`
+## Файлы и папки:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Все компоненты должны лежать в папке `components` в соответствующих папках. Здесь должны находиться основные компоненты страницы
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Если компонент сожержит в себе несколько других компонентов, они помещаются в папку главного компонента.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Запросы на сервер должны находиться в папке `services`
 
-### `yarn eject`
+- Папка `views` содержит 3 основные страницы: authView, homeView, reportView 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Папка `fonts` содержит шрифры
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Иконки добавляйте в папку `svg`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Стилизация выполнена с помощью CSS-модулей. 
