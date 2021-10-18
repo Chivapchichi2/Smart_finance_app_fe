@@ -24,7 +24,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
 
-  const [inputDate, setInputDate] = useState('');
+  // const [inputDate, setInputDate] = useState('');
   const [descr, setDescr] = useState('');
   const [category, setCategory] = useState('');
   const [sum, setSum] = useState(0);
@@ -38,9 +38,9 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
   const handleSum = value => {
     setSum(value);
   };
-  const handleDate = value => {
-    setInputDate(value);
-  };
+  // const handleDate = value => {
+  //   setInputDate(value);
+  // };
 
   const error = useSelector(ledgerSelectors.errorByYear);
   const dater = useSelector(ledgerSelectors.datepickerValue);
@@ -50,7 +50,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
     e.preventDefault();
 
     const transaction = {
-      date: inputDate,
+      date: e.target[0].defaultValue,
       description: descr,
       category: category,
       value: +sum,
@@ -67,10 +67,10 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
 
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>
-      {location.pathname === routes.reportExpenses ||
-      location.pathname === routes.reportIncomes ? null : (
-        <DatePicker handleDate={handleDate} />
-      )}
+      {/* {location.pathname === routes.reportExpenses ||
+      location.pathname === routes.reportIncomes ? null : ( */}
+      <DatePicker />
+      {/* )} */}
 
       <div className={s.formWrapper}>
         <ProductDescription handleDescription={handleDescription} />
