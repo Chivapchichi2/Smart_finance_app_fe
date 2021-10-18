@@ -40,12 +40,7 @@ const CustomTabs = props => {
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
 
-  console.log(incomesByYear);
-  console.log(expensesByYear);
-
   useEffect(() => {
-    console.log('currentYearDataInc', currentYearDataInc);
-    console.log('currentYearDataExp', currentYearDataExp);
     if (currentYearDataExp || currentYearDataInc) {
       const exp = currentYearDataExp.map(
         i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
@@ -56,16 +51,7 @@ const CustomTabs = props => {
       );
       setIncomes(inc);
     }
-    // if (currentYearData) {
-    //   const inc = currentYearData.map(
-    //     i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
-    //   );
-    //   setIncomes(inc);
-    // }
   }, [incomesByYear, expensesByYear, parsedYear]);
-
-  console.log('incomes', incomes);
-  console.log('expenses', expenses);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
