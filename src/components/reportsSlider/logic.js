@@ -10,7 +10,6 @@ const reportSLiderLogic = dataToParse => {
         : { ...acc, [category]: acc[category] + value },
     {},
   );
-  // console.log(result);
 
   const getData = data => {
     const arr = [];
@@ -23,7 +22,6 @@ const reportSLiderLogic = dataToParse => {
     return arr;
   };
 
-  console.log(getData(result));
   return getData(result);
 };
 

@@ -54,18 +54,14 @@ const reportsSlider = () => {
         .sort((a, b) => b.value - a.value)
         .slice(0, 10);
       dispatch(ledgerActions.setExpenseChartValue(arr));
-      console.log('EXPENSES ARR', arr);
     } else {
       const arr = incomesByMonthData
         .filter(income => income.category === prop)
         .sort((a, b) => b.value - a.value)
         .slice(0, 10);
       dispatch(ledgerActions.setIncomeChartValue(arr));
-      console.log('INCOMES ARR', arr);
     }
   };
-
-  // console.log('REF', ref.current);
 
   return (
     <div className={s.container}>
@@ -81,7 +77,11 @@ const reportsSlider = () => {
       <ul className={s.list}>
         {category.map(elem => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-          <li className={s.item} onClick={categoryHandler(elem.category)}>
+          <li
+            key={elem.category}
+            className={s.item}
+            onClick={categoryHandler(elem.category)}
+          >
             <p className={s.value}>{elem.summary}</p>
             <div className={s.svgBox} ref={ref}>
               <svg width="58" height="58">

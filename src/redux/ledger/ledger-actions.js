@@ -48,6 +48,10 @@ const deleteUserTransactionError = createAction(
   'ledger/deleteUserTransactionError',
 );
 
+const getSummaryByYearRequest = createAction('ledger/getSummaryByYearRequest');
+const getSummaryByYearSuccess = createAction('ledger/getSummaryByYearSuccess');
+const getSummaryByYearError = createAction('ledger/getSummaryByYearError');
+
 const setReportSliderValue = createAction('ledger/setReportSliderValue');
 
 const setCurrentDateValue = createAction('ledger/setCurrentDateValue');
@@ -82,4 +86,7 @@ export default {
   setExpenseChartValue,
   setIncomeChartValue,
   setCurrentPeriodDate,
+  getSummaryByYearRequest,
+  getSummaryByYearSuccess,
+  getSummaryByYearError,
 };

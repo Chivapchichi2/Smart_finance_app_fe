@@ -23,7 +23,6 @@ const Modal = ({ text }) => {
   const onLogout = () => dispatch(authOperations.logOut());
 
   const handleKeydown = e => {
-    console.log('KEY', e.code);
     if (e.code === 'Escape') {
       closeModal();
     }

@@ -10,7 +10,6 @@ const setCurrentBalance = balanceValue => async dispatch => {
     const response = await axios.patch('/api/users/balance', {
       value: balanceValue,
     });
-    console.log(response.data);
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
     dispatch(userActions.setCurrentBalanceError(error.message));

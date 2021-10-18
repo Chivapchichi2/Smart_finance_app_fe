@@ -20,7 +20,6 @@ const addUserBank = (endpoint, transaction) => async dispatch => {
     dispatch(ledgerActions.getUserTransactionsByYearError(error.message));
 
     toast.warn(error.response.data.message);
-    console.log(error.response.data.message);
   }
 };
 
@@ -56,7 +55,6 @@ const deleteUserTransaction = transactionId => async dispatch => {
     await dispatch(ledgerActions.deleteUserTransactionSuccess(transactionId));
     await dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
   } catch (error) {
-    // console.log(error);
     dispatch(ledgerActions.deleteUserTransactionError(error.message));
     toast.error(error.response.message);
   }

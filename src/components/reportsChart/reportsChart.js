@@ -52,7 +52,6 @@ export default function charts() {
       : useSelector(ledgerSelectors.getIncomeChartValue);
   const [data, setData] = useState(chartValue);
   const width = useWindowWidth();
-  console.log('DATA CHARTS', data);
 
   const transformData = arr =>
     arr.map(item => ({ ...item, name: item.description }));
@@ -130,7 +129,7 @@ export default function charts() {
             label={customBarLabelTablet}
           >
             {data.map((_, index) => (
-              <Cell fill={index % 3 ? '#FED9BF' : '#ff751d'} />
+              <Cell key={_} fill={index % 3 ? '#FED9BF' : '#ff751d'} />
             ))}
           </Bar>
         </BarChart>
