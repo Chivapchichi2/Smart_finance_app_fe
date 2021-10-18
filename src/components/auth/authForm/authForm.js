@@ -45,9 +45,7 @@ const AuthForm = () => {
     [dispatch, email, password],
   );
 
-  const responseGoogle = response => {
-    console.log(response);
-  };
+  const responseGoogle = response => {};
   const handleGoogle = response => {
     dispatch(authOperations.google(response));
   };
