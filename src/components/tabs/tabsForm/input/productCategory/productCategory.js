@@ -19,11 +19,19 @@ const ProductCategory = ({ category, categoryType, changeCategory }) => {
     setOpen(false);
   };
 
-  // window.addEventListener('click', e => {
-  //   if (open && e.target.nodeName !== 'LI') {
-  //     setOpen(false);
-  //   }
-  // });
+  const handleOutClick = e => {
+    if (e.target.nodeName === 'BUTTON') return;
+    if (open && e.target.nodeName !== 'LI') {
+      setOpen(false);
+    }
+  };
+
+  document.body.addEventListener('click', handleOutClick);
+
+  useEffect(
+    () => () => document.body.removeEventListener('click', handleOutClick),
+    [],
+  );
 
   useEffect(() => {
     changeCategory(value);
@@ -39,7 +47,6 @@ const ProductCategory = ({ category, categoryType, changeCategory }) => {
     <div>
       <button
         type="button"
-        // className={!value ? s.button : `${s.button} ${s.black}`}
         className={value === categoryType ? s.button : `${s.button} ${s.black}`}
         onClick={handleOpen}
       >
