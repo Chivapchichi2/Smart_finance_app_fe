@@ -56,6 +56,10 @@ const currentPeriodDate = createReducer('', {
   [ledgerActions.setCurrentPeriodDate]: (_, { payload }) => payload,
 });
 
+const resetValuesOfInput = createReducer(0, {
+  [ledgerActions.resetInputValues]: (state, { payload }) => state + payload,
+});
+
 export default combineReducers({
   incomeByMonth,
   expenseByMonth,
@@ -69,4 +73,5 @@ export default combineReducers({
   expenseChartValue,
   incomeChartValue,
   currentPeriodDate,
+  resetValuesOfInput,
 });

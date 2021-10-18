@@ -55,11 +55,8 @@ const AuthForm = () => {
       <p className={s.textGoogle}>
         Вы можете авторизоваться с помощью <br /> Google Account:
       </p>
-      {/* <button className={s.buttonGoogle} type="button">
-        Google
-      </button> */}
+
       <GoogleLogin
-        // className={s.buttonGoogle}
         clientId="823857589070-tvc629amkhmmf85pvu56v7plahr2a9m0.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={handleGoogle}

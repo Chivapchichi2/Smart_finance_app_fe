@@ -62,6 +62,8 @@ const setIncomeChartValue = createAction('ledger/setIncomeChartValue');
 
 const setCurrentPeriodDate = createAction('ledger/setCurrentPeriodDate');
 
+const resetInputValues = createAction('ledger / resetInputValues');
+
 export default {
   addUserIncomeRequest,
   addUserIncomeSuccess,
@@ -89,4 +91,5 @@ export default {
   getSummaryByYearRequest,
   getSummaryByYearSuccess,
   getSummaryByYearError,
+  resetInputValues,
 };

@@ -1,11 +1,13 @@
 /* eslint-disable no-useless-concat */
 import React, { useState, useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
 import ReactDatePicker from 'react-datepicker';
 import { useLocation } from 'react-router-dom';
 import { useWindowWidth } from '@react-hook/window-size';
 import routes from '../../../../../routes/routes';
 import ledgerActions from '../../../../../redux/ledger/ledger-actions';
+
 import { ReactComponent as CalendarIcon } from '../../../../../svg/calendar.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './datePicker.module.css';
@@ -20,9 +22,15 @@ function DatePicker() {
     '0' + `${startDate.getMonth() + 1}.${startDate.getFullYear()}`
   ).slice(-7);
 
+  // const normalizedFullDate = startDate.toLocaleDateString('ru', [
+  //   'day',
+  //   'month',
+  //   'year',
+  // ]);
+
   useEffect(() => {
     dispatch(ledgerActions.setCurrentDateValue(normalizedDate));
-  }, [startDate]);
+  }, [dispatch, startDate]);
 
   const homeDatePicker =
     location.pathname === routes.homePage && width <= 320

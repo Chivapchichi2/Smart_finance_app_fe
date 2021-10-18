@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { ledgerSelectors } from '../../../../../redux/ledger';
 import s from './productCategory.module.css';
 
-const ProductCategory = ({ category, categoryType }) => {
+const ProductCategory = ({ category, categoryType, changeCategory }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(categoryType);
   const [categories, setCategories] = useState([]);
+
+  const inputClean = useSelector(ledgerSelectors.getResetedInputValues);
 
   useEffect(() => setCategories(category), [category]);
 
@@ -15,13 +19,35 @@ const ProductCategory = ({ category, categoryType }) => {
     setOpen(false);
   };
 
+  const handleOutClick = e => {
+    if (e.target.nodeName === 'BUTTON') return;
+    if (open && e.target.nodeName !== 'LI') {
+      setOpen(false);
+    }
+  };
+
+  document.body.addEventListener('click', handleOutClick);
+
+  useEffect(
+    () => () => document.body.removeEventListener('click', handleOutClick),
+    [],
+  );
+
+  useEffect(() => {
+    changeCategory(value);
+  }, [value]);
+
+  useEffect(() => {
+    setValue(categoryType);
+  }, [inputClean]);
+
   const keyDown = () => null;
 
   return (
     <div>
       <button
         type="button"
-        className={!value ? s.button : `${s.button} ${s.black}`}
+        className={value === categoryType ? s.button : `${s.button} ${s.black}`}
         onClick={handleOpen}
       >
         {!value ? categoryType : value}
@@ -35,6 +61,7 @@ const ProductCategory = ({ category, categoryType }) => {
                 key={item}
                 className={s.item}
                 onClick={handleClick}
+                value={value}
                 onKeyDown={keyDown}
                 role="none"
               >

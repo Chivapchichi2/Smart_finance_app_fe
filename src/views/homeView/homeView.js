@@ -73,10 +73,18 @@ const HomeView = () => {
             component={width > 767 && CustomTabs}
           />
           <Route path={routes.reportPage} component={ReportView} />
-          <Route path={routes.reportExpenses} component={MobileExpensesView} />
-          <Route path={routes.reportIncomes} component={MobileIncomesView} />
+          {width <= 767 && (
+            <Route
+              path={routes.reportExpenses}
+              component={MobileExpensesView}
+            />
+          )}
 
-          {/* <Redirect to={routes.homePage} /> */}
+          {width <= 767 && (
+            <Route path={routes.reportIncomes} component={MobileIncomesView} />
+          )}
+
+          <Redirect to={routes.homePage} />
         </Switch>
       </Suspense>
       {isAuth && <Modal text="Вы действительно хотите выйти?" />}
