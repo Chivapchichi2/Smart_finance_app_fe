@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
@@ -9,6 +10,8 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import TabForm from './tabsForm/tabForm';
 import TabSummary from './tabsSummary';
 import AccountTable from './tabsTable/tabTable';
+import monthData from './tabsSummary/monthData';
+import { ledgerSelectors } from '../../redux/ledger';
 import {
   endpoints,
   expensesCategory,
@@ -23,6 +26,34 @@ const CustomTabs = props => {
   const { classes } = props;
 
   const [value, setValue] = useState('1');
+
+  const incomesByYear = useSelector(ledgerSelectors.incomesByYear);
+  const expensesByYear = useSelector(ledgerSelectors.expenseByYear);
+  const currentYear = useSelector(ledgerSelectors.datepickerValue);
+  const parsedYear = currentYear.substr(3, 4);
+  const currentYearData = Object.keys(
+    expensesByYear[parsedYear] ? expensesByYear[parsedYear] : [],
+  );
+  let expenses;
+  let incomes;
+  if (currentYearData) {
+    expenses = currentYearData.map(
+      i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
+    );
+  } else {
+    expenses = [];
+  }
+  if (currentYearData) {
+    incomes = currentYearData.map(
+      i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
+    );
+  } else {
+    incomes = [];
+  }
+
+  // let incomes = currentYearData.map(
+  //   i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
+  // );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -46,7 +77,7 @@ const CustomTabs = props => {
               exp
             />
             <AccountTable exp />
-            <TabSummary />
+            <TabSummary data={expenses} />
           </TabPanel>
           <TabPanel value="2">
             <TabForm
@@ -56,7 +87,7 @@ const CustomTabs = props => {
               inc
             />
             <AccountTable inc />
-            <TabSummary />
+            <TabSummary data={incomes} />
           </TabPanel>
         </TabContext>
       </Box>
