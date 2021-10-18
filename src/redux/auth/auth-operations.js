@@ -55,11 +55,18 @@ const google = credentials => async dispatch => {
     const response = await axios.post('/api/users/google', credentials);
     token.set(response.data.token);
 
-    dispatch(authActions.googleSuccess(response.data));
-    dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+    const balance = response.data.balance
+      ? response.data.balance
+      : response.data.user.balance;
+
+    await dispatch(authActions.googleSuccess(response.data));
+    dispatch(userActions.setCurrentBalanceSuccess(balance));
+    dispatch(
+      ledgerActions.getUserTransactionsByYearSuccess(response.data.ledger),
+    );
   } catch (error) {
     dispatch(authActions.googleError(error.message));
-    toast.warn(error.response.data.message);
+    console.log(error);
   }
 };
 
