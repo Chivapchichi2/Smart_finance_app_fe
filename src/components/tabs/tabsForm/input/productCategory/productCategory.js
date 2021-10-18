@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { ledgerSelectors } from '../../../../../redux/ledger';
 import s from './productCategory.module.css';
 
-const ProductCategory = ({ category, categoryType }) => {
+const ProductCategory = ({ category, categoryType, changeCategory }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(categoryType);
   const [categories, setCategories] = useState([]);
+
+  const inputClean = useSelector(ledgerSelectors.getResetedInputValues);
 
   useEffect(() => setCategories(category), [category]);
 
@@ -14,6 +18,13 @@ const ProductCategory = ({ category, categoryType }) => {
     setValue(e.target.textContent);
     setOpen(false);
   };
+  useEffect(() => {
+    changeCategory(value);
+  }, [value]);
+
+  useEffect(() => {
+    setValue(categoryType);
+  }, [inputClean]);
 
   const keyDown = () => null;
 
@@ -35,6 +46,7 @@ const ProductCategory = ({ category, categoryType }) => {
                 key={item}
                 className={s.item}
                 onClick={handleClick}
+                value={value}
                 onKeyDown={keyDown}
                 role="none"
               >

@@ -20,23 +20,45 @@ import {
 import s from './tabsFrom.module.css';
 
 const TabForm = ({ endpoint, data, catName, inc, exp }) => {
-  console.log(data);
-
   const location = useLocation();
   const dispatch = useDispatch();
   const [trans, setTrans] = useState([]);
 
+  const [inputDate, setInputDate] = useState('');
+  const [descr, setDescr] = useState('');
+  const [category, setCategory] = useState('');
+  const [sum, setSum] = useState(0);
+
+  const changeCategory = value => {
+    setCategory(value);
+  };
+  const handleDescription = value => {
+    setDescr(value);
+  };
+  const handleSum = value => {
+    setSum(value);
+  };
+  const handleDate = value => {
+    setInputDate(value);
+  };
+
   const error = useSelector(ledgerSelectors.errorByYear);
   const dater = useSelector(ledgerSelectors.datepickerValue);
-  console.log('DATA', dater);
+  const resetInputs = () => dispatch(ledgerActions.resetInputValues(1));
 
   const handlerSubmit = async e => {
     e.preventDefault();
+    // const transaction = {
+    //   date: e.target[0].defaultValue,
+    //   description: e.target[1].value,
+    //   category: e.target[2].textContent,
+    //   value: e.target[3].valueAsNumber,
+    // };
     const transaction = {
-      date: e.target[0].defaultValue,
-      description: e.target[1].value,
-      category: e.target[2].textContent,
-      value: e.target[3].valueAsNumber,
+      date: inputDate,
+      description: descr,
+      category: category,
+      value: +sum,
     };
 
     setTrans([...trans, transaction]);
@@ -45,21 +67,26 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
 
     inc && dispatch(ledgerOperations.getIncomeByMonth(dater));
     exp && dispatch(ledgerOperations.getExpenseByMonth(dater));
+    resetInputs();
   };
 
   return (
     <form type="submit" className={s.tabForm} onSubmit={handlerSubmit}>
       {location.pathname === routes.reportExpenses ||
       location.pathname === routes.reportIncomes ? null : (
-        <DatePicker />
+        <DatePicker handleDate={handleDate} />
       )}
 
       <div className={s.formWrapper}>
-        <ProductDescription />
-        <ProductCategory category={data} categoryType={catName} />
+        <ProductDescription handleDescription={handleDescription} />
+        <ProductCategory
+          category={data}
+          categoryType={catName}
+          changeCategory={changeCategory}
+        />
       </div>
-      <ProductValue />
-      <ProductButtons />
+      <ProductValue handleSum={handleSum} />
+      <ProductButtons resetInputs={resetInputs} />
     </form>
   );
 };

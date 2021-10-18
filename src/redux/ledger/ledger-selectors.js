@@ -9,6 +9,7 @@ const datepickerValue = state => state.ledger.setDateValue;
 const currentPeriodDateValue = state => state.ledger.currentPeriodDate;
 const getExpenseChartValue = state => state.ledger.expenseChartValue;
 const getIncomeChartValue = state => state.ledger.incomeChartValue;
+const getResetedInputValues = state => state.ledger.resetValuesOfInput;
 
 export default {
   getUserBalance,
@@ -22,4 +23,5 @@ export default {
   getExpenseChartValue,
   getIncomeChartValue,
   currentPeriodDateValue,
+  getResetedInputValues,
 };
