@@ -12,7 +12,7 @@ import { ReactComponent as CalendarIcon } from '../../../../../svg/calendar.svg'
 import 'react-datepicker/dist/react-datepicker.css';
 import s from './datePicker.module.css';
 
-function DatePicker({ handleDate }) {
+function DatePicker() {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
   const location = useLocation();
@@ -22,16 +22,15 @@ function DatePicker({ handleDate }) {
     '0' + `${startDate.getMonth() + 1}.${startDate.getFullYear()}`
   ).slice(-7);
 
-  const normalizedFullDate = startDate.toLocaleDateString('ru', [
-    'day',
-    'month',
-    'year',
-  ]);
+  // const normalizedFullDate = startDate.toLocaleDateString('ru', [
+  //   'day',
+  //   'month',
+  //   'year',
+  // ]);
 
   useEffect(() => {
     dispatch(ledgerActions.setCurrentDateValue(normalizedDate));
-    handleDate(normalizedFullDate);
-  }, [startDate]);
+  }, [dispatch, startDate]);
 
   const homeDatePicker =
     location.pathname === routes.homePage && width <= 320

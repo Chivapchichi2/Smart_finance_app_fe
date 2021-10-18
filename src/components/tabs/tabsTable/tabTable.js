@@ -80,19 +80,21 @@ const AccountTable = props => {
     </button>
   );
 
-  const result = rows.map(item => ({
-    ...item,
-    value: inc ? (
-      <TableCell align="left" className="high">
-        {item.value}
-      </TableCell>
-    ) : (
-      <TableCell align="left" className="low">
-        {`-${item.value}`}
-      </TableCell>
-    ),
-    action: getAction(item._id),
-  }));
+  const result = rows
+    .map(item => ({
+      ...item,
+      value: inc ? (
+        <TableCell align="left" className="high">
+          {item.value}
+        </TableCell>
+      ) : (
+        <TableCell align="left" className="low">
+          {`-${item.value}`}
+        </TableCell>
+      ),
+      action: getAction(item._id),
+    }))
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <div className={classes.root}>
