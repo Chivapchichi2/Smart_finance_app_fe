@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import routes from '../../../routes/routes';
 import s from './homeNav.module.css';
 
-const HomeNav = () => {
+const HomeNav = () => (
   <div className={s.homeNav}>
     <NavLink
       exact
@@ -22,7 +22,7 @@ const HomeNav = () => {
     >
       Доход
     </NavLink>
-  </div>;
-};
+  </div>
+);
 
 export default HomeNav;
