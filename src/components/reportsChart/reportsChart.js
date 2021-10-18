@@ -119,7 +119,7 @@ export default function charts() {
             axisLine={false}
             tickLine={false}
           />
-          <YAxis height={500} type="number" tickCount={25} hide />
+          <YAxis height={400} type="number" tickCount={15} hide />
 
           <Bar
             dataKey="value"
