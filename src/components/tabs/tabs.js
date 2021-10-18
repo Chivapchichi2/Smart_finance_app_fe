@@ -43,6 +43,8 @@ const CustomTabs = props => {
   console.log(incomesByYear);
   console.log(expensesByYear);
 
+  useEffect(() => {}, []);
+
   useEffect(() => {
     console.log('currentYearDataInc', currentYearDataInc);
     console.log('currentYearDataExp', currentYearDataExp);

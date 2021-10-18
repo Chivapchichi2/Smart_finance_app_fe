@@ -39,6 +39,9 @@ const login = credentials => async dispatch => {
 
     dispatch(authActions.loginSuccess(response.data));
     dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+    dispatch(
+      ledgerActions.getUserTransactionsByYearSuccess(response.data.ledger),
+    );
   } catch (error) {
     dispatch(authActions.loginError(error.message));
     toast.warn(error.response.data.message);
