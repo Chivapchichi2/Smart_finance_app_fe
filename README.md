@@ -1,4 +1,4 @@
-Финальный проект React.js + Node.js - Smart finance.
+## Финальный проект React.js + Node.js - Smart finance.
 
 ## Рабочая ссылка проекта:
 http://localhost3000
