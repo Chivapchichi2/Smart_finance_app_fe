@@ -45,15 +45,11 @@ const CustomTabs = props => {
   }
   if (currentYearData) {
     incomes = currentYearData.map(
-      i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
+      i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
     );
   } else {
     incomes = [];
   }
-
-  // let incomes = currentYearData.map(
-  //   i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
-  // );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
