@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import TabContext from '@material-ui/lab/TabContext';
@@ -31,25 +31,41 @@ const CustomTabs = props => {
   const expensesByYear = useSelector(ledgerSelectors.expenseByYear);
   const currentYear = useSelector(ledgerSelectors.datepickerValue);
   const parsedYear = currentYear.substr(3, 4);
-  const currentYearData = Object.keys(
-    expensesByYear[parsedYear] ? expensesByYear[parsedYear] : [],
-  );
-  let expenses;
-  let incomes;
-  if (currentYearData) {
-    expenses = currentYearData.map(
-      i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
-    );
-  } else {
-    expenses = [];
-  }
-  if (currentYearData) {
-    incomes = currentYearData.map(
-      i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
-    );
-  } else {
-    incomes = [];
-  }
+  const currentYearDataExp =
+    expensesByYear &&
+    Object.keys(expensesByYear[parsedYear] ? expensesByYear[parsedYear] : []);
+  const currentYearDataInc =
+    incomesByYear &&
+    Object.keys(incomesByYear[parsedYear] ? incomesByYear[parsedYear] : []);
+  const [expenses, setExpenses] = useState([]);
+  const [incomes, setIncomes] = useState([]);
+
+  console.log(incomesByYear);
+  console.log(expensesByYear);
+
+  useEffect(() => {
+    console.log('currentYearDataInc', currentYearDataInc);
+    console.log('currentYearDataExp', currentYearDataExp);
+    if (currentYearDataExp || currentYearDataInc) {
+      const exp = currentYearDataExp.map(
+        i => `${monthData[+i - 1]} ${expensesByYear[parsedYear][i]}`,
+      );
+      setExpenses(exp);
+      const inc = currentYearDataInc.map(
+        i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
+      );
+      setIncomes(inc);
+    }
+    // if (currentYearData) {
+    //   const inc = currentYearData.map(
+    //     i => `${monthData[+i - 1]} ${incomesByYear[parsedYear][i]}`,
+    //   );
+    //   setIncomes(inc);
+    // }
+  }, [incomesByYear, expensesByYear, parsedYear]);
+
+  console.log('incomes', incomes);
+  console.log('expenses', expenses);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

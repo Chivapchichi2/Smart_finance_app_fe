@@ -22,8 +22,8 @@ const HomeView = lazy(() =>
 export default function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(authOperations.getCurrentUser());
+  useEffect(async () => {
+    await dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
 
   return (
