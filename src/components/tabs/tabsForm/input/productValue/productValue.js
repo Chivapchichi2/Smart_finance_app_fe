@@ -18,7 +18,7 @@ const ProductValue = ({ handleSum }) => {
   }, [sum]);
 
   useEffect(() => {
-    setSum(null);
+    setSum(balance.toFixed(2));
   }, [inputClean]);
 
   return (
@@ -26,8 +26,9 @@ const ProductValue = ({ handleSum }) => {
       <input
         type="number"
         className={s.input}
-        placeholder="0.00"
+        // placeholder="0.00"
         onChange={handleChange}
+        onFocus={() => setSum('')}
         value={sum}
       />
       <span className={s.span}>UAH</span>

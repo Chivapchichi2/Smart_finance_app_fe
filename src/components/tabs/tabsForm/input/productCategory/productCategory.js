@@ -18,6 +18,13 @@ const ProductCategory = ({ category, categoryType, changeCategory }) => {
     setValue(e.target.textContent);
     setOpen(false);
   };
+
+  // window.addEventListener('click', e => {
+  //   if (open && e.target.nodeName !== 'LI') {
+  //     setOpen(false);
+  //   }
+  // });
+
   useEffect(() => {
     changeCategory(value);
   }, [value]);
@@ -32,7 +39,8 @@ const ProductCategory = ({ category, categoryType, changeCategory }) => {
     <div>
       <button
         type="button"
-        className={!value ? s.button : `${s.button} ${s.black}`}
+        // className={!value ? s.button : `${s.button} ${s.black}`}
+        className={value === categoryType ? s.button : `${s.button} ${s.black}`}
         onClick={handleOpen}
       >
         {!value ? categoryType : value}

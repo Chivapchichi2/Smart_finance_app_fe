@@ -48,12 +48,7 @@ const TabForm = ({ endpoint, data, catName, inc, exp }) => {
 
   const handlerSubmit = async e => {
     e.preventDefault();
-    // const transaction = {
-    //   date: e.target[0].defaultValue,
-    //   description: e.target[1].value,
-    //   category: e.target[2].textContent,
-    //   value: e.target[3].valueAsNumber,
-    // };
+
     const transaction = {
       date: inputDate,
       description: descr,
