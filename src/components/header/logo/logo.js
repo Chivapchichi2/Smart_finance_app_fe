@@ -1,11 +1,16 @@
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as LogoImg } from './logo.svg';
+import routes from '../../../routes/routes';
 
 import styles from './logo.module.css';
 
 function Logo() {
   return (
     <div className={styles.container}>
-      <LogoImg />
+      <Link to={routes.homePage}>
+        <LogoImg />
+      </Link>
     </div>
   );
 }
