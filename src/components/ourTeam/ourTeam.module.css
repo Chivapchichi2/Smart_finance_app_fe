@@ -1,0 +1,155 @@
+.container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+
+  letter-spacing: 0.04em;
+}
+
+.title {
+  margin: 0 0 20px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.list {
+}
+
+.item {
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  border-radius: 0px 0px 4px 4px;
+}
+
+.item:last-child {
+  margin: 0;
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.wrapper {
+  padding: 15px 10px;
+}
+
+.nameTitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.description {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.socialList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+}
+
+.socialItem {
+}
+
+.socialItem:first-child {
+  margin-right: 20px;
+}
+
+.link {
+  color: #c7ccdc;
+}
+
+.link:hover,
+.link:focus {
+  color: #ff751d;
+}
+
+.icons {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgBox {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .nameTitle {
+    font-size: 15px;
+    height: 40px;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .item {
+    width: 150px;
+    height: auto;
+    margin: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    height: 150px;
+    padding: 15px 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .imgBox {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 35px;
+  }
+
+  .item {
+    width: 230px;
+  }
+
+  .nameTitle {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .imgBox {
+    width: 230px;
+    height: 230px;
+  }
+}

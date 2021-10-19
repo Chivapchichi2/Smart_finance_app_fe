@@ -1,0 +1,52 @@
+.tabForm {
+  position: relative;
+  /* position: absolute;
+  top: 50px;
+  left: 500px; */
+
+  width: 282px;
+  height: auto;
+  margin: 54px auto 0;
+}
+
+.formWrapper {
+  width: 282px;
+  height: 88px;
+
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+
+  background-color: #f5f6fb;
+}
+
+@media screen and (min-width: 768px) {
+  .tabForm {
+    display: flex;
+    align-items: center;
+    width: 604px;
+    margin: 0;
+    margin-bottom: 122px;
+  }
+
+  .formWrapper {
+    display: flex;
+    width: 361px;
+    height: 44px;
+    border-radius: 16px 0 0 16px;
+    background-color: #ffffff;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tabForm {
+    display: flex;
+    width: 1020px;
+
+    margin-bottom: 59px;
+  }
+
+  .formWrapper {
+    width: 473px;
+  }
+}

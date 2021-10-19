@@ -1,13 +1,112 @@
+@import '../node_modules/modern-normalize/modern-normalize.css';
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Roboto-Bold.ttf');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.172;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  letter-spacing: 0.02em;
+  background-color: #fff;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+svg {
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #ff751d;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(176, 255, 156);
+}
+
+div .Toastify__toast--error,
+div .Toastify__toast--warning {
+  background: rgba(255, 117, 29, 04);
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 767px) {
+  svg.recharts-surface {
+    height: 400px !important;
+  }
+}
+
+.buttonTeam {
+  display: flex;
+  margin: 20px auto;
+  color: #000;
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.buttonTeam:hover,
+.buttonTeam:focus {
+  transform: scale(1.1);
+  color: #ff751d;
 }

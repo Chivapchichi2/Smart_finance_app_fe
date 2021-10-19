@@ -1,0 +1,51 @@
+.mobileBalance {
+  width: 183px;
+  height: 70px;
+}
+
+.balanceTitle {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.balanceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 183px;
+  height: 44px;
+  margin-top: 10px;
+
+  border: 2px solid #ffffff;
+  border-radius: 22px;
+}
+
+.balanceValue {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  color: #000000;
+}
+
+@media screen and (min-width: 768px) {
+  .mobileBalance {
+    display: flex;
+    align-items: center;
+    height: 44px;
+  }
+
+  .balanceTitle {
+    margin: 0;
+    margin-right: 20px;
+  }
+
+  .balanceContainer {
+    width: 125px;
+    margin: 0;
+  }
+}

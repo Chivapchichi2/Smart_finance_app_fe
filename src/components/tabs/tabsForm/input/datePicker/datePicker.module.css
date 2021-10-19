@@ -1,0 +1,64 @@
+.wrap input {
+  border: 0;
+  width: 74px;
+  height: 40px;
+
+  padding: 0;
+
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 14px;
+
+  align-items: center;
+  letter-spacing: 1.17;
+  color: #52555f;
+  cursor: pointer;
+  caret-color: transparent;
+  background-color: transparent;
+}
+
+.wrap input:focus,
+.wrap input:active {
+  outline: none;
+}
+
+.wrap {
+  position: absolute;
+  top: -50px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 104px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeDatePicker {
+  position: relative;
+  margin: 0 auto;
+
+  margin-top: 80px;
+  margin-bottom: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrap {
+    position: static;
+    margin: 0;
+    margin-right: 33px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrap {
+    margin-right: 23px;
+  }
+}
+
+.icon {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}

@@ -1,0 +1,31 @@
+.mainContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) {
+  .mainContainer {
+    padding-bottom: 80px;
+
+    background-image: url('../../../svg/cabbage_couple.svg');
+    background-position: bottom -35px right 88px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainContainer {
+    background-image: url('../../../svg/kapusta_home_group.svg');
+
+    background-position: bottom right;
+  }
+}
+
+.fixedHeight {
+  height: 1220px;
+  background-position: bottom 65px right 88px;
+}

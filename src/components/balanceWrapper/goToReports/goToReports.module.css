@@ -1,0 +1,47 @@
+.btnReports {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 43px;
+  padding: 5px 5px 5px 0;
+  width: 154px;
+  height: 24px;
+  background: transparent;
+  background-image: url('../../../svg/iconReports.svg');
+  background-repeat: no-repeat;
+  background-position: top 1px right 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btnText {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: rgba(82, 85, 95, 0.7);
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.btnText:hover,
+.btnText:focus {
+  color: #ff751d;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .btnReports {
+    position: absolute;
+    top: 10px;
+    right: -220px;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .btnReports {
+    right: -344px;
+  }
+}
