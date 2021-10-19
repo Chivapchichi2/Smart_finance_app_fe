@@ -18,7 +18,7 @@ https://smart-finance-app-be.herokuapp.com/api-docs/
 
 ## Материалы проекта:
 
-1. [Репозиторий бэкенда](https://github.com/Chivapchichi2/smart_finance_app_be)
+1. [Репозиторий бэкенда](https://github.com/Chivapchichi2/smart_finance_app_be/tree/dev)
 2. [Репозиторий фронтенда](https://github.com/Chivapchichi2/smart_finance_app_fe)
 3. [Доска в trello](https://trello.com/b/tIzHt9wC/smartfinanceapp)
 4. [Инструкция по работе с github](https://docs.google.com/document/d/1CtGl_H7rDYTQsDhrsP2yHZ2sGw_ve9j3r1Ph5m_VmNI/edit)
