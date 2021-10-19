@@ -1,7 +1,7 @@
 ## Финальный проект React.js + Node.js - Smart finance.
 
 ## Рабочая ссылка проекта:
-http://localhost3000
+https://smart-finance.netlify.app/
 
 ## Ссылка на документацию эндпонтов (swagger-ui):
 https://smart-finance-app-be.herokuapp.com/api-docs/
