@@ -54,6 +54,9 @@ const deleteUserTransaction = transactionId => async dispatch => {
 
     await dispatch(ledgerActions.deleteUserTransactionSuccess(transactionId));
     await dispatch(userActions.setCurrentBalanceSuccess(response.data.balance));
+    await dispatch(
+      ledgerActions.getUserTransactionsByYearSuccess(response.data.ledger),
+    );
   } catch (error) {
     dispatch(ledgerActions.deleteUserTransactionError(error.message));
     toast.error(error.response.message);
