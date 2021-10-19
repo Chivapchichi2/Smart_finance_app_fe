@@ -12,10 +12,16 @@ const BackToMain = () => {
       ? `${styles.btnBack} ${styles.btnPosition}`
       : `${styles.btnBack}`;
 
+  const teampos = `${styles.btnBack} ${styles.teampos}`;
+
   const HandleClick = () => history.push(routes.homePage);
 
   return (
-    <button className={expincpos} type="button" onClick={HandleClick}>
+    <button
+      className={location.pathname === routes.ourTeam ? teampos : expincpos}
+      type="button"
+      onClick={HandleClick}
+    >
       <p className={styles.btnText}>Вернуться на главную</p>
     </button>
   );

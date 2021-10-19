@@ -4,4 +4,5 @@ export default {
   reportPage: '/home/report',
   reportIncomes: '/home/incomes',
   reportExpenses: '/home/expenses',
+  ourTeam: '/home/team',
 };

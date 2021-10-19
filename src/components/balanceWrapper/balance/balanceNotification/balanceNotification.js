@@ -1,7 +1,7 @@
 import s from './balanceNotification.module.css';
 
-const BalanceNotification = () => (
-  <div className={s.container}>
+const BalanceNotification = ({ onNotifyClick }) => (
+  <div className={s.container} onClick={() => onNotifyClick(false)} role="none">
     <div className={s.square} />
     <div className={s.notification}>
       <h2 className={s.title}>

@@ -1,6 +1,13 @@
 import { Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
-import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  useLocation,
+  Route,
+  Switch,
+  Redirect,
+  useHistory,
+  NavLink,
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Preloader from '../../components/loader';
 
@@ -37,6 +44,10 @@ const MobileIncomesView = lazy(() =>
   ),
 );
 
+const OurTeamView = lazy(() =>
+  import('../teamView/teamView' /* webpackChunkName: "OurTeamView-page" */),
+);
+
 const HomeView = () => {
   const isAuth = useSelector(authSelectors.getModal);
   const width = useWindowWidth();
@@ -45,12 +56,11 @@ const HomeView = () => {
   return (
     <MainHome>
       <BoxHome />
-
       {location.pathname === routes.reportIncomes ||
-      location.pathname === routes.reportExpenses ? null : (
+      location.pathname === routes.reportExpenses ||
+      location.pathname === routes.ourTeam ? null : (
         <BalanceWrapper />
       )}
-
       {location.pathname === routes.homePage && width <= 767 ? (
         <>
           <DatePicker />
@@ -58,7 +68,6 @@ const HomeView = () => {
           <HomeNav />
         </>
       ) : null}
-
       <Suspense fallback={<Preloader />}>
         <Switch>
           <Route
@@ -78,10 +87,23 @@ const HomeView = () => {
             <Route path={routes.reportIncomes} component={MobileIncomesView} />
           )}
 
+          <Route path={routes.ourTeam} component={OurTeamView} />
+
           <Redirect to={routes.homePage} />
         </Switch>
       </Suspense>
       {isAuth && <Modal text="Вы действительно хотите выйти?" />}
+      {location.pathname === routes.ourTeam || width < 1280 ? null : (
+        <NavLink
+          exact
+          to={routes.ourTeam}
+          className="buttonTeam"
+          activeClassName="buttonTeamActive"
+          type="button"
+        >
+          &#9824; &#9827; Developer Team &#9829; &#9830;
+        </NavLink>
+      )}
     </MainHome>
   );
 };
