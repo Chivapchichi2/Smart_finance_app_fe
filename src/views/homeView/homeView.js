@@ -1,12 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { useWindowWidth } from '@react-hook/window-size';
-import {
-  useLocation,
-  Route,
-  Switch,
-  Redirect,
-  useHistory,
-} from 'react-router-dom';
+import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Preloader from '../../components/loader';
 

@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -139,6 +140,11 @@ const AccountTable = props => {
       </TableContainer>
     </div>
   );
+};
+
+AccountTable.propTypes = {
+  exp: PropTypes.shape().isRequired,
+  inc: PropTypes.shape().isRequired,
 };
 
 export default AccountTable;
