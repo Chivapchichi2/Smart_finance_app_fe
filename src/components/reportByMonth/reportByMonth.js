@@ -7,22 +7,43 @@ import s from './reportByMonth.module.css';
 const reportByMonth = () => {
   const incomesByYear = useSelector(ledgerSelectors.incomesByYear);
   const expensesByYear = useSelector(ledgerSelectors.expenseByYear);
-  const currentYear = new Date().getFullYear().toString();
-  const monthData = useSelector(ledgerSelectors.currentPeriodDateValue);
+  const yearData = useSelector(ledgerSelectors.datepickerValue);
+  const monthData = useSelector(ledgerSelectors.datepickerValue);
   const incomesByMonthData = useSelector(ledgerSelectors.incomesByMonthData);
   const expenseByMonthData = useSelector(ledgerSelectors.expenseByMonthData);
+  const currentYear = yearData.substr(3, 4);
   const currentMonth = monthData.substr(0, 2);
 
   const [incomes, setIncomes] = useState(
-    incomesByYear[currentYear][currentMonth],
+    incomesByYear[currentYear]
+      ? incomesByYear[currentYear][currentMonth]
+        ? incomesByYear[currentYear][currentMonth]
+        : []
+      : [],
   );
   const [expenses, setExpenses] = useState(
-    expensesByYear[currentYear][currentMonth],
+    expensesByYear[currentYear]
+      ? expensesByYear[currentYear][currentMonth]
+        ? expensesByYear[currentYear][currentMonth]
+        : []
+      : [],
   );
 
   useEffect(() => {
-    setIncomes(incomesByYear[currentYear][currentMonth]);
-    setExpenses(expensesByYear[currentYear][currentMonth]);
+    setIncomes(
+      incomesByYear[currentYear]
+        ? incomesByYear[currentYear][currentMonth]
+          ? incomesByYear[currentYear][currentMonth]
+          : []
+        : [],
+    );
+    setExpenses(
+      expensesByYear[currentYear]
+        ? expensesByYear[currentYear][currentMonth]
+          ? expensesByYear[currentYear][currentMonth]
+          : []
+        : [],
+    );
   }, [
     expenses,
     currentMonth,
@@ -36,12 +57,16 @@ const reportByMonth = () => {
     <div className={s.container}>
       <div className={s.expenseBox}>
         <p className={s.text}>Расходы:</p>
-        <p className={s.value}>- {expenses || '0'}.00 грн.</p>
+        <p className={s.value}>
+          - {expenses.length > 0 ? expenses : '0'}.00 грн.
+        </p>
       </div>
       <div className={s.divide} />
       <div className={s.incomeBox}>
         <p className={s.text}>Доходы:</p>
-        <p className={s.value}>+ {incomes || '0'}.00 грн.</p>
+        <p className={s.value}>
+          + {incomes.length > 0 ? incomes : '0'}.00 грн.
+        </p>
       </div>
     </div>
   );
