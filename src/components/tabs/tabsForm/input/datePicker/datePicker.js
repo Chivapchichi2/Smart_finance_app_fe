@@ -22,18 +22,12 @@ function DatePicker() {
     '0' + `${startDate.getMonth() + 1}.${startDate.getFullYear()}`
   ).slice(-7);
 
-  // const normalizedFullDate = startDate.toLocaleDateString('ru', [
-  //   'day',
-  //   'month',
-  //   'year',
-  // ]);
-
   useEffect(() => {
     dispatch(ledgerActions.setCurrentDateValue(normalizedDate));
   }, [dispatch, startDate]);
 
   const homeDatePicker =
-    location.pathname === routes.homePage && width <= 320
+    location.pathname === routes.homePage && width <= 767
       ? `${s.wrap} ${s.homeDatePicker}`
       : `${s.wrap}`;
 

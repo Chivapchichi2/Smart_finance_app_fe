@@ -33,15 +33,14 @@
   height: 40px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 42px;
-
-  /* margin-top: 40px; */
 }
 
 .homeDatePicker {
   position: relative;
   margin: 0 auto;
-  margin-top: 88px;
+
+  margin-top: 80px;
+  margin-bottom: 22px;
 }
 
 @media screen and (min-width: 768px) {
