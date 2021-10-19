@@ -11,7 +11,7 @@ function TabsSummary({ data }) {
       {parsedData.map(i => {
         const x = i.split(' ');
 
-        return (
+        return x[1] === '0' ? null : (
           <tr key={x[0]} className={styles.tr}>
             <td>{x[0].toLocaleUpperCase()}</td>
             <td>{x[1]}</td>
