@@ -96,3 +96,17 @@ div .Toastify__toast--warning {
     height: 400px !important;
   }
 }
+
+.buttonTeam {
+  display: flex;
+  margin: 20px auto;
+  color: #000;
+
+  transition: all 250ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.buttonTeam:hover,
+.buttonTeam:focus {
+  transform: scale(1.1);
+  color: #ff751d;
+}
