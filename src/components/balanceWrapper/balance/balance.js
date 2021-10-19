@@ -18,8 +18,11 @@ const Balance = () => {
 
   const [value, setValue] = useState(balance.toFixed(2));
   const [isLoading, setIsLoading] = useState(false);
+  const [isNotifyShow, setIsNotifyShow] = useState(true);
 
   const handleChange = e => setValue(Number(e.target.value));
+
+  const onNotifyClick = condition => setIsNotifyShow(condition);
 
   const handleSubmit = useCallback(
     e => {
@@ -86,7 +89,9 @@ const Balance = () => {
         </>
       )}
 
-      {value === '0.00' && <BalanceNotify />}
+      {isNotifyShow && value === '0.00' && (
+        <BalanceNotify onNotifyClick={onNotifyClick} />
+      )}
     </form>
   );
 };
